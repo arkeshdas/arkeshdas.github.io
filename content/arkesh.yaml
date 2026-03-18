@@ -1,0 +1,23 @@
+# ============================================================
+# content/example_student.yaml
+# ============================================================
+# This is an example student profile. Copy this file to
+# something like content/my_profile.yaml, fill in your own
+# information, and update portfolio_config.yaml to point to it.
+# ============================================================
+
+name: "Arkesh Das"
+tagline: "Data Scientist | Future Med Student | Unemployed"
+
+about: |
+  Hey! My name is Arkesh and I'm a senior at Michigan State University, majoring in Data Science and Biotechnology!
+
+  I'll be starting medical school in the fall, but I'm passionate about data science and its applications in healthcare. 
+  I'm particularly interested in learning more about clinical research and how data can drive better patient outcomes.
+
+  Currently I'm working on projects that involve looking at admissions trends and analyizing their impact on 
+
+# Contact information — remove any fields you prefer not to share
+email: "dasarkes@msu.edu"
+linkedin: "https://www.linkedin.com/in/arkesh-das/"
+github: "https://arkeshdas.github.io"

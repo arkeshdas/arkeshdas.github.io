@@ -8,7 +8,7 @@
 
 # --- Student profile ---
 # Point this to your profile file inside content/
-student_file: content/example_student.yaml
+student_file: content/arkesh.yaml
 
 # --- Projects to display ---
 # List the YAML files (inside content/projects/) you want shown.
