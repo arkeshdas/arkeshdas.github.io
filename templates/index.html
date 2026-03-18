@@ -99,8 +99,8 @@
         {% if post.content %}
         <details class="blog-details">
           <summary>Read more</summary>
-          <div class="detail-block">
-            <p>{{ post.content }}</p>
+          <div class="detail-block blog-content">
+            {{ post.content | safe }}
           </div>
         </details>
         {% endif %}
