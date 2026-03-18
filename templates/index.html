@@ -78,6 +78,46 @@
   </div>
 </section>
 
+<!-- ===== Blog section ===== -->
+<section id="blog" class="section blog-section">
+  <h2>Blog</h2>
+
+  <div class="blog-list">
+    {% for post in blog_posts %}
+    <article class="blog-card">
+      <div class="blog-body">
+        {% if post.date %}
+        <p class="blog-meta">{{ post.date }}</p>
+        {% endif %}
+
+        <h3 class="blog-title">{{ post.title }}</h3>
+
+        {% if post.short_summary %}
+        <p class="blog-summary">{{ post.short_summary }}</p>
+        {% endif %}
+
+        {% if post.content %}
+        <details class="blog-details">
+          <summary>Read more</summary>
+          <div class="detail-block">
+            <p>{{ post.content }}</p>
+          </div>
+        </details>
+        {% endif %}
+
+        {% if post.post_url %}
+        <div class="project-links">
+          <a href="{{ post.post_url }}" target="_blank" rel="noopener" class="btn btn-repo">
+            Read Post
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
 <!-- ===== Contact section ===== -->
 <section id="contact" class="section contact-section">
   <h2>Contact</h2>

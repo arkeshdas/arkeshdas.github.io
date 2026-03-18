@@ -1,0 +1,12 @@
+title: "My First Blog Post"
+date: "Test"
+short_summary: >
+  A short summary of the blog post goes here. This can describe what the post
+  is about in 1 to 3 sentences.
+
+content: |
+  This is the longer blog content or excerpt.
+
+  You can write in multiple paragraphs here.
+
+post_url: "https://your-link-here.com"

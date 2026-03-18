@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zeke the Wonder Dog | Data Science Portfolio</title>
+  <title>Arkesh Das | Portfolio</title>
 
   <!-- Base styles always loaded -->
   <link rel="stylesheet" href="css/base.css" />
@@ -24,6 +24,7 @@
     <nav class="site-nav">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#blog">Blog</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -38,7 +39,8 @@
   <div class="about-text"><p>Hey! My name is Arkesh and I'm a senior at Michigan State University, majoring in Data Science and Biotechnology!</p>
 <p>I'll be starting medical school in the fall, but I'm passionate about data science and its applications in healthcare. 
 I'm particularly interested in learning more about clinical research and how data can drive better patient outcomes.</p>
-<p>Currently I'm working on projects that involve looking at admissions trends and analyizing their impact on </p></div>
+<p>Currently I'm working on a research project that involves looking at admissions trends and analyzing their impact on the public and the supply of physicians
+and I'm collaborating with a team of developers to create a website that simplifies the process of deciding which classes to take at Michigan State</p></div>
 </section>
 
 <!-- ===== Projects section ===== -->
@@ -52,17 +54,17 @@ I'm particularly interested in learning more about clinical research and how dat
       <!-- Project thumbnail image -->
       <div class="project-image-wrapper">
         <img
-          src="img/placeholder_project_1.png"
-          alt="Thumbnail for Optimal Nap Spot Prediction Across Campus"
+          src="img/curser_img.png"
+          alt="Thumbnail for Curser: Stop Embarrassing Names Before They Launch"
           class="project-image"
         />
       </div>
 
       <div class="project-body">
-        <h3 class="project-title">Optimal Nap Spot Prediction Across Campus</h3>
+        <h3 class="project-title">Curser: Stop Embarrassing Names Before They Launch</h3>
 
         <!-- Short summary written for a non-expert audience -->
-        <p class="project-summary">Built a model to identify the best nap locations on MSU&#39;s campus based on sunlight exposure, foot traffic, grass quality, and proximity to food smells. Findings have been peer-reviewed by three other dogs and were described as &#34;life-changing&#34; and &#34;very good.&#34;
+        <p class="project-summary">Curser is an interactive application that takes in spoken or  typed inputs and finds the closest unsavory word in multiple languages to the input.&#34;
 </p>
 
         <!-- Tech stack as pill badges -->
@@ -70,13 +72,19 @@ I'm particularly interested in learning more about clinical research and how dat
           
           <span class="tech-badge">Python</span>
           
-          <span class="tech-badge">scikit-learn</span>
+          <span class="tech-badge">OpenAI&#39;s Whisper (speech-to-text)</span>
           
-          <span class="tech-badge">pandas</span>
+          <span class="tech-badge">PanPhon (phonetic similarity / NLP)</span>
           
-          <span class="tech-badge">matplotlib</span>
+          <span class="tech-badge">eSpeak (grapheme-to-phoneme / IPA)</span>
           
-          <span class="tech-badge">Jupyter Notebooks</span>
+          <span class="tech-badge">ElevenLabs API (text-to-speech)</span>
+          
+          <span class="tech-badge">JSON data pipeline</span>
+          
+          <span class="tech-badge">pip / virtual environments</span>
+          
+          <span class="tech-badge">Streamlit Cloud deployment</span>
           
         </div>
 
@@ -86,19 +94,34 @@ I'm particularly interested in learning more about clinical research and how dat
 
           <div class="detail-block">
             <h4>Problem</h4>
-            <p>Finding a good nap spot is harder than it looks. Campus is large, conditions change throughout the day, and the best patches of sun move. A mascot operating on intuition alone wastes valuable resting time — a problem that affects productivity, morale, and tail-wagging rates across the entire campus community.
+            <p>It turns out that coming up with names is hard, especially when you want them to be unique,  abstract, and not accidentally offensive in some other language. A bad name tell s potential customers and investors that you don&#39;t care, and quietly puts you at a disadvantage  before anyone even looks at what you built.
+
+Pharmaceutical companies deal with this exact problem constantly. When creating brand names  for drugs, they are required to use names that are clearly distinct from existing medications  and are not allowed to imply efficacy, mechanism, or outcomes. You can&#39;t call a drug something  that sounds like it cures cancer, even if you really wish it did. This pushes companies toward  strange, abstract, made up names that are legally safe, but often linguistically fragile once the  drug is sold overseas. A name that passed every legal review can still fall apart the moment it hits  another language or culture.
+
+The same problem shows up in tech, just with fewer lawyers involved and more optimism. If you are at a hackathon,  YC, or convincing yourself that your next LLM wrapper is definitely the next big thing,  you probably want a name that sounds catchy and distinctive. Names like Hulu, Zillow, Spotify, Stripe, or Airbnb  work because they are abstract enough to stand out. That abstraction is also a risk, because you are always one unlucky  phonetic collision away from naming your product something unintentionally cursed somewhere else.  At that point, it does not matter how good the idea is, the damage is already done.
+
+Curser sits right in that uncomfortable gap. It is a tool for answering the question, “Does this innocent  sounding word get me in trouble somewhere else?”, before you commit to it as a nickname, product name, brand,  or inside joke.
+In other words, this is a nickname QA tool that doubles as a way to avoid very preventable naming regret.
 </p>
           </div>
 
           <div class="detail-block">
             <h4>Approach</h4>
-            <p>Collected location data across 47 candidate nap sites over a full academic semester. Features included average daily sunlight (hours), grass softness score (1–10, assessed manually), nearby food-cart proximity, and pedestrian traffic by hour. Trained a gradient boosting classifier to predict a site&#39;s &#34;nap quality&#34; rating and used SHAP values to explain which features mattered most.
+            <p>At a high level, the app records or accepts audio, transcribes speech locally using Whisper, converts candidate  text spans into IPA phonemes, and compares them against a curated multilingual database of words. PanPhon is used  to compute phonetic distances between the input and database entries, allowing results to be ranked by similarity  and surfaced through an interactive interface with explanations, sortable tables, and session-level history tracking.
+
+In addition to analysis, Curser supports optional text-to-speech playback of matched words. By default, pronunciation  is handled locally using eSpeak, but the app can also integrate ElevenLabs for higher-quality, neural voice synthesis  when enabled. This makes it possible to hear how flagged words actually sound across different languages and voices,  which is often critical when evaluating phonetic ambiguity in spoken contexts.
+
+The entire pipeline runs locally by default and supports live microphone input, one-shot recording, and audio uploads,  complete with real-time level metering. The interface is built entirely with Streamlit, while speech recognition is  powered by Whisper. Together, these components make Curser a practical tool for detecting accidental phonetic collisions  across languages, especially when evaluating names, brands, or terminology that must avoid unintended or offensive  interpretations.
 </p>
           </div>
 
           <div class="detail-block">
             <h4>Results &amp; Impact</h4>
-            <p>The model achieved 89% accuracy on held-out test sites. Sunlight duration and grass softness were the top two predictive features, while proximity to the student union food court provided a meaningful but secondary boost. A ranked list of top-10 nap sites was distributed to the campus dog community and has since been downloaded 847 times.
+            <p>
+This project was a much bigger learning experience than I initially expected. I learned a lot about language and phonetics.  I have been interested in linguistics since taking an anthropology class in high school, but I had no formal training going  into this. Working with IPA, grapheme-to-phoneme systems, and cross-language comparisons forced me to think more precisely  about how spoken language is represented and where different tools succeed or fail.
+This was also my first time deploying a web application, and my first project where the explicit goal was to make the code  safe and reproducible so that other people could run it locally (learned about virtual environments 2 weeks ago in one of  my data science classes). Managing virtual environments, dependencies, and setup instructions showed me how easily projects  can break without careful environment control, and why reproducibility is a core part of real software development.
+I also learned a lot about working with third-party APIs through integrating ElevenLabs for text-to-speech.  This was my first time using an API that required authentication via a private token, and it forced me to think more  carefully about security and configuration. I learned how to manage API keys without hard-coding them into the repository,  including using Streamlit’s secrets.toml system and environment-specific configuration. More generally, working with the  ElevenLabs API helped me understand how external services expose functionality, how client libraries can return streamed  or chunked data instead of simple values, and how small interface assumptions can break an application if they are not  handled carefully.
+I also learned how to independently manage and iterate on a large project. Working alone, I had to define a minimal viable  product, get a full pipeline working, then incrementally add new technologies and features while breaking and fixing things  along the way. This process taught me how to scope work realistically, debug systematically, and prioritize stability and  clarity over adding features too quickly.
 </p>
           </div>
         </details>
@@ -106,12 +129,12 @@ I'm particularly interested in learning more about clinical research and how dat
         <!-- Links to the GitHub repo and notebook -->
         <div class="project-links">
           
-          <a href="https://github.com/zeke-wonder-dog/nap-spot-predictor" target="_blank" rel="noopener" class="btn btn-repo">
+          <a href="https://github.com/wijayaju/MSU_Curriculum_Maps" target="_blank" rel="noopener" class="btn btn-repo">
             View Repo
           </a>
           
           
-          <a href="https://github.com/zeke-wonder-dog/nap-spot-predictor/blob/main/analysis.ipynb" target="_blank" rel="noopener" class="btn btn-notebook">
+          <a href="https://github.com/wijayaju/MSU_Curriculum_Maps/install.md" target="_blank" rel="noopener" class="btn btn-notebook">
             View Notebook
           </a>
           
@@ -125,17 +148,17 @@ I'm particularly interested in learning more about clinical research and how dat
       <!-- Project thumbnail image -->
       <div class="project-image-wrapper">
         <img
-          src="img/placeholder_project_2.png"
-          alt="Thumbnail for Spartan Football Crowd Cheer Analysis"
+          src="img/cirric_mg.png"
+          alt="Thumbnail for Curriculum Dependency Graph Pipeline for MSU Programs"
           class="project-image"
         />
       </div>
 
       <div class="project-body">
-        <h3 class="project-title">Spartan Football Crowd Cheer Analysis</h3>
+        <h3 class="project-title">Curriculum Dependency Graph Pipeline for MSU Programs</h3>
 
         <!-- Short summary written for a non-expert audience -->
-        <p class="project-summary">Analyzed audio and attendance data from Spartan Stadium to understand what game events drive the loudest crowd reactions. Results were used to help the athletics department optimize in-game entertainment and — personally — to determine the exact moments when I should run onto the field for maximum dramatic effect.
+        <p class="project-summary">Built a reproducible data pipeline that converts Michigan State University curriculum exports into structured prerequisite graphs for analysis with the Curricular Analytics framework. The system standardizes registrar and major requirement data, constructs dependency networks, and prepares outputs for visualization and structural metric computation using a Python + Julia workflow.
 </p>
 
         <!-- Tech stack as pill badges -->
@@ -143,13 +166,15 @@ I'm particularly interested in learning more about clinical research and how dat
           
           <span class="tech-badge">Python</span>
           
+          <span class="tech-badge">Julia</span>
+          
+          <span class="tech-badge">CurricularAnalytics.jl</span>
+          
           <span class="tech-badge">pandas</span>
           
-          <span class="tech-badge">seaborn</span>
-          
-          <span class="tech-badge">Plotly</span>
-          
           <span class="tech-badge">Jupyter Notebooks</span>
+          
+          <span class="tech-badge">uv / virtual environments</span>
           
         </div>
 
@@ -159,19 +184,19 @@ I'm particularly interested in learning more about clinical research and how dat
 
           <div class="detail-block">
             <h4>Problem</h4>
-            <p>Fan energy is contagious, but it is also unpredictable. The athletics department wanted to know which in-game events (touchdowns, turnovers, big defensive stops, walk-up music choices) produced the biggest crowd reactions — and whether the pattern differed by opponent, weather, or game time. As the mascot, I had strong professional interest in this question.
+            <p>Curriculum data from registrar exports and major requirement sheets are not directly usable for structural analysis. Prerequisites are inconsistently formatted, datasets come from multiple sources, and there is no standardized way to build course dependency graphs. This makes it difficult to analyze curriculum structure, identify bottlenecks, or use the Curricular Analytics ecosystem on real university data.
 </p>
           </div>
 
           <div class="detail-block">
             <h4>Approach</h4>
-            <p>Combined play-by-play game data with decibel readings from stadium microphones across three seasons (~36 home games). Engineered features for score differential, down-and-distance, quarter, temperature, and opponent rank. Produced interactive Plotly dashboards that let non-technical staff filter by season and event type to explore crowd response patterns on their own.
+            <p>Implemented a staged pipeline that cleans raw registrar and major datasets in Python, normalizes prerequisite relationships, and constructs directed course dependency graphs. Outputs are converted into a format compatible with CurricularAnalytics.jl, allowing structural metrics, graph visualization, and future optimization workflows to run in Julia. The repository was refactored into a script driven architecture with reproducible environments, install instructions, and test notebooks to support use by future teams.
 </p>
           </div>
 
           <div class="detail-block">
             <h4>Results &amp; Impact</h4>
-            <p>Defensive turnovers produced the loudest average crowd response — louder even than touchdowns — especially when MSU was trailing. Walk-up music selections in the 3rd quarter showed a statistically significant effect on cheer volume for games decided by fewer than 10 points. The athletics team used these findings to redesign the third-quarter entertainment package for the following season. I was given extra treats for my contributions.
+            <p>The pipeline successfully generates prerequisite graphs from real MSU curriculum data and produces structured outputs that can be analyzed with the Curricular Analytics API. The refactored repository improves reproducibility, reduces manual preprocessing, and provides a foundation for future curriculum analytics, visualization tools, and automated degree structure evaluation across semesters and colleges.
 </p>
           </div>
         </details>
@@ -179,18 +204,121 @@ I'm particularly interested in learning more about clinical research and how dat
         <!-- Links to the GitHub repo and notebook -->
         <div class="project-links">
           
-          <a href="https://github.com/zeke-wonder-dog/spartan-cheer-analysis" target="_blank" rel="noopener" class="btn btn-repo">
+          <a href="https://github.com/wijayaju/MSU_Curriculum_Maps" target="_blank" rel="noopener" class="btn btn-repo">
             View Repo
           </a>
           
           
-          <a href="https://github.com/zeke-wonder-dog/spartan-cheer-analysis/blob/main/cheer_analysis.ipynb" target="_blank" rel="noopener" class="btn btn-notebook">
+          <a href="https://github.com/wijayaju/MSU_Curriculum_Maps/install.md" target="_blank" rel="noopener" class="btn btn-notebook">
             View Notebook
           </a>
           
         </div>
       </div>
 
+    </article>
+    
+  </div>
+</section>
+
+<!-- ===== Blog section ===== -->
+<section id="blog" class="section blog-section">
+  <h2>Blog</h2>
+
+  <div class="blog-list">
+    
+    <article class="blog-card">
+      <div class="blog-body">
+        
+        <p class="blog-meta">September 2022</p>
+        
+
+        <h3 class="blog-title">Words Are Like Ice Cream Flavors</h3>
+
+        
+        <p class="blog-summary">This was a blog post that I wrote my senior year in high school for a creative writing class.  I&#39;ve been told that I have a way with words, and sometimes the choice words that I decide to use are not always the ones that I should be using. Because I know so many words that it takes  so long to decide which one/ones I should actually use, sort of like how when you&#39;re standing in the Dairy store  holding up the line because there&#39;s so many options.
+I edited this text slightly so that it doesn&#39;t sound like its written by a high schooler, but the original version  is still live on the link below.
+</p>
+        
+
+        
+        <details class="blog-details">
+          <summary>Read more</summary>
+          <div class="detail-block">
+            <p>So I&#39;m not good with words. Like at all. And I&#39;ve realized that I&#39;m at a point in my life where I know too many words 
+for my own good. I literally think in big words now. Every now and then when I&#39;m writing, I&#39;ll catch myself 
+typing something like &#34;I&#39;ve accrued over 40 hours at this program&#34; or &#34;I personally feel that I am a person with very few 
+vices&#34; and I just think; &#34;wow, whoever that guy is he sure as hell knows what he&#39;s talking about, because I sure as hell 
+don&#39;t!&#34;
+
+Other times, when I&#39;m trying to talk to someone or write an essay, I just get stuck replaying a sentence because I 
+literally can&#39;t find the right word. It&#39;s like when you&#39;re picking out ice cream at an ice cream place. When you&#39;re 
+at an ice cream stand, it&#39;s easy to pick out the flavor you want cause there&#39;s only like 5 options (4 if you remember 
+to always subconsciously rule out mint chocolate chip). It reminds me of when I was in 1st grade writing about my 
+Wii during writing workshop. There isn&#39;t anything inherently complex about writing about a Nintendo Wii; there&#39;s no crazy 
+deep universal themes or complex rhetoric used by the author to showcase control of the writing situation. No, when you 
+write about a Wii as a 1st grader, you just gotta use all the happy words: good, nice, cool, funny, maybe even an exciting 
+if you&#39;re feeling particularly overjoyed. 
+
+The words basically went directly from my brain to the page because I knew every word so well. I may not have tasted every 
+specific flavor of happy out there, but I knew exactly what each one I did taste actually tasted like.
+
+It&#39;s not until I started to read and consume more content that the flavor profiles of each individual word started to blur. 
+It&#39;s only then that my brain would start taking like 10 minutes to place its order, holding up the line for the rest of my 
+thoughts, and also wasting the time I could be using to actually write a better essay. 
+
+Having to write college apps right now, I&#39;ve finally started to realize the power of simpler words. 
+Sometimes the only thing you need to satisfy that sweet tooth is some plain old chocolate. 
+</p>
+          </div>
+        </details>
+        
+
+        
+        <div class="project-links">
+          <a href="https://thankgodtheseurlsaretemporary.blogspot.com/2022/09/words-are-like-ice-cream-flavors.html" target="_blank" rel="noopener" class="btn btn-repo">
+            Read Post
+          </a>
+        </div>
+        
+      </div>
+    </article>
+    
+    <article class="blog-card">
+      <div class="blog-body">
+        
+        <p class="blog-meta">February 2023</p>
+        
+
+        <h3 class="blog-title">Epithelial Histology</h3>
+
+        
+        <p class="blog-summary">This is another post I wrote my senior year of high school. I was taking an anatomy and physiology class at the time. Disclaimer: if you don&#39;t want to see pictures of my cut-up finger, don&#39;t click on the link below.
+</p>
+        
+
+        
+        <details class="blog-details">
+          <summary>Read more</summary>
+          <div class="detail-block">
+            <p>This post contains the &#34;Middle Finger Diaries&#34;, a completely unnecessary but very real documentation of what 
+happens when you combine a busy kitchen shift, a slicer with serrated blades, and the false confidence of a teenager who thinks 
+they know what they are doing.
+
+There are a few images for context, so this is your warning now if you are not a fan of cuts, blood, or self-inflicted problems involving sharp metal objects.
+</p>
+          </div>
+        </details>
+        
+
+        
+        <div class="project-links">
+          <a href="https://thankgodtheseurlsaretemporary.blogspot.com/2023/02/epithelial-histology.html" target="_blank" rel="noopener" class="btn btn-repo">
+            Read Post
+          </a>
+        </div>
+        
+      </div>
     </article>
     
   </div>
@@ -226,7 +354,7 @@ I'm particularly interested in learning more about clinical research and how dat
 
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
-    <p>Built with the Data Science Portfolio Template &mdash; powered by Python &amp; Jinja2.</p>
+    <p>Built with the <a href="https://github.com/devinsilvia/professional_portfolio_template">Data Science Portfolio Template</a> &mdash; powered by Python &amp; Jinja2.</p>
   </footer>
 
 </body>

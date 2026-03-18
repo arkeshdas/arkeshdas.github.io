@@ -70,12 +70,13 @@ def build() -> None:
         sys.exit(f"Error: {CONFIG_FILE} not found. Are you running from the repo root?")
 
     config = load_yaml(CONFIG_FILE)
-    print(f"\n[1/4] Loaded config:  {CONFIG_FILE.name}")
+    print(f"\n[1/5] Loaded config:  {CONFIG_FILE.name}")
 
     theme       = config.get("theme", "light")
     site_title  = config.get("site_title", "My Portfolio")
     student_rel = config.get("student_file", "content/example_student.yaml")
     project_rel = config.get("projects", [])
+    blog_rel = config.get("blog_posts", [])
 
     # ── 2. Load student profile ─────────────────────────────────────────
     student_path = ROOT / student_rel
@@ -87,7 +88,7 @@ def build() -> None:
     # standard Markdown syntax: blank lines for paragraphs, *italic*, **bold**, etc.
     if student.get("about"):
         student["about"] = markdown.markdown(student["about"])
-    print(f"[2/4] Loaded student: {student_path.name}  ({student.get('name', '?')})")
+    print(f"[2/5] Loaded student: {student_path.name}  ({student.get('name', '?')})")
 
     # ── 3. Load project files ───────────────────────────────────────────
     projects = []
@@ -99,9 +100,22 @@ def build() -> None:
         projects.append(load_yaml(p))
         print(f"       project: {p.name}")
 
-    print(f"[3/4] Loaded {len(projects)} project(s).")
+    print(f"[3/5] Loaded {len(projects)} project(s).")
 
-    # ── 4. Render HTML ──────────────────────────────────────────────────
+
+     # ── 4. Load blog files ──────────────────────────────────────────────
+    blog_posts = []
+    for rel in blog_rel:
+        p = ROOT / rel
+        if not p.exists():
+            print(f"  [warn] Blog file not found, skipping: {rel}")
+            continue
+        blog_posts.append(load_yaml(p))
+        print(f"       blog:    {p.name}")
+
+    print(f"[4/5] Loaded {len(blog_posts)} blog post(s).")
+
+    # ── 5. Render HTML ──────────────────────────────────────────────────
     DOCS_DIR.mkdir(exist_ok=True)
 
     env = Environment(
@@ -115,13 +129,14 @@ def build() -> None:
         theme=theme,
         student=student,
         projects=projects,
+        blog_posts=blog_posts,
     )
 
     output_path = DOCS_DIR / "index.html"
     output_path.write_text(rendered, encoding="utf-8")
-    print(f"[4/4] Rendered → {output_path.relative_to(ROOT)}")
+    print(f"[5/5] Rendered → {output_path.relative_to(ROOT)}")
 
-    # ── 5. Copy static assets ───────────────────────────────────────────
+    # ── 6. Copy static assets ───────────────────────────────────────────
     print("\n      Copying static assets …")
     copy_static_assets(STATIC_DIR, DOCS_DIR)
 
