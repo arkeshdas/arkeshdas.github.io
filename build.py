@@ -110,10 +110,15 @@ def build() -> None:
         if not p.exists():
             print(f"  [warn] Blog file not found, skipping: {rel}")
             continue
-        blog_posts.append(load_yaml(p))
-        print(f"       blog:    {p.name}")
 
-    print(f"[4/5] Loaded {len(blog_posts)} blog post(s).")
+        post = load_yaml(p)
+
+        # convert markdown to HTML for content
+        if post.get("content"):
+            post["content"] = markdown.markdown(post["content"])
+
+        blog_posts.append(post)
+        print(f"       blog:    {p.name}")
 
     # ── 5. Render HTML ──────────────────────────────────────────────────
     DOCS_DIR.mkdir(exist_ok=True)
