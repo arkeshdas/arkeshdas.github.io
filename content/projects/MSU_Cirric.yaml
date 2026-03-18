@@ -1,0 +1,51 @@
+# ============================================================
+# content/projects/example_project_1.yaml
+# ============================================================
+# Example project: Predicting the Best Nap Spots on Campus
+# Copy this file to create your own project entries.
+# ============================================================
+
+title: "Curriculum Dependency Graph Pipeline for MSU Programs"
+
+short_summary: >
+  Built a reproducible data pipeline that converts Michigan State University
+  curriculum exports into structured prerequisite graphs for analysis with
+  the Curricular Analytics framework. The system standardizes registrar and
+  major requirement data, constructs dependency networks, and prepares outputs
+  for visualization and structural metric computation using a Python + Julia workflow.
+
+tech_stack:
+  - Python
+  - Julia
+  - CurricularAnalytics.jl
+  - pandas
+  - Jupyter Notebooks
+  - uv / virtual environments
+
+
+problem_statement: >
+  Curriculum data from registrar exports and major requirement sheets are not
+  directly usable for structural analysis. Prerequisites are inconsistently formatted,
+  datasets come from multiple sources, and there is no standardized way to build
+  course dependency graphs. This makes it difficult to analyze curriculum structure,
+  identify bottlenecks, or use the Curricular Analytics ecosystem on real university data.
+
+
+approach: >
+  Implemented a staged pipeline that cleans raw registrar and major datasets in Python,
+  normalizes prerequisite relationships, and constructs directed course dependency graphs.
+  Outputs are converted into a format compatible with CurricularAnalytics.jl, allowing
+  structural metrics, graph visualization, and future optimization workflows to run in Julia.
+  The repository was refactored into a script driven architecture with reproducible
+  environments, install instructions, and test notebooks to support use by future teams.
+
+results_impact: >
+  The pipeline successfully generates prerequisite graphs from real MSU curriculum data
+  and produces structured outputs that can be analyzed with the Curricular Analytics API.
+  The refactored repository improves reproducibility, reduces manual preprocessing,
+  and provides a foundation for future curriculum analytics, visualization tools,
+  and automated degree structure evaluation across semesters and colleges.
+
+repo_url: "https://github.com/wijayaju/MSU_Curriculum_Maps"
+notebook_url: "https://github.com/wijayaju/MSU_Curriculum_Maps/install.md"
+image_path: "img/cirric_mg.png"
