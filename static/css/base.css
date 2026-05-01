@@ -556,3 +556,66 @@ details[open] summary::before {
     width: 100%;
   }
 }
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    min-width: 1120px;
+  }
+
+  .site-header {
+    padding: 1.25rem 1.5rem 4.75rem;
+  }
+
+  .site-nav {
+    justify-content: flex-end;
+    overflow: visible;
+  }
+
+  .hero {
+    grid-template-columns: minmax(260px, 0.42fr) minmax(0, 0.58fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+  }
+
+  .hero-headshot {
+    width: min(100%, 420px);
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-inline: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .project-card {
+    flex: initial;
+    break-inside: avoid;
+  }
+
+  .about-card,
+  .contact-layout {
+    grid-template-columns: minmax(190px, 0.32fr) 1fr;
+  }
+
+  .about-kicker {
+    flex-direction: column;
+  }
+
+  .writing-body {
+    grid-template-columns: minmax(120px, 0.24fr) 1fr;
+  }
+
+  .writing-title,
+  .writing-summary,
+  .writing-details,
+  .writing-links {
+    grid-column: 2;
+  }
+}

@@ -43,3 +43,6 @@ theme: clinical
 # --- Site metadata ---
 # Used in the HTML <title> tag and browser tab.
 site_title: "Arkesh Das | Portfolio"
+
+# Bump this when CSS changes so browsers do not reuse stale cached styles.
+asset_version: "2026-05-01-safari-fix"

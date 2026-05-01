@@ -74,6 +74,7 @@ def build() -> None:
 
     theme       = config.get("theme", "light")
     site_title  = config.get("site_title", "My Portfolio")
+    asset_version = config.get("asset_version", "1")
     student_rel = config.get("student_file", "content/example_student.yaml")
     project_rel = config.get("projects", [])
     writing_rel = config.get("writing_posts", config.get("blog_posts", []))
@@ -132,6 +133,7 @@ def build() -> None:
     rendered = template.render(
         site_title=site_title,
         theme=theme,
+        asset_version=asset_version,
         student=student,
         projects=projects,
         writing_posts=writing_posts,
