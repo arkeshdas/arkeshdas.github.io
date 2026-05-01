@@ -15,24 +15,29 @@ student_file: content/arkesh.yaml
 # List the YAML files (inside content/projects/) you want shown.
 # Remove example projects and add your own once you're ready.
 projects:
-  - content/projects/curser_project.yaml
   - content/projects/MSU_Cirric.yaml
+  - content/projects/admissions.yaml
+  - content/projects/measles.yaml
+  - content/projects/nyc311.yaml
+  - content/projects/curser_project.yaml
+  - content/projects/immune_gwas_fdr.yaml
 
 
-# --- Blog posts to display ---
+# --- Writing posts to display ---
 # List the YAML files (inside content/blog/) you want shown.
-# These will appear in the Blog section on the main page.
+# These will appear in the Writing section on the main page.
 # Order here controls the order on the website (top to bottom).
-blog_posts:
-  - content/blog/ice-cream.yaml
+writing_posts:
+  - content/blog/rising-matriculation-age.yaml
   - content/blog/finger.yaml
+  - content/blog/ice-cream.yaml
 
 
 # --- Theme ---
 # Built-in options: "light", "dark", "msu-light", "msu-dark"
 # You can also add your own CSS file under static/css/themes/ and
 # use its name here (without the .css extension).
-theme: msu-dark
+theme: clinical
 
 
 # --- Site metadata ---

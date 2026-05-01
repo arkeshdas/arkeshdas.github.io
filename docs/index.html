@@ -9,45 +9,336 @@
   <link rel="stylesheet" href="css/base.css" />
 
   <!-- Theme stylesheet — controlled by `theme` in portfolio_config.yaml -->
-  <link rel="stylesheet" href="css/themes/msu-dark.css" />
+  <link rel="stylesheet" href="css/themes/clinical.css" />
 </head>
 <body>
 
-  <!-- ===== Header ===== -->
   <header class="site-header">
-    <div class="header-inner">
-      <div class="header-name">Arkesh Das</div>
-      <div class="header-tagline">Data Scientist | Future Med Student | Unemployed</div>
-    </div>
-
-    <!-- Navigation bar -->
     <nav class="site-nav">
-      <a href="#about">About</a>
       <a href="#projects">Projects</a>
-      <a href="#blog">Blog</a>
+      <a href="#about">About</a>
+      <a href="#writing">Writing</a>
       <a href="#contact">Contact</a>
     </nav>
+
+    <div class="hero">
+      
+      <div class="hero-media">
+        <img src="img/headshot.JPG" alt="Headshot of Arkesh Das" class="hero-headshot">
+      </div>
+      
+
+      <div class="hero-copy">
+        <p class="hero-role">Data Science &amp; Clinical Research</p>
+        <h1>Arkesh Das</h1>
+        
+        <p class="hero-current">Incoming Medical Student @ University of Toledo</p>
+        
+        
+        <p class="hero-headline">I study how data systems shape healthcare outcomes.</p>
+        
+        <div class="hero-tagline">I build reproducible data science projects focused on public health, healthcare systems, and clinical research.<br><br>My work combines statistical analysis, data pipelines, and clear visualization to understand how decisions, incentives, and data structures impact real-world health outcomes.<br></div>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Contact</a>
+          
+          <a href="https://github.com/arkeshdas" target="_blank" rel="noopener" class="btn btn-secondary btn-compact">
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.38 6.84 9.74.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.93.85.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.99c.85 0 1.71.12 2.51.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.95.68 1.92 0 1.38-.01 2.49-.01 2.83 0 .27.18.59.69.49A10.14 10.14 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
+            </svg>
+            GitHub
+          </a>
+          
+          
+          <a href="https://www.linkedin.com/in/arkesh-das/" target="_blank" rel="noopener" class="btn btn-secondary btn-compact">
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.94 8.98H3.75V20h3.19V8.98ZM5.35 4a1.85 1.85 0 1 0 0 3.7 1.85 1.85 0 0 0 0-3.7Zm14.9 9.85c0-3.15-1.68-4.61-3.92-4.61-1.81 0-2.62.99-3.07 1.69V8.98h-3.18V20h3.18v-6.15c0-1.62.31-3.18 2.31-3.18 1.97 0 2 1.84 2 3.28V20h3.18v-6.15Z" />
+            </svg>
+            LinkedIn
+          </a>
+          
+          
+          <a href="https://ee346dc8-6ad7-42fc-94a5-4764ad408f5a.usrfiles.com/ugd/ee346d_d6eafc3399364a738b9aa1ebca6de4b2.pdf" target="_blank" rel="noopener" class="btn btn-accent btn-compact">
+            <span aria-hidden="true">PDF</span>
+            Paper
+          </a>
+          
+        </div>
+      </div>
+    </div>
   </header>
 
   <!-- ===== Main content (filled in by child templates) ===== -->
   <main class="site-main">
     
 
-<!-- ===== About section ===== -->
-<section id="about" class="section about-section">
-  <h2>About Me</h2>
-  <div class="about-text"><p>Hey! My name is Arkesh and I'm a senior at Michigan State University, majoring in Data Science and Biotechnology!</p>
-<p>I'll be starting medical school in the fall, but I'm passionate about data science and its applications in healthcare. 
-I'm particularly interested in learning more about clinical research and how data can drive better patient outcomes.</p>
-<p>Currently I'm working on a research project that involves looking at admissions trends and analyzing their impact on the public and the supply of physicians
-and I'm collaborating with a team of developers to create a website that simplifies the process of deciding which classes to take at Michigan State</p></div>
-</section>
-
 <!-- ===== Projects section ===== -->
 <section id="projects" class="section projects-section">
   <h2>Projects</h2>
 
   <div class="project-grid">
+    
+    <article class="project-card">
+
+      <!-- Project thumbnail image -->
+      <div class="project-image-wrapper">
+        <img
+          src="img/cirric_mg.png"
+          alt="Thumbnail for MSU Curriculum Maps (Data Science Capstone)"
+          class="project-image"
+        />
+      </div>
+
+      <div class="project-body">
+        <h3 class="project-title">MSU Curriculum Maps (Data Science Capstone)</h3>
+
+        <!-- Short summary written for a non-expert audience -->
+        <p class="project-summary">Pipeline for transforming university curriculum data into prerequisite networks for structural analysis.
+</p>
+
+        <!-- Tech stack as pill badges -->
+        <div class="tech-stack">
+          
+          <span class="tech-badge">Python</span>
+          
+          <span class="tech-badge">Julia</span>
+          
+          <span class="tech-badge">CurricularAnalytics</span>
+          
+        </div>
+
+        <!-- Collapsible details (problem / approach / results) -->
+        <details class="project-details">
+          <summary>More details</summary>
+
+          <div class="detail-block">
+            <h4>Problem</h4>
+            <p>University curricula are difficult to analyze due to inconsistent data formats and complex prerequisite structures, limiting data-informed curriculum design.
+</p>
+          </div>
+
+          <div class="detail-block">
+            <h4>Approach</h4>
+            <p>Built a reproducible pipeline to clean registrar and major requirement data, convert it into structured prerequisite graphs, and compute metrics such as blocking factor and delay factor.
+</p>
+          </div>
+
+          <div class="detail-block">
+            <h4>Results &amp; Impact</h4>
+            <p>Enabled analysis of curriculum complexity and bottlenecks, providing a foundation for data-driven curriculum design and future institutional tools.
+</p>
+          </div>
+        </details>
+
+        <!-- Links to the GitHub repo and notebook -->
+        <div class="project-links">
+          
+          <a href="https://github.com/wijayaju/MSU_Curriculum_Maps" target="_blank" rel="noopener" class="btn btn-repo">
+            View Repo
+          </a>
+          
+          
+        </div>
+      </div>
+
+    </article>
+    
+    <article class="project-card">
+
+      <!-- Project thumbnail image -->
+      <div class="project-image-wrapper">
+        <img
+          src="img/admissions.png"
+          alt="Thumbnail for Medical Admissions Gap Year Analysis"
+          class="project-image"
+        />
+      </div>
+
+      <div class="project-body">
+        <h3 class="project-title">Medical Admissions Gap Year Analysis</h3>
+
+        <!-- Short summary written for a non-expert audience -->
+        <p class="project-summary">Analysis of AAMC data showing how gap years impact physician workforce timing and system efficiency.
+</p>
+
+        <!-- Tech stack as pill badges -->
+        <div class="tech-stack">
+          
+          <span class="tech-badge">Python</span>
+          
+          <span class="tech-badge">pandas</span>
+          
+          <span class="tech-badge">Jupyter</span>
+          
+        </div>
+
+        <!-- Collapsible details (problem / approach / results) -->
+        <details class="project-details">
+          <summary>More details</summary>
+
+          <div class="detail-block">
+            <h4>Problem</h4>
+            <p>Gap years have become increasingly common in medical school admissions, but their broader impact on workforce timing and healthcare systems is not well quantified.
+</p>
+          </div>
+
+          <div class="detail-block">
+            <h4>Approach</h4>
+            <p>Analyzed national admissions and matriculation trends using AAMC data. Developed a “physician-years” framework to estimate how delays in training affect total workforce capacity over time.
+</p>
+          </div>
+
+          <div class="detail-block">
+            <h4>Results &amp; Impact</h4>
+            <p>Showed that small increases in matriculation age scale into significant losses in total physician-years. Provides a systems-level perspective on how admissions incentives shape healthcare supply.
+</p>
+          </div>
+        </details>
+
+        <!-- Links to the GitHub repo and notebook -->
+        <div class="project-links">
+          
+          <a href="https://github.com/arkeshdas/med-admissions-gap-year-analysis" target="_blank" rel="noopener" class="btn btn-repo">
+            View Repo
+          </a>
+          
+          
+        </div>
+      </div>
+
+    </article>
+    
+    <article class="project-card">
+
+      <!-- Project thumbnail image -->
+      <div class="project-image-wrapper">
+        <img
+          src="img/measles.gif"
+          alt="Thumbnail for Measles Comeback, Vaccination Gaps and Outbreak Risk"
+          class="project-image"
+        />
+      </div>
+
+      <div class="project-body">
+        <h3 class="project-title">Measles Comeback, Vaccination Gaps and Outbreak Risk</h3>
+
+        <!-- Short summary written for a non-expert audience -->
+        <p class="project-summary">Data analysis linking vaccination gaps and exemption rates to measles outbreak risk in the United States.
+</p>
+
+        <!-- Tech stack as pill badges -->
+        <div class="tech-stack">
+          
+          <span class="tech-badge">Python</span>
+          
+          <span class="tech-badge">pandas</span>
+          
+          <span class="tech-badge">matplotlib</span>
+          
+        </div>
+
+        <!-- Collapsible details (problem / approach / results) -->
+        <details class="project-details">
+          <summary>More details</summary>
+
+          <div class="detail-block">
+            <h4>Problem</h4>
+            <p>Measles was declared eliminated in the U.S., yet outbreaks have re-emerged. Understanding how vaccination coverage and exemption rates contribute to outbreak risk is critical for public health policy.
+</p>
+          </div>
+
+          <div class="detail-block">
+            <h4>Approach</h4>
+            <p>Integrated datasets from the CDC, WHO, Census, and vaccination surveys. Computed incidence metrics, normalized case counts, and analyzed trends across time and geography. Built visualizations comparing U.S., Europe, and global patterns.
+</p>
+          </div>
+
+          <div class="detail-block">
+            <h4>Results &amp; Impact</h4>
+            <p>Identified a strong relationship between exemption rates and outbreak probability, showing how localized drops in vaccination coverage can drive resurgence. Demonstrates how public health data can inform prevention strategies.
+</p>
+          </div>
+        </details>
+
+        <!-- Links to the GitHub repo and notebook -->
+        <div class="project-links">
+          
+          <a href="https://github.com/arkeshdas/Measles-Comeback-US" target="_blank" rel="noopener" class="btn btn-repo">
+            View Repo
+          </a>
+          
+          
+        </div>
+      </div>
+
+    </article>
+    
+    <article class="project-card">
+
+      <!-- Project thumbnail image -->
+      <div class="project-image-wrapper">
+        <img
+          src="img/nyc311.jpeg"
+          alt="Thumbnail for NYC 311 Service Request Analysis (AWS Pipeline)"
+          class="project-image"
+        />
+      </div>
+
+      <div class="project-body">
+        <h3 class="project-title">NYC 311 Service Request Analysis (AWS Pipeline)</h3>
+
+        <!-- Short summary written for a non-expert audience -->
+        <p class="project-summary">Cloud-based pipeline to model complaint resolution time and analyze service patterns across NYC agencies.
+</p>
+
+        <!-- Tech stack as pill badges -->
+        <div class="tech-stack">
+          
+          <span class="tech-badge">AWS (S3, Athena, SageMaker)</span>
+          
+          <span class="tech-badge">SQL</span>
+          
+          <span class="tech-badge">Python</span>
+          
+          <span class="tech-badge">scikit-learn</span>
+          
+        </div>
+
+        <!-- Collapsible details (problem / approach / results) -->
+        <details class="project-details">
+          <summary>More details</summary>
+
+          <div class="detail-block">
+            <h4>Problem</h4>
+            <p>City service requests vary widely in resolution time, but predicting delays at intake and understanding service patterns is challenging without scalable infrastructure.
+</p>
+          </div>
+
+          <div class="detail-block">
+            <h4>Approach</h4>
+            <p>Built a pipeline using S3 for storage, Athena for SQL-based feature engineering, and SageMaker for modeling. Created features at complaint creation time and trained baseline regression models.
+</p>
+          </div>
+
+          <div class="detail-block">
+            <h4>Results &amp; Impact</h4>
+            <p>Improved prediction over baseline and demonstrated how cloud-based workflows enable scalable analysis of public service data. Highlights how structured pipelines support real-world decision-making.
+</p>
+          </div>
+        </details>
+
+        <!-- Links to the GitHub repo and notebook -->
+        <div class="project-links">
+          
+          <a href="https://github.com/arkeshdas/aws-nyc311-dasarkes" target="_blank" rel="noopener" class="btn btn-repo">
+            View Repo
+          </a>
+          
+          
+        </div>
+      </div>
+
+    </article>
     
     <article class="project-card">
 
@@ -64,7 +355,7 @@ and I'm collaborating with a team of developers to create a website that simplif
         <h3 class="project-title">Curser: Stop Embarrassing Names Before They Launch</h3>
 
         <!-- Short summary written for a non-expert audience -->
-        <p class="project-summary">Curser is an interactive application that takes in spoken or  typed inputs and finds the closest unsavory word in multiple languages to the input.&#34;
+        <p class="project-summary">Interactive app that detects cross-language phonetic collisions to prevent unintentionally offensive or ambiguous naming.
 </p>
 
         <!-- Tech stack as pill badges -->
@@ -72,19 +363,15 @@ and I'm collaborating with a team of developers to create a website that simplif
           
           <span class="tech-badge">Python</span>
           
-          <span class="tech-badge">OpenAI&#39;s Whisper (speech-to-text)</span>
+          <span class="tech-badge">Whisper (speech-to-text)</span>
           
-          <span class="tech-badge">PanPhon (phonetic similarity / NLP)</span>
+          <span class="tech-badge">PanPhon (phonetic similarity)</span>
           
-          <span class="tech-badge">eSpeak (grapheme-to-phoneme / IPA)</span>
+          <span class="tech-badge">eSpeak (IPA conversion)</span>
           
-          <span class="tech-badge">ElevenLabs API (text-to-speech)</span>
+          <span class="tech-badge">ElevenLabs API</span>
           
-          <span class="tech-badge">JSON data pipeline</span>
-          
-          <span class="tech-badge">pip / virtual environments</span>
-          
-          <span class="tech-badge">Streamlit Cloud deployment</span>
+          <span class="tech-badge">Streamlit</span>
           
         </div>
 
@@ -94,34 +381,19 @@ and I'm collaborating with a team of developers to create a website that simplif
 
           <div class="detail-block">
             <h4>Problem</h4>
-            <p>It turns out that coming up with names is hard, especially when you want them to be unique,  abstract, and not accidentally offensive in some other language. A bad name tell s potential customers and investors that you don&#39;t care, and quietly puts you at a disadvantage  before anyone even looks at what you built.
-
-Pharmaceutical companies deal with this exact problem constantly. When creating brand names  for drugs, they are required to use names that are clearly distinct from existing medications  and are not allowed to imply efficacy, mechanism, or outcomes. You can&#39;t call a drug something  that sounds like it cures cancer, even if you really wish it did. This pushes companies toward  strange, abstract, made up names that are legally safe, but often linguistically fragile once the  drug is sold overseas. A name that passed every legal review can still fall apart the moment it hits  another language or culture.
-
-The same problem shows up in tech, just with fewer lawyers involved and more optimism. If you are at a hackathon,  YC, or convincing yourself that your next LLM wrapper is definitely the next big thing,  you probably want a name that sounds catchy and distinctive. Names like Hulu, Zillow, Spotify, Stripe, or Airbnb  work because they are abstract enough to stand out. That abstraction is also a risk, because you are always one unlucky  phonetic collision away from naming your product something unintentionally cursed somewhere else.  At that point, it does not matter how good the idea is, the damage is already done.
-
-Curser sits right in that uncomfortable gap. It is a tool for answering the question, “Does this innocent  sounding word get me in trouble somewhere else?”, before you commit to it as a nickname, product name, brand,  or inside joke.
-In other words, this is a nickname QA tool that doubles as a way to avoid very preventable naming regret.
+            <p>Naming products, brands, or ideas is difficult because abstract names can unintentionally resemble offensive or misleading words in other languages. This creates reputational risk, especially in global contexts, and is not easily detectable using standard tools.
 </p>
           </div>
 
           <div class="detail-block">
             <h4>Approach</h4>
-            <p>At a high level, the app records or accepts audio, transcribes speech locally using Whisper, converts candidate  text spans into IPA phonemes, and compares them against a curated multilingual database of words. PanPhon is used  to compute phonetic distances between the input and database entries, allowing results to be ranked by similarity  and surfaced through an interactive interface with explanations, sortable tables, and session-level history tracking.
-
-In addition to analysis, Curser supports optional text-to-speech playback of matched words. By default, pronunciation  is handled locally using eSpeak, but the app can also integrate ElevenLabs for higher-quality, neural voice synthesis  when enabled. This makes it possible to hear how flagged words actually sound across different languages and voices,  which is often critical when evaluating phonetic ambiguity in spoken contexts.
-
-The entire pipeline runs locally by default and supports live microphone input, one-shot recording, and audio uploads,  complete with real-time level metering. The interface is built entirely with Streamlit, while speech recognition is  powered by Whisper. Together, these components make Curser a practical tool for detecting accidental phonetic collisions  across languages, especially when evaluating names, brands, or terminology that must avoid unintended or offensive  interpretations.
+            <p>Built a pipeline that converts spoken or typed input into IPA phonemes and compares them against a multilingual word database using phonetic distance metrics. Integrated Whisper for transcription, PanPhon for similarity scoring, and optional text-to-speech for validation. Deployed as an interactive Streamlit app supporting live audio and text input.
 </p>
           </div>
 
           <div class="detail-block">
             <h4>Results &amp; Impact</h4>
-            <p>
-This project was a much bigger learning experience than I initially expected. I learned a lot about language and phonetics.  I have been interested in linguistics since taking an anthropology class in high school, but I had no formal training going  into this. Working with IPA, grapheme-to-phoneme systems, and cross-language comparisons forced me to think more precisely  about how spoken language is represented and where different tools succeed or fail.
-This was also my first time deploying a web application, and my first project where the explicit goal was to make the code  safe and reproducible so that other people could run it locally (learned about virtual environments 2 weeks ago in one of  my data science classes). Managing virtual environments, dependencies, and setup instructions showed me how easily projects  can break without careful environment control, and why reproducibility is a core part of real software development.
-I also learned a lot about working with third-party APIs through integrating ElevenLabs for text-to-speech.  This was my first time using an API that required authentication via a private token, and it forced me to think more  carefully about security and configuration. I learned how to manage API keys without hard-coding them into the repository,  including using Streamlit’s secrets.toml system and environment-specific configuration. More generally, working with the  ElevenLabs API helped me understand how external services expose functionality, how client libraries can return streamed  or chunked data instead of simple values, and how small interface assumptions can break an application if they are not  handled carefully.
-I also learned how to independently manage and iterate on a large project. Working alone, I had to define a minimal viable  product, get a full pipeline working, then incrementally add new technologies and features while breaking and fixing things  along the way. This process taught me how to scope work realistically, debug systematically, and prioritize stability and  clarity over adding features too quickly.
+            <p>Demonstrated how phonetic similarity can be used as a practical screening tool for naming decisions. The project also introduced reproducible environment setup, API integration with secure key management, and deployment of an interactive application accessible to non-technical users.
 </p>
           </div>
         </details>
@@ -129,14 +401,10 @@ I also learned how to independently manage and iterate on a large project. Worki
         <!-- Links to the GitHub repo and notebook -->
         <div class="project-links">
           
-          <a href="https://github.com/wijayaju/MSU_Curriculum_Maps" target="_blank" rel="noopener" class="btn btn-repo">
+          <a href="https://github.com/arkeshdas/Curser" target="_blank" rel="noopener" class="btn btn-repo">
             View Repo
           </a>
           
-          
-          <a href="https://github.com/wijayaju/MSU_Curriculum_Maps/install.md" target="_blank" rel="noopener" class="btn btn-notebook">
-            View Notebook
-          </a>
           
         </div>
       </div>
@@ -148,33 +416,29 @@ I also learned how to independently manage and iterate on a large project. Worki
       <!-- Project thumbnail image -->
       <div class="project-image-wrapper">
         <img
-          src="img/cirric_mg.png"
-          alt="Thumbnail for Curriculum Dependency Graph Pipeline for MSU Programs"
+          src="img/gwas.png"
+          alt="Thumbnail for Immune Response GWAS FDR Analysis"
           class="project-image"
         />
       </div>
 
       <div class="project-body">
-        <h3 class="project-title">Curriculum Dependency Graph Pipeline for MSU Programs</h3>
+        <h3 class="project-title">Immune Response GWAS FDR Analysis</h3>
 
         <!-- Short summary written for a non-expert audience -->
-        <p class="project-summary">Built a reproducible data pipeline that converts Michigan State University curriculum exports into structured prerequisite graphs for analysis with the Curricular Analytics framework. The system standardizes registrar and major requirement data, constructs dependency networks, and prepares outputs for visualization and structural metric computation using a Python + Julia workflow.
+        <p class="project-summary">Statistical genetics project comparing false discovery rate correction methods in an immune response GWAS.
 </p>
 
         <!-- Tech stack as pill badges -->
         <div class="tech-stack">
           
-          <span class="tech-badge">Python</span>
+          <span class="tech-badge">R</span>
           
-          <span class="tech-badge">Julia</span>
+          <span class="tech-badge">GWAS</span>
           
-          <span class="tech-badge">CurricularAnalytics.jl</span>
+          <span class="tech-badge">Statistical testing</span>
           
-          <span class="tech-badge">pandas</span>
-          
-          <span class="tech-badge">Jupyter Notebooks</span>
-          
-          <span class="tech-badge">uv / virtual environments</span>
+          <span class="tech-badge">Data visualization</span>
           
         </div>
 
@@ -184,19 +448,19 @@ I also learned how to independently manage and iterate on a large project. Worki
 
           <div class="detail-block">
             <h4>Problem</h4>
-            <p>Curriculum data from registrar exports and major requirement sheets are not directly usable for structural analysis. Prerequisites are inconsistently formatted, datasets come from multiple sources, and there is no standardized way to build course dependency graphs. This makes it difficult to analyze curriculum structure, identify bottlenecks, or use the Curricular Analytics ecosystem on real university data.
+            <p>Genome-wide association studies test large numbers of genetic variants, creating a major multiple testing problem. Different false discovery rate methods can produce different sets of significant SNPs, which affects how researchers interpret genetic associations.
 </p>
           </div>
 
           <div class="detail-block">
             <h4>Approach</h4>
-            <p>Implemented a staged pipeline that cleans raw registrar and major datasets in Python, normalizes prerequisite relationships, and constructs directed course dependency graphs. Outputs are converted into a format compatible with CurricularAnalytics.jl, allowing structural metrics, graph visualization, and future optimization workflows to run in Julia. The repository was refactored into a script driven architecture with reproducible environments, install instructions, and test notebooks to support use by future teams.
+            <p>Applied multiple FDR correction methods, including Benjamini-Hochberg, Benjamini-Yekutieli, BKY, and q-value approaches, to immune response GWAS results from the Milieu Intérieur dataset. Compared how method choice changed the number and identity of significant SNP-level findings.
 </p>
           </div>
 
           <div class="detail-block">
             <h4>Results &amp; Impact</h4>
-            <p>The pipeline successfully generates prerequisite graphs from real MSU curriculum data and produces structured outputs that can be analyzed with the Curricular Analytics API. The refactored repository improves reproducibility, reduces manual preprocessing, and provides a foundation for future curriculum analytics, visualization tools, and automated degree structure evaluation across semesters and colleges.
+            <p>Showed that FDR method choice can meaningfully affect which genetic associations appear significant. The project emphasizes that statistical correction is not just a technical step, but a decision that shapes biological interpretation.
 </p>
           </div>
         </details>
@@ -204,14 +468,10 @@ I also learned how to independently manage and iterate on a large project. Worki
         <!-- Links to the GitHub repo and notebook -->
         <div class="project-links">
           
-          <a href="https://github.com/wijayaju/MSU_Curriculum_Maps" target="_blank" rel="noopener" class="btn btn-repo">
+          <a href="https://github.com/arkeshdas/CMSE-410-Semester-Project" target="_blank" rel="noopener" class="btn btn-repo">
             View Repo
           </a>
           
-          
-          <a href="https://github.com/wijayaju/MSU_Curriculum_Maps/install.md" target="_blank" rel="noopener" class="btn btn-notebook">
-            View Notebook
-          </a>
           
         </div>
       </div>
@@ -221,58 +481,69 @@ I also learned how to independently manage and iterate on a large project. Worki
   </div>
 </section>
 
-<!-- ===== Blog section ===== -->
-<section id="blog" class="section blog-section">
-  <h2>Blog</h2>
+<!-- ===== About section ===== -->
+<section id="about" class="section about-section">
+  <h2>About</h2>
+  <div class="about-card">
+    <div class="about-kicker">
+      <span>Clinical Research</span>
+      <span>Healthcare Data Science</span>
+      <span>Reproducible Workflows</span>
+    </div>
+    <div class="about-text"><p>I’m a senior at Michigan State University studying Data Science and Biotechnology, and I will begin medical school at the University of Toledo College of Medicine and Life Sciences in 2026 through the MedStart program.</p>
+<p>My work focuses on using data to understand systems, especially where those systems impact people. I am interested in clinical research, EMR-based analysis, and how data can improve decision-making in healthcare settings.</p>
+<p>Across my projects, I’ve explored public health trends, medical admissions systems, and service infrastructure, with an emphasis on building reproducible workflows and communicating results clearly.</p>
+<p>Long term, I want to work at the intersection of medicine and data, contributing to clinical research that is both technically rigorous and directly impactful.</p></div>
+  </div>
+</section>
 
-  <div class="blog-list">
+<!-- ===== Writing section ===== -->
+<section id="writing" class="section writing-section">
+  <h2>Writing</h2>
+
+  <div class="writing-list">
     
-    <article class="blog-card">
-      <div class="blog-body">
+    <article class="writing-card writing-featured">
+      <div class="writing-body">
         
-        <p class="blog-meta">September 2022</p>
+        <p class="writing-meta">January 2026</p>
         
 
-        <h3 class="blog-title">Words Are Like Ice Cream Flavors</h3>
+        <h3 class="writing-title">Rising Matriculation Age: The Cost of Delay</h3>
 
         
-        <p class="blog-summary">This was a blog post that I wrote my senior year in high school for a creative writing class.  I&#39;ve been told that I have a way with words, and sometimes the choice words that I decide to use are not always the ones that I should be using. Because I know so many words that it takes  so long to decide which one/ones I should actually use, sort of like how when you&#39;re standing in the Dairy store  holding up the line because there&#39;s so many options.
-
-I edited this text slightly so that it doesn&#39;t sound like its written by a high schooler, but the original version  is still live on the link below.
+        <p class="writing-summary">Research paper examining how medical school admissions incentives normalize gap years and how delayed matriculation affects physician workforce timing.
 </p>
         
 
         
-        <details class="blog-details">
-          <summary>Read more</summary>
-          <div class="detail-block blog-content">
-            <p>So I'm not good with words. Like at all. And I've realized that I'm at a point in my life where I know too many words 
-for my own good. I literally think in big words now. Every now and then when I'm writing, I'll catch myself 
-typing something like "I've accrued over 40 hours at this program" or "I personally feel that I am a person with very few 
-vices" and I just think; "wow, whoever that guy is he sure as hell knows what he's talking about, because I sure as hell 
-don't!"</p>
-<p>Other times, when I'm trying to talk to someone or write an essay, I just get stuck replaying a sentence because I 
-literally can't find the right word. It's like when you're picking out ice cream at an ice cream place. When you're 
-at an ice cream stand, it's easy to pick out the flavor you want cause there's only like 5 options (4 if you remember 
-to always subconsciously rule out mint chocolate chip). It reminds me of when I was in 1st grade writing about my 
-Wii during writing workshop. There isn't anything inherently complex about writing about a Nintendo Wii; there's no crazy 
-deep universal themes or complex rhetoric used by the author to showcase control of the writing situation. No, when you 
-write about a Wii as a 1st grader, you just gotta use all the happy words: good, nice, cool, funny, maybe even an exciting 
-if you're feeling particularly overjoyed. </p>
-<p>The words basically went directly from my brain to the page because I knew every word so well. I may not have tasted every 
-specific flavor of happy out there, but I knew exactly what each one I did taste actually tasted like.</p>
-<p>It's not until I started to read and consume more content that the flavor profiles of each individual word started to blur. 
-It's only then that my brain would start taking like 10 minutes to place its order, holding up the line for the rest of my 
-thoughts, and also wasting the time I could be using to actually write a better essay. </p>
-<p>Having to write college apps right now, I've finally started to realize the power of simpler words. 
-Sometimes the only thing you need to satisfy that sweet tooth is some plain old chocolate. </p>
-          </div>
-        </details>
+        <div class="writing-links">
+          <a href="https://ee346dc8-6ad7-42fc-94a5-4764ad408f5a.usrfiles.com/ugd/ee346d_d6eafc3399364a738b9aa1ebca6de4b2.pdf" target="_blank" rel="noopener">
+            Read Paper
+          </a>
+        </div>
+        
+      </div>
+    </article>
+    
+    <article class="writing-card writing-secondary">
+      <div class="writing-body">
+        
+        <p class="writing-meta">February 2023</p>
+        
+
+        <h3 class="writing-title">Epithelial Histology</h3>
+
+        
+        <p class="writing-summary">This is another post I wrote my senior year of high school. I was taking an anatomy and physiology class at the time.
+
+Disclaimer: if you don&#39;t want to see pictures of my cut-up finger, don&#39;t click on the link below.
+</p>
         
 
         
-        <div class="project-links">
-          <a href="https://thankgodtheseurlsaretemporary.blogspot.com/2022/09/words-are-like-ice-cream-flavors.html" target="_blank" rel="noopener" class="btn btn-repo">
+        <div class="writing-links">
+          <a href="https://thankgodtheseurlsaretemporary.blogspot.com/2023/02/epithelial-histology.html" target="_blank" rel="noopener">
             Read Post
           </a>
         </div>
@@ -280,37 +551,24 @@ Sometimes the only thing you need to satisfy that sweet tooth is some plain old 
       </div>
     </article>
     
-    <article class="blog-card">
-      <div class="blog-body">
+    <article class="writing-card writing-secondary">
+      <div class="writing-body">
         
-        <p class="blog-meta">February 2023</p>
+        <p class="writing-meta">September 2022</p>
         
 
-        <h3 class="blog-title">Epithelial Histology</h3>
+        <h3 class="writing-title">Words Are Like Ice Cream Flavors</h3>
 
         
-        <p class="blog-summary">This is another post I wrote my senior year of high school. I was taking an anatomy and physiology class at the time.
+        <p class="writing-summary">This was a blog post that I wrote my senior year in high school for a creative writing class.  I&#39;ve been told that I have a way with words, and sometimes the choice words that I decide to use are not always the ones that I should be using. Because I know so many words that it takes  so long to decide which one/ones I should actually use, sort of like how when you&#39;re standing in the Dairy store  holding up the line because there&#39;s so many options.
 
-Disclaimer: if you don&#39;t want to see pictures of my cut-up finger, don&#39;t click on the link below.
+I edited this text slightly so that it doesn&#39;t sound like its written by a high schooler, but the original version  is still live on the link below.
 </p>
         
 
         
-        <details class="blog-details">
-          <summary>Read more</summary>
-          <div class="detail-block blog-content">
-            <p>This post contains the "Middle Finger Diaries", a completely unnecessary but very real documentation of what 
-happens when you combine a busy kitchen shift, a slicer with serrated blades, and the false confidence of a teenager who thinks 
-they know what they are doing.</p>
-<p>There are a few images for context, so this is your warning now if you are not a fan of cuts, blood, or self-inflicted problems 
-involving sharp metal objects.</p>
-          </div>
-        </details>
-        
-
-        
-        <div class="project-links">
-          <a href="https://thankgodtheseurlsaretemporary.blogspot.com/2023/02/epithelial-histology.html" target="_blank" rel="noopener" class="btn btn-repo">
+        <div class="writing-links">
+          <a href="https://thankgodtheseurlsaretemporary.blogspot.com/2022/09/words-are-like-ice-cream-flavors.html" target="_blank" rel="noopener">
             Read Post
           </a>
         </div>
@@ -324,26 +582,50 @@ involving sharp metal objects.</p>
 <!-- ===== Contact section ===== -->
 <section id="contact" class="section contact-section">
   <h2>Contact</h2>
-  <ul class="contact-list">
-    
-    <li>
-      <span class="contact-label">Email:</span>
-      <a href="mailto:dasarkes@msu.edu">dasarkes@msu.edu</a>
-    </li>
-    
-    
-    <li>
-      <span class="contact-label">LinkedIn:</span>
-      <a href="https://www.linkedin.com/in/arkesh-das/" target="_blank" rel="noopener">https://www.linkedin.com/in/arkesh-das/</a>
-    </li>
-    
-    
-    <li>
-      <span class="contact-label">GitHub:</span>
-      <a href="https://arkeshdas.github.io" target="_blank" rel="noopener">https://arkeshdas.github.io</a>
-    </li>
-    
-  </ul>
+  <div class="contact-layout">
+    <form class="contact-form" action="mailto:Arkesh.Das@utoledo.edu" method="post" enctype="text/plain">
+      <label>
+        Name
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+
+    <ul class="contact-list">
+      
+      <li>
+        <a href="mailto:Arkesh.Das@utoledo.edu" class="contact-card">
+          <span class="contact-label">Email</span>
+          <span>Arkesh.Das@utoledo.edu</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/in/arkesh-das/" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-label">LinkedIn</span>
+          <span>Arkesh Das</span>
+        </a>
+      </li>
+      
+      
+      <li>
+        <a href="https://github.com/arkeshdas" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-label">GitHub</span>
+          <span>arkeshdas</span>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
 </section>
 
 

@@ -2,12 +2,6 @@
 
 {% block content %}
 
-<!-- ===== About section ===== -->
-<section id="about" class="section about-section">
-  <h2>About Me</h2>
-  <div class="about-text">{{ student.about | safe }}</div>
-</section>
-
 <!-- ===== Projects section ===== -->
 <section id="projects" class="section projects-section">
   <h2>Projects</h2>
@@ -78,37 +72,41 @@
   </div>
 </section>
 
-<!-- ===== Blog section ===== -->
-<section id="blog" class="section blog-section">
-  <h2>Blog</h2>
+<!-- ===== About section ===== -->
+<section id="about" class="section about-section">
+  <h2>About</h2>
+  <div class="about-card">
+    <div class="about-kicker">
+      <span>Clinical Research</span>
+      <span>Healthcare Data Science</span>
+      <span>Reproducible Workflows</span>
+    </div>
+    <div class="about-text">{{ student.about | safe }}</div>
+  </div>
+</section>
 
-  <div class="blog-list">
-    {% for post in blog_posts %}
-    <article class="blog-card">
-      <div class="blog-body">
+<!-- ===== Writing section ===== -->
+<section id="writing" class="section writing-section">
+  <h2>Writing</h2>
+
+  <div class="writing-list">
+    {% for post in writing_posts %}
+    <article class="writing-card {% if loop.first %}writing-featured{% else %}writing-secondary{% endif %}">
+      <div class="writing-body">
         {% if post.date %}
-        <p class="blog-meta">{{ post.date }}</p>
+        <p class="writing-meta">{{ post.date }}</p>
         {% endif %}
 
-        <h3 class="blog-title">{{ post.title }}</h3>
+        <h3 class="writing-title">{{ post.title }}</h3>
 
         {% if post.short_summary %}
-        <p class="blog-summary">{{ post.short_summary }}</p>
-        {% endif %}
-
-        {% if post.content %}
-        <details class="blog-details">
-          <summary>Read more</summary>
-          <div class="detail-block blog-content">
-            {{ post.content | safe }}
-          </div>
-        </details>
+        <p class="writing-summary">{{ post.short_summary }}</p>
         {% endif %}
 
         {% if post.post_url %}
-        <div class="project-links">
-          <a href="{{ post.post_url }}" target="_blank" rel="noopener" class="btn btn-repo">
-            Read Post
+        <div class="writing-links">
+          <a href="{{ post.post_url }}" target="_blank" rel="noopener">
+            {% if loop.first %}Read Paper{% else %}Read Post{% endif %}
           </a>
         </div>
         {% endif %}
@@ -121,26 +119,50 @@
 <!-- ===== Contact section ===== -->
 <section id="contact" class="section contact-section">
   <h2>Contact</h2>
-  <ul class="contact-list">
-    {% if student.email %}
-    <li>
-      <span class="contact-label">Email:</span>
-      <a href="mailto:{{ student.email }}">{{ student.email }}</a>
-    </li>
-    {% endif %}
-    {% if student.linkedin %}
-    <li>
-      <span class="contact-label">LinkedIn:</span>
-      <a href="{{ student.linkedin }}" target="_blank" rel="noopener">{{ student.linkedin }}</a>
-    </li>
-    {% endif %}
-    {% if student.github %}
-    <li>
-      <span class="contact-label">GitHub:</span>
-      <a href="{{ student.github }}" target="_blank" rel="noopener">{{ student.github }}</a>
-    </li>
-    {% endif %}
-  </ul>
+  <div class="contact-layout">
+    <form class="contact-form" action="mailto:{{ student.email }}" method="post" enctype="text/plain">
+      <label>
+        Name
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+
+    <ul class="contact-list">
+      {% if student.email %}
+      <li>
+        <a href="mailto:{{ student.email }}" class="contact-card">
+          <span class="contact-label">Email</span>
+          <span>{{ student.email }}</span>
+        </a>
+      </li>
+      {% endif %}
+      {% if student.linkedin %}
+      <li>
+        <a href="{{ student.linkedin }}" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-label">LinkedIn</span>
+          <span>Arkesh Das</span>
+        </a>
+      </li>
+      {% endif %}
+      {% if student.github %}
+      <li>
+        <a href="{{ student.github }}" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-label">GitHub</span>
+          <span>arkeshdas</span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
 </section>
 
 {% endblock %}

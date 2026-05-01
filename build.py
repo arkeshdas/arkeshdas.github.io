@@ -76,7 +76,7 @@ def build() -> None:
     site_title  = config.get("site_title", "My Portfolio")
     student_rel = config.get("student_file", "content/example_student.yaml")
     project_rel = config.get("projects", [])
-    blog_rel = config.get("blog_posts", [])
+    writing_rel = config.get("writing_posts", config.get("blog_posts", []))
 
     # ── 2. Load student profile ─────────────────────────────────────────
     student_path = ROOT / student_rel
@@ -103,12 +103,12 @@ def build() -> None:
     print(f"[3/5] Loaded {len(projects)} project(s).")
 
 
-     # ── 4. Load blog files ──────────────────────────────────────────────
-    blog_posts = []
-    for rel in blog_rel:
+     # ── 4. Load writing files ───────────────────────────────────────────
+    writing_posts = []
+    for rel in writing_rel:
         p = ROOT / rel
         if not p.exists():
-            print(f"  [warn] Blog file not found, skipping: {rel}")
+            print(f"  [warn] Writing file not found, skipping: {rel}")
             continue
 
         post = load_yaml(p)
@@ -117,8 +117,8 @@ def build() -> None:
         if post.get("content"):
             post["content"] = markdown.markdown(post["content"])
 
-        blog_posts.append(post)
-        print(f"       blog:    {p.name}")
+        writing_posts.append(post)
+        print(f"       writing: {p.name}")
 
     # ── 5. Render HTML ──────────────────────────────────────────────────
     DOCS_DIR.mkdir(exist_ok=True)
@@ -134,7 +134,7 @@ def build() -> None:
         theme=theme,
         student=student,
         projects=projects,
-        blog_posts=blog_posts,
+        writing_posts=writing_posts,
     )
 
     output_path = DOCS_DIR / "index.html"

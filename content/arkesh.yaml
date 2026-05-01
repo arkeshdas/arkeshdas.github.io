@@ -1,24 +1,28 @@
-# ============================================================
-# content/example_student.yaml
-# ============================================================
-# This is an example student profile. Copy this file to
-# something like content/my_profile.yaml, fill in your own
-# information, and update portfolio_config.yaml to point to it.
-# ============================================================
+name: Arkesh Das
 
-name: "Arkesh Das"
-tagline: "Data Scientist | Future Med Student | Unemployed"
+role: Data Science & Clinical Research
+
+current_role: Incoming Medical Student @ University of Toledo
+
+headline: I study how data systems shape healthcare outcomes.
+
+tagline: |
+  I build reproducible data science projects focused on public health, healthcare systems, and clinical research.
+  
+  My work combines statistical analysis, data pipelines, and clear visualization to understand how decisions, incentives, and data structures impact real-world health outcomes.
+
+github: https://github.com/arkeshdas
+linkedin: https://www.linkedin.com/in/arkesh-das/
+email: Arkesh.Das@utoledo.edu
+paper_url: https://ee346dc8-6ad7-42fc-94a5-4764ad408f5a.usrfiles.com/ugd/ee346d_d6eafc3399364a738b9aa1ebca6de4b2.pdf
+
+headshot: img/headshot.JPG
 
 about: |
-  Hey! My name is Arkesh and I'm a senior at Michigan State University, majoring in Data Science and Biotechnology!
+  I’m a senior at Michigan State University studying Data Science and Biotechnology, and I will begin medical school at the University of Toledo College of Medicine and Life Sciences in 2026 through the MedStart program.
 
-  I'll be starting medical school in the fall, but I'm passionate about data science and its applications in healthcare. 
-  I'm particularly interested in learning more about clinical research and how data can drive better patient outcomes.
+  My work focuses on using data to understand systems, especially where those systems impact people. I am interested in clinical research, EMR-based analysis, and how data can improve decision-making in healthcare settings.
 
-  Currently I'm working on a research project that involves looking at admissions trends and analyzing their impact on the public and the supply of physicians
-  and I'm collaborating with a team of developers to create a website that simplifies the process of deciding which classes to take at Michigan State
+  Across my projects, I’ve explored public health trends, medical admissions systems, and service infrastructure, with an emphasis on building reproducible workflows and communicating results clearly.
 
-# Contact information — remove any fields you prefer not to share
-email: "dasarkes@msu.edu"
-linkedin: "https://www.linkedin.com/in/arkesh-das/"
-github: "https://arkeshdas.github.io"
+  Long term, I want to work at the intersection of medicine and data, contributing to clinical research that is both technically rigorous and directly impactful.
