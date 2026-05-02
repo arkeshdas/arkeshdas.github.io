@@ -120,7 +120,8 @@
 <section id="contact" class="section contact-section">
   <h2>Contact</h2>
   <div class="contact-layout">
-    <form class="contact-form" action="mailto:{{ student.email }}" method="post" enctype="text/plain">
+    <form class="contact-form" action="{{ student.formspree_endpoint }}" method="POST">
+      <input type="hidden" name="_subject" value="Portfolio contact from arkeshdas.github.io">
       <label>
         Name
         <input type="text" name="name" autocomplete="name" required>
