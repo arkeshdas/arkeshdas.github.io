@@ -5,10 +5,10 @@ Usage:
     uv run python build.py
 
 What this script does:
-  1. Reads portfolio_config.yaml (theme, student file, project list).
-  2. Loads the student profile YAML and all project YAMLs.
-  3. Renders templates/index.html via Jinja2 into docs/index.html.
-  4. Copies static/ assets (CSS, images) into docs/ unchanged.
+  1. Reads portfolio_config.yaml.
+  2. Loads profile, project, and writing YAML.
+  3. Renders templates/index.html into docs/index.html.
+  4. Copies static assets and writes docs/css/site.css.
 
 After running this script, open docs/index.html in a browser or run
   uv run python serve.py
@@ -18,6 +18,7 @@ to preview the site locally.
 import shutil
 import sys
 from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 
 import markdown
 import yaml
@@ -40,22 +41,62 @@ def load_yaml(path: Path) -> dict:
         return yaml.safe_load(f)
 
 
-def copy_static_assets(src: Path, dest: Path) -> None:
-    """
-    Copy everything under src/ into dest/, preserving subdirectory structure.
-    Existing files in dest/ are overwritten; extra files are left alone.
-    """
-    if not src.exists():
-        print(f"  [warn] Static directory not found: {src} — skipping.")
+def youtube_embed_url(url: str) -> str:
+    """Return a YouTube embed URL for common watch/share URL formats."""
+    parsed = urlparse(url)
+    host = parsed.netloc.lower().removeprefix("www.")
+
+    if host in {"youtube.com", "m.youtube.com"}:
+        video_id = parse_qs(parsed.query).get("v", [""])[0]
+    elif host == "youtu.be":
+        video_id = parsed.path.strip("/").split("/")[0]
+    else:
+        return url
+
+    video_id = video_id.split("?")[0]
+    if not video_id:
+        return url
+
+    return f"https://www.youtube-nocookie.com/embed/{video_id}"
+
+
+def clean_docs_dir() -> None:
+    """Remove generated output before rebuilding."""
+    if DOCS_DIR.exists():
+        shutil.rmtree(DOCS_DIR)
+    DOCS_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def should_copy_static_file(path: Path) -> bool:
+    """Skip local metadata files that should not be published."""
+    return not any(part.startswith(".") for part in path.parts)
+
+
+def copy_static_asset(asset_path: str) -> None:
+    """Copy one referenced static asset into docs/."""
+    if not asset_path:
         return
 
-    for item in src.rglob("*"):
-        if item.is_file():
-            relative = item.relative_to(src)
-            target = dest / relative
-            target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(item, target)
-            print(f"  copied  static/{relative}")
+    relative = Path(asset_path)
+    if not should_copy_static_file(relative):
+        return
+
+    src = STATIC_DIR / relative
+    dest = DOCS_DIR / relative
+    if not src.exists():
+        return
+
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(src, dest)
+    print(f"  copied  static/{relative}")
+
+
+def copy_referenced_assets(student: dict, projects: list[dict]) -> None:
+    """Copy only assets referenced by YAML content."""
+    copy_static_asset(student.get("headshot"))
+
+    for project in projects:
+        copy_static_asset(project.get("image_path"))
 
 
 def write_combined_styles(theme: str) -> None:
@@ -79,6 +120,34 @@ def write_combined_styles(theme: str) -> None:
     print(f"  wrote   css/site.css  (base + {theme})")
 
 
+def warn_if_missing_static_asset(asset_path: str, context: str) -> None:
+    if not asset_path:
+        return
+
+    p = STATIC_DIR / asset_path
+    if not p.exists():
+        print(f"  [warn] Missing asset for {context}: static/{asset_path}")
+
+
+def validate_student(student: dict) -> None:
+    warn_if_missing_static_asset(student.get("headshot"), "student headshot")
+
+    endpoint = student.get("formspree_endpoint", "")
+    if endpoint and "YOUR_FORM_ID" in endpoint:
+        print("  [warn] Formspree endpoint still uses YOUR_FORM_ID placeholder.")
+
+    video_url = student.get("featured_video_url")
+    embed_url = student.get("featured_video_embed_url")
+    if video_url and embed_url == video_url:
+        print(f"  [warn] Featured video URL was not converted to an embed URL: {video_url}")
+
+
+def validate_projects(projects: list[dict]) -> None:
+    for project in projects:
+        title = project.get("title", "Untitled project")
+        warn_if_missing_static_asset(project.get("image_path"), title)
+
+
 # ── Main build ─────────────────────────────────────────────────────────────
 
 def build() -> None:
@@ -100,6 +169,10 @@ def build() -> None:
     project_rel = config.get("projects", [])
     writing_rel = config.get("writing_posts", config.get("blog_posts", []))
 
+    theme_path = STATIC_DIR / "css" / "themes" / f"{theme}.css"
+    if not theme_path.exists():
+        sys.exit(f"Error: theme '{theme}' not found at static/css/themes/{theme}.css")
+
     # ── 2. Load student profile ─────────────────────────────────────────
     student_path = ROOT / student_rel
     if not student_path.exists():
@@ -110,6 +183,9 @@ def build() -> None:
     # standard Markdown syntax: blank lines for paragraphs, *italic*, **bold**, etc.
     if student.get("about"):
         student["about"] = markdown.markdown(student["about"])
+    if student.get("featured_video_url"):
+        student["featured_video_embed_url"] = youtube_embed_url(student["featured_video_url"])
+    validate_student(student)
     print(f"[2/5] Loaded student: {student_path.name}  ({student.get('name', '?')})")
 
     # ── 3. Load project files ───────────────────────────────────────────
@@ -122,6 +198,7 @@ def build() -> None:
         projects.append(load_yaml(p))
         print(f"       project: {p.name}")
 
+    validate_projects(projects)
     print(f"[3/5] Loaded {len(projects)} project(s).")
 
 
@@ -143,7 +220,7 @@ def build() -> None:
         print(f"       writing: {p.name}")
 
     # ── 5. Render HTML ──────────────────────────────────────────────────
-    DOCS_DIR.mkdir(exist_ok=True)
+    clean_docs_dir()
 
     env = Environment(
         loader=FileSystemLoader(str(TEMPLATES_DIR)),
@@ -165,8 +242,8 @@ def build() -> None:
     print(f"[5/5] Rendered → {output_path.relative_to(ROOT)}")
 
     # ── 6. Copy static assets ───────────────────────────────────────────
-    print("\n      Copying static assets …")
-    copy_static_assets(STATIC_DIR, DOCS_DIR)
+    print("\n      Writing static assets …")
+    copy_referenced_assets(student, projects)
     write_combined_styles(theme)
 
     print("\n✓  Build complete.  Open docs/index.html or run: uv run python serve.py")

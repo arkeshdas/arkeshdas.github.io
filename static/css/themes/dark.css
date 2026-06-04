@@ -1,96 +1,185 @@
-/* ============================================================
-   themes/dark.css  —  Dark theme color palette.
-   To create your own theme, copy this file to a new name
-   (e.g. "solarized.css") and change the values below.
-   Then set  theme: solarized  in portfolio_config.yaml.
-   ============================================================ */
-
 body {
-  background-color: #121212;
-  color: #e0e0e0;
+  background: #121212;
+  color: #f1f3f5;
 }
 
 a {
   color: #79b8ff;
 }
 
-/* Header */
+a:hover {
+  color: #a5d6ff;
+}
+
 .site-header {
-  background-color: #1e1e1e;
+  background: #171717;
   border-bottom: 1px solid #333333;
 }
 
-.header-name {
-  color: #f0f0f0;
-}
-
-.header-tagline {
-  color: #aaaaaa;
+.site-main {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(121, 184, 255, 0.04) 60%, transparent);
 }
 
 .site-nav a {
-  color: #aaaaaa;
+  color: #c9d1d9;
 }
 
 .site-nav a:hover {
   color: #79b8ff;
 }
 
-/* Section headings */
-.section h2 {
-  color: #f0f0f0;
-  border-color: #79b8ff;
-}
-
-/* Project card */
-.project-card {
-  background-color: #1e1e1e;
-  border: 1px solid #333333;
-}
-
-.project-title {
-  color: #f0f0f0;
-}
-
-.project-summary {
-  color: #cccccc;
-}
-
-/* Tech badges */
-.tech-badge {
-  background-color: #1e3a5f;
-  color: #79b8ff;
-}
-
-/* Details */
-.project-details {
-  color: #cccccc;
-}
-
-.detail-block h4 {
-  color: #888888;
-}
-
-/* Buttons */
-.btn-repo {
-  background-color: #1f6feb;
+.hero-role {
+  background: #1f6feb;
   color: #ffffff;
 }
 
-.btn-notebook {
-  background-color: #2a2a2a;
-  color: #e0e0e0;
-  border: 1px solid #444444;
+.hero-headshot {
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
 }
 
-/* Contact */
-.contact-list a {
+.hero-current,
+.hero-tagline,
+.project-summary,
+.writing-summary,
+.writing-meta,
+.contact-list {
+  color: rgba(241, 243, 245, 0.74);
+}
+
+.section h2 {
+  color: #f1f3f5;
+  border-color: rgba(241, 243, 245, 0.22);
+}
+
+.featured-video-frame,
+.about-card,
+.contact-form,
+.writing-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(241, 243, 245, 0.14);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.about-kicker span {
+  background: rgba(121, 184, 255, 0.14);
+  border-color: rgba(121, 184, 255, 0.24);
+  color: #a5d6ff;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(241, 243, 245, 0.14);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+}
+
+.project-card:hover {
+  background: rgba(121, 184, 255, 0.11);
+  border-color: rgba(121, 184, 255, 0.34);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+}
+
+.project-title,
+.writing-title {
+  color: #ffffff;
+}
+
+.tech-badge {
+  background: rgba(121, 184, 255, 0.14);
+  border-color: rgba(121, 184, 255, 0.22);
+  color: #c9e6ff;
+}
+
+.project-details,
+.writing-details {
+  color: rgba(241, 243, 245, 0.8);
+}
+
+.detail-block h4,
+.contact-label {
   color: #79b8ff;
 }
 
-/* Footer */
+.btn-primary,
+.btn-repo {
+  background: #1f6feb;
+  color: #ffffff;
+}
+
+.btn-primary:hover,
+.btn-repo:hover {
+  background: #388bfd;
+  color: #ffffff;
+}
+
+.btn-accent {
+  background: #f2cc60;
+  color: #121212;
+  border-color: #f2cc60;
+}
+
+.btn-accent:hover {
+  background: #d29922;
+  color: #121212;
+}
+
+.btn-compact span {
+  background: rgba(255, 255, 255, 0.12);
+  color: inherit;
+}
+
+.btn-secondary,
+.btn-notebook {
+  background: transparent;
+  border-color: #79b8ff;
+  color: #79b8ff;
+}
+
+.btn-secondary:hover,
+.btn-notebook:hover {
+  background: rgba(121, 184, 255, 0.14);
+  color: #c9e6ff;
+}
+
+.writing-featured {
+  border-left: 4px solid #f2cc60;
+}
+
+.writing-secondary {
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: none;
+}
+
+.writing-links a {
+  font-weight: 800;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(241, 243, 245, 0.14);
+  color: #f1f3f5;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+.contact-card:hover {
+  background: rgba(121, 184, 255, 0.11);
+  border-color: rgba(121, 184, 255, 0.32);
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(241, 243, 245, 0.18);
+  color: #ffffff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #79b8ff;
+  outline: 3px solid rgba(121, 184, 255, 0.2);
+}
+
 .site-footer {
-  background-color: #1e1e1e;
+  background: #171717;
+  color: rgba(241, 243, 245, 0.7);
   border-top: 1px solid #333333;
-  color: #888888;
 }

@@ -54,6 +54,12 @@ a:hover {
   border-color: rgba(0, 16, 62, 0.22);
 }
 
+.featured-video-frame {
+  background: rgba(255, 255, 255, 0.34);
+  border-color: rgba(0, 16, 62, 0.14);
+  box-shadow: 0 16px 38px rgba(0, 16, 62, 0.08);
+}
+
 .about-card,
 .contact-form,
 .writing-card {

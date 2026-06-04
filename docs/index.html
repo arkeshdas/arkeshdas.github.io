@@ -6,7 +6,7 @@
   <title>Arkesh Das | Portfolio</title>
 
   <!-- Built stylesheet: base layout plus the configured theme -->
-  <link rel="stylesheet" href="css/site.css?v=2026-06-03-hero-mobile" />
+  <link rel="stylesheet" href="css/site.css?v=2026-06-03-clean-refactor" />
 </head>
 <body>
 
@@ -69,15 +69,24 @@
   <main class="site-main">
     
 
-<!-- ===== Projects section ===== -->
+<section class="section featured-video-section" aria-label="Featured research video">
+  <div class="featured-video-frame">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/x3bERUBkRR8"
+      title="Featured research video"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
 <section id="projects" class="section projects-section">
   <h2>Projects</h2>
 
   <div class="project-grid">
     
     <article class="project-card">
-
-      <!-- Project thumbnail image -->
       <div class="project-image-wrapper">
         <img
           src="img/cirric_mg.png"
@@ -88,12 +97,9 @@
 
       <div class="project-body">
         <h3 class="project-title">MSU Curriculum Maps (Data Science Capstone)</h3>
-
-        <!-- Short summary written for a non-expert audience -->
         <p class="project-summary">Pipeline for transforming university curriculum data into prerequisite networks for structural analysis.
 </p>
 
-        <!-- Tech stack as pill badges -->
         <div class="tech-stack">
           
           <span class="tech-badge">Python</span>
@@ -104,7 +110,6 @@
           
         </div>
 
-        <!-- Collapsible details (problem / approach / results) -->
         <details class="project-details">
           <summary>More details</summary>
 
@@ -127,7 +132,6 @@
           </div>
         </details>
 
-        <!-- Links to the GitHub repo and notebook -->
         <div class="project-links">
           
           <a href="https://github.com/wijayaju/MSU_Curriculum_Maps" target="_blank" rel="noopener" class="btn btn-repo">
@@ -137,12 +141,9 @@
           
         </div>
       </div>
-
     </article>
     
     <article class="project-card">
-
-      <!-- Project thumbnail image -->
       <div class="project-image-wrapper">
         <img
           src="img/admissions.png"
@@ -153,12 +154,9 @@
 
       <div class="project-body">
         <h3 class="project-title">Medical Admissions Gap Year Analysis</h3>
-
-        <!-- Short summary written for a non-expert audience -->
         <p class="project-summary">Analysis of AAMC data showing how gap years impact physician workforce timing and system efficiency.
 </p>
 
-        <!-- Tech stack as pill badges -->
         <div class="tech-stack">
           
           <span class="tech-badge">Python</span>
@@ -169,7 +167,6 @@
           
         </div>
 
-        <!-- Collapsible details (problem / approach / results) -->
         <details class="project-details">
           <summary>More details</summary>
 
@@ -192,7 +189,6 @@
           </div>
         </details>
 
-        <!-- Links to the GitHub repo and notebook -->
         <div class="project-links">
           
           <a href="https://github.com/arkeshdas/med-admissions-gap-year-analysis" target="_blank" rel="noopener" class="btn btn-repo">
@@ -202,12 +198,9 @@
           
         </div>
       </div>
-
     </article>
     
     <article class="project-card">
-
-      <!-- Project thumbnail image -->
       <div class="project-image-wrapper">
         <img
           src="img/measles.gif"
@@ -218,12 +211,9 @@
 
       <div class="project-body">
         <h3 class="project-title">Measles Comeback, Vaccination Gaps and Outbreak Risk</h3>
-
-        <!-- Short summary written for a non-expert audience -->
         <p class="project-summary">Data analysis linking vaccination gaps and exemption rates to measles outbreak risk in the United States.
 </p>
 
-        <!-- Tech stack as pill badges -->
         <div class="tech-stack">
           
           <span class="tech-badge">Python</span>
@@ -234,7 +224,6 @@
           
         </div>
 
-        <!-- Collapsible details (problem / approach / results) -->
         <details class="project-details">
           <summary>More details</summary>
 
@@ -257,7 +246,6 @@
           </div>
         </details>
 
-        <!-- Links to the GitHub repo and notebook -->
         <div class="project-links">
           
           <a href="https://github.com/arkeshdas/Measles-Comeback-US" target="_blank" rel="noopener" class="btn btn-repo">
@@ -267,12 +255,9 @@
           
         </div>
       </div>
-
     </article>
     
     <article class="project-card">
-
-      <!-- Project thumbnail image -->
       <div class="project-image-wrapper">
         <img
           src="img/nyc311.jpeg"
@@ -283,12 +268,9 @@
 
       <div class="project-body">
         <h3 class="project-title">NYC 311 Service Request Analysis (AWS Pipeline)</h3>
-
-        <!-- Short summary written for a non-expert audience -->
         <p class="project-summary">Cloud-based pipeline to model complaint resolution time and analyze service patterns across NYC agencies.
 </p>
 
-        <!-- Tech stack as pill badges -->
         <div class="tech-stack">
           
           <span class="tech-badge">AWS (S3, Athena, SageMaker)</span>
@@ -301,7 +283,6 @@
           
         </div>
 
-        <!-- Collapsible details (problem / approach / results) -->
         <details class="project-details">
           <summary>More details</summary>
 
@@ -324,7 +305,6 @@
           </div>
         </details>
 
-        <!-- Links to the GitHub repo and notebook -->
         <div class="project-links">
           
           <a href="https://github.com/arkeshdas/aws-nyc311-dasarkes" target="_blank" rel="noopener" class="btn btn-repo">
@@ -334,12 +314,9 @@
           
         </div>
       </div>
-
     </article>
     
     <article class="project-card">
-
-      <!-- Project thumbnail image -->
       <div class="project-image-wrapper">
         <img
           src="img/curser_img.png"
@@ -350,12 +327,9 @@
 
       <div class="project-body">
         <h3 class="project-title">Curser: Stop Embarrassing Names Before They Launch</h3>
-
-        <!-- Short summary written for a non-expert audience -->
         <p class="project-summary">Interactive app that detects cross-language phonetic collisions to prevent unintentionally offensive or ambiguous naming.
 </p>
 
-        <!-- Tech stack as pill badges -->
         <div class="tech-stack">
           
           <span class="tech-badge">Python</span>
@@ -372,7 +346,6 @@
           
         </div>
 
-        <!-- Collapsible details (problem / approach / results) -->
         <details class="project-details">
           <summary>More details</summary>
 
@@ -395,7 +368,6 @@
           </div>
         </details>
 
-        <!-- Links to the GitHub repo and notebook -->
         <div class="project-links">
           
           <a href="https://github.com/arkeshdas/Curser" target="_blank" rel="noopener" class="btn btn-repo">
@@ -405,12 +377,9 @@
           
         </div>
       </div>
-
     </article>
     
     <article class="project-card">
-
-      <!-- Project thumbnail image -->
       <div class="project-image-wrapper">
         <img
           src="img/gwas.png"
@@ -421,12 +390,9 @@
 
       <div class="project-body">
         <h3 class="project-title">Immune Response GWAS FDR Analysis</h3>
-
-        <!-- Short summary written for a non-expert audience -->
         <p class="project-summary">Statistical genetics project comparing false discovery rate correction methods in an immune response GWAS.
 </p>
 
-        <!-- Tech stack as pill badges -->
         <div class="tech-stack">
           
           <span class="tech-badge">R</span>
@@ -439,7 +405,6 @@
           
         </div>
 
-        <!-- Collapsible details (problem / approach / results) -->
         <details class="project-details">
           <summary>More details</summary>
 
@@ -462,7 +427,6 @@
           </div>
         </details>
 
-        <!-- Links to the GitHub repo and notebook -->
         <div class="project-links">
           
           <a href="https://github.com/arkeshdas/CMSE-410-Semester-Project" target="_blank" rel="noopener" class="btn btn-repo">
@@ -472,13 +436,10 @@
           
         </div>
       </div>
-
     </article>
     
   </div>
 </section>
-
-<!-- ===== About section ===== -->
 <section id="about" class="section about-section">
   <h2>About</h2>
   <div class="about-card">
@@ -493,8 +454,6 @@
 <p>Long term, I want to work at the intersection of medicine and data, contributing to clinical research that is both technically rigorous and directly impactful.</p></div>
   </div>
 </section>
-
-<!-- ===== Writing section ===== -->
 <section id="writing" class="section writing-section">
   <h2>Writing</h2>
 
@@ -575,8 +534,6 @@ I edited this text slightly so that it doesn&#39;t sound like its written by a h
     
   </div>
 </section>
-
-<!-- ===== Contact section ===== -->
 <section id="contact" class="section contact-section">
   <h2>Contact</h2>
   <div class="contact-layout">
@@ -625,7 +582,6 @@ I edited this text slightly so that it doesn&#39;t sound like its written by a h
     </ul>
   </div>
 </section>
-
 
   </main>
 

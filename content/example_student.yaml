@@ -1,29 +1,31 @@
-# ============================================================
-# content/example_student.yaml
-# ============================================================
-# This is an example student profile. Copy this file to
-# something like content/my_profile.yaml, fill in your own
-# information, and update portfolio_config.yaml to point to it.
-# ============================================================
+name: Example Student
 
-name: "Zeke the Wonder Dog"
-tagline: "Aspiring Data Scientist | MSU Mascot | Good Boy"
+role: Data Science & Applied Research
+
+current_role: Undergraduate Researcher @ Example University
+
+headline: I build reproducible data projects for real-world decisions.
+
+tagline: |
+  I use data analysis, visualization, and reproducible workflows to study complex systems.
+
+  My work focuses on translating messy data into clear evidence that technical and non-technical audiences can use.
+
+github: https://github.com/example-student
+linkedin: https://www.linkedin.com/in/example-student/
+email: student@example.edu
+paper_url: https://example.com/research-paper.pdf
+featured_video_url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+
+# Replace with your Formspree endpoint, or remove the form from the template.
+formspree_endpoint: https://formspree.io/f/YOUR_FORM_ID
+
+# Place images in static/img/ and reference them as img/filename.ext.
+headshot: img/headshot-web.jpg
 
 about: |
-  I'm a red English lab and one of Michigan State's beloved mascots, but
-  data science is my true calling. When I'm not leading the Spartans onto
-  the field, I'm wrangling datasets and building predictive models —
-  mostly with my nose, occasionally with my paws.  
+  I am a student interested in applied data science, reproducible research, and clear communication.
 
-  My projects focus on turning complex data into clear insights that
-  *any human (or dog) can act on*. I believe the best analysis is one
-  that fits on a single slide and can be explained to someone who just
-  woke up from a nap in the sun. Go Green.
+  My projects combine statistical analysis, data cleaning, visualization, and written explanation. I care about making work that other people can inspect, rerun, and understand.
 
-  _This example portfolio was inspired by Zeke IV, who passed in March of 2026.
-  He played the role of Zeke the Wonder Dog for a decade._
-
-# Contact information — remove any fields you prefer not to share
-email: "zeke@msu.edu"
-linkedin: "https://www.linkedin.com/in/zeke-the-wonder-dog"
-github: "https://github.com/zeke-wonder-dog"
+  This portfolio is designed to make projects, writing, contact information, and optional research media easy to update through YAML files.

@@ -1,115 +1,189 @@
-/* ============================================================
-   themes/msu-dark.css  —  Michigan State University dark theme.
-   Colors sourced from https://brand.msu.edu/visual/color-palette
-
-   Primary brand colors:
-     Spartan Green  #18453B
-     White          #FFFFFF
-     Black          #000000
-
-   Accent greens:
-     Kelly Green    #008208
-     Lime Green     #7BBD00
-     Excellence Green #0B9A6D
-     Refresh Green  #008934
-   ============================================================ */
-
 body {
-  background-color: #0d2b25;
+  background: #0d2b25;
   color: #e8f0ee;
 }
 
 a {
-  color: #7BBD00;
+  color: #7bbd00;
 }
 
 a:hover {
   color: #a8d933;
-  text-decoration: none;
 }
 
-/* Header */
 .site-header {
-  background-color: #18453B;
-  border-bottom: 4px solid #7BBD00;
+  background: #18453b;
+  border-bottom: 4px solid #7bbd00;
 }
 
-.header-name {
-  color: #ffffff;
-}
-
-.header-tagline {
-  color: #b0cfc9;
+.site-main {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(123, 189, 0, 0.05) 60%, transparent);
 }
 
 .site-nav a {
-  color: #b0cfc9;
+  color: #d4e8e4;
 }
 
 .site-nav a:hover {
-  color: #7BBD00;
+  color: #7bbd00;
 }
 
-/* Section headings */
-.section h2 {
-  color: #e8f0ee;
-  border-color: #7BBD00;
-}
-
-/* Project card */
-.project-card {
-  background-color: #18453B;
-  border: 1px solid #2a6b5e;
-}
-
-.project-title {
-  color: #ffffff;
-}
-
-.project-summary {
-  color: #c8dbd8;
-}
-
-/* Tech badges */
-.tech-badge {
-  background-color: #0d2b25;
-  color: #7BBD00;
-  border: 1px solid #2a6b5e;
-}
-
-/* Details */
-.project-details {
-  color: #b0cfc9;
-}
-
-.detail-block h4 {
-  color: #7BBD00;
-}
-
-/* Buttons */
-.btn-repo {
-  background-color: #7BBD00;
+.hero-role {
+  background: #7bbd00;
   color: #0d2b25;
 }
 
-.btn-notebook {
-  background-color: #18453B;
+.hero-headshot {
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
+}
+
+.hero-current,
+.hero-tagline,
+.project-summary,
+.writing-summary,
+.writing-meta,
+.contact-list {
+  color: rgba(232, 240, 238, 0.74);
+}
+
+.section h2 {
   color: #e8f0ee;
-  border: 1px solid #4a9080;
+  border-color: rgba(123, 189, 0, 0.45);
 }
 
-/* Contact */
-.contact-list a {
-  color: #7BBD00;
+.featured-video-frame,
+.about-card,
+.contact-form,
+.writing-card {
+  background: rgba(24, 69, 59, 0.78);
+  border-color: rgba(123, 189, 0, 0.24);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
 }
 
-/* Footer */
+.about-kicker span {
+  background: rgba(123, 189, 0, 0.14);
+  border-color: rgba(123, 189, 0, 0.28);
+  color: #d9ff85;
+}
+
+.project-card {
+  background: rgba(24, 69, 59, 0.82);
+  border-color: rgba(123, 189, 0, 0.22);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+.project-card:hover {
+  background: rgba(42, 107, 94, 0.9);
+  border-color: rgba(123, 189, 0, 0.46);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+}
+
+.project-title,
+.writing-title {
+  color: #ffffff;
+}
+
+.tech-badge {
+  background: rgba(13, 43, 37, 0.82);
+  border-color: rgba(123, 189, 0, 0.26);
+  color: #d9ff85;
+}
+
+.project-details,
+.writing-details {
+  color: rgba(232, 240, 238, 0.82);
+}
+
+.detail-block h4,
+.contact-label {
+  color: #7bbd00;
+}
+
+.btn-primary,
+.btn-repo {
+  background: #7bbd00;
+  color: #0d2b25;
+}
+
+.btn-primary:hover,
+.btn-repo:hover {
+  background: #a8d933;
+  color: #0d2b25;
+}
+
+.btn-accent {
+  background: #d9ff85;
+  color: #0d2b25;
+  border-color: #d9ff85;
+}
+
+.btn-accent:hover {
+  background: #7bbd00;
+  color: #0d2b25;
+}
+
+.btn-compact span {
+  background: rgba(255, 255, 255, 0.12);
+  color: inherit;
+}
+
+.btn-secondary,
+.btn-notebook {
+  background: transparent;
+  border-color: #7bbd00;
+  color: #d9ff85;
+}
+
+.btn-secondary:hover,
+.btn-notebook:hover {
+  background: rgba(123, 189, 0, 0.14);
+  color: #ffffff;
+}
+
+.writing-featured {
+  border-left: 4px solid #7bbd00;
+}
+
+.writing-secondary {
+  background: rgba(24, 69, 59, 0.58);
+  box-shadow: none;
+}
+
+.writing-links a {
+  font-weight: 800;
+}
+
+.contact-card {
+  background: rgba(24, 69, 59, 0.82);
+  border-color: rgba(123, 189, 0, 0.22);
+  color: #e8f0ee;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+.contact-card:hover {
+  background: rgba(42, 107, 94, 0.9);
+  border-color: rgba(123, 189, 0, 0.42);
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(13, 43, 37, 0.72);
+  border-color: rgba(123, 189, 0, 0.24);
+  color: #ffffff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #7bbd00;
+  outline: 3px solid rgba(123, 189, 0, 0.24);
+}
+
 .site-footer {
-  background-color: #18453B;
-  border-top: 4px solid #7BBD00;
-  color: #b0cfc9;
+  background: #18453b;
+  color: #d4e8e4;
+  border-top: 4px solid #7bbd00;
 }
 
 .site-footer a {
-  color: #7BBD00;
+  color: #7bbd00;
 }
