@@ -45,4 +45,4 @@ theme: clinical
 site_title: "Arkesh Das | Portfolio"
 
 # Bump this when CSS changes so browsers do not reuse stale cached styles.
-asset_version: "2026-05-01-safari-fix"
+asset_version: "2026-06-03-mobile-grid"
