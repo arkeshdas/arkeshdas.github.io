@@ -73,12 +73,21 @@ linkedin:
 email:
 paper_url:
 featured_video_url:
+featured_video_start_seconds:
+featured_video_captions:
+featured_video_captions_lang:
 formspree_endpoint:
 headshot:
 about:
 ```
 
-`featured_video_url` accepts common YouTube watch or share URLs. The build converts them to a privacy-friendly embed URL.
+`featured_video_url` accepts common YouTube watch or share URLs. The build converts them to a privacy-friendly embed URL. Optional video controls:
+
+```yaml
+featured_video_start_seconds: 1
+featured_video_captions: true
+featured_video_captions_lang: en
+```
 
 `formspree_endpoint` should be a Formspree endpoint such as:
 

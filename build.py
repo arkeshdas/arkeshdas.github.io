@@ -18,7 +18,7 @@ to preview the site locally.
 import shutil
 import sys
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, urlencode, urlparse
 
 import markdown
 import yaml
@@ -41,7 +41,7 @@ def load_yaml(path: Path) -> dict:
         return yaml.safe_load(f)
 
 
-def youtube_embed_url(url: str) -> str:
+def youtube_embed_url(url: str, start_seconds: int = 0, captions: bool = False, captions_lang: str = "en") -> str:
     """Return a YouTube embed URL for common watch/share URL formats."""
     parsed = urlparse(url)
     host = parsed.netloc.lower().removeprefix("www.")
@@ -57,7 +57,15 @@ def youtube_embed_url(url: str) -> str:
     if not video_id:
         return url
 
-    return f"https://www.youtube-nocookie.com/embed/{video_id}"
+    params = {}
+    if start_seconds:
+        params["start"] = max(0, int(start_seconds))
+    if captions:
+        params["cc_load_policy"] = 1
+        params["cc_lang_pref"] = captions_lang
+
+    query = f"?{urlencode(params)}" if params else ""
+    return f"https://www.youtube-nocookie.com/embed/{video_id}{query}"
 
 
 def clean_docs_dir() -> None:
@@ -184,7 +192,12 @@ def build() -> None:
     if student.get("about"):
         student["about"] = markdown.markdown(student["about"])
     if student.get("featured_video_url"):
-        student["featured_video_embed_url"] = youtube_embed_url(student["featured_video_url"])
+        student["featured_video_embed_url"] = youtube_embed_url(
+            student["featured_video_url"],
+            student.get("featured_video_start_seconds", 0),
+            student.get("featured_video_captions", False),
+            student.get("featured_video_captions_lang", "en"),
+        )
     validate_student(student)
     print(f"[2/5] Loaded student: {student_path.name}  ({student.get('name', '?')})")
 

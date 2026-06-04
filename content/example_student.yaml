@@ -15,7 +15,11 @@ github: https://github.com/example-student
 linkedin: https://www.linkedin.com/in/example-student/
 email: student@example.edu
 paper_url: https://example.com/research-paper.pdf
+
 featured_video_url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+featured_video_start_seconds: 0
+featured_video_captions: false
+featured_video_captions_lang: en
 
 # Replace with your Formspree endpoint, or remove the form from the template.
 formspree_endpoint: https://formspree.io/f/YOUR_FORM_ID
