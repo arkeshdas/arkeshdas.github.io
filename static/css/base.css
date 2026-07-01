@@ -456,7 +456,7 @@ details[open] summary::before {
 
 .writing-title {
   grid-column: 2;
-  font-size: 1.12rem;
+  font-size: 0.81rem;
   line-height: 1.3;
 }
 
@@ -465,7 +465,7 @@ details[open] summary::before {
 }
 
 .writing-featured .writing-title {
-  font-size: 1.35rem;
+  font-size: 1.04rem;
 }
 
 .writing-secondary {

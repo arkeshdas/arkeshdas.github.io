@@ -51,4 +51,4 @@ theme: clinical
 site_title: "Arkesh Das | Portfolio"
 
 # Bump this when CSS changes so browsers do not reuse stale cached styles.
-asset_version: "2026-06-30-love-is-dead"
+asset_version: "2026-06-30-writing-title-scale"
