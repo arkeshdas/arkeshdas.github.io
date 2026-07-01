@@ -7,7 +7,7 @@ Usage:
 What this script does:
   1. Reads portfolio_config.yaml.
   2. Loads profile, project, and writing YAML.
-  3. Renders templates/index.html into docs/index.html.
+  3. Renders templates into docs/.
   4. Copies static assets and writes docs/css/site.css.
 
 After running this script, open docs/index.html in a browser or run
@@ -15,14 +15,20 @@ After running this script, open docs/index.html in a browser or run
 to preview the site locally.
 """
 
+import re
 import shutil
 import sys
+from html import escape
 from pathlib import Path
 from urllib.parse import parse_qs, urlencode, urlparse
 
-import markdown
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+
+try:
+    import markdown
+except ModuleNotFoundError:
+    markdown = None
 
 
 # ── Paths ──────────────────────────────────────────────────────────────────
@@ -156,6 +162,87 @@ def validate_projects(projects: list[dict]) -> None:
         warn_if_missing_static_asset(project.get("image_path"), title)
 
 
+def markdown_field(item: dict, field: str) -> None:
+    """Convert a Markdown field in-place when present."""
+    if item.get(field):
+        item[field] = render_markdown(item[field])
+
+
+def inline_markdown(text: str) -> str:
+    """Render a small subset of inline Markdown for fallback builds."""
+    text = escape(text)
+    text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
+    text = re.sub(r"\*(.+?)\*", r"<em>\1</em>", text)
+    return text
+
+
+def fallback_markdown(text: str) -> str:
+    """Minimal Markdown renderer for paragraphs and simple lists."""
+    blocks = re.split(r"\n\s*\n", text.strip())
+    html_blocks = []
+
+    for block in blocks:
+        lines = [line.strip() for line in block.splitlines() if line.strip()]
+        if not lines:
+            continue
+
+        if all(line.startswith(("- ", "* ")) for line in lines):
+            items = "".join(f"<li>{inline_markdown(line[2:].strip())}</li>" for line in lines)
+            html_blocks.append(f"<ul>{items}</ul>")
+            continue
+
+        paragraph = " ".join(lines)
+        html_blocks.append(f"<p>{inline_markdown(paragraph)}</p>")
+
+    return "\n".join(html_blocks)
+
+
+def render_markdown(text: str) -> str:
+    """Render Markdown with the dependency when available, otherwise fallback."""
+    if markdown:
+        return markdown.markdown(text)
+    return fallback_markdown(text)
+
+
+def slugify(value: str) -> str:
+    """Create a URL-safe slug from a title or filename stem."""
+    slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+    return slug or "post"
+
+
+def unique_slug(preferred: str, used: set[str]) -> str:
+    """Return a unique slug, preserving the preferred value when possible."""
+    slug = preferred
+    counter = 2
+    while slug in used:
+        slug = f"{preferred}-{counter}"
+        counter += 1
+    used.add(slug)
+    return slug
+
+
+def load_optional_yaml(rel_path: str, label: str) -> dict:
+    """Load an optional YAML file, warning instead of failing when absent."""
+    if not rel_path:
+        return {}
+
+    path = ROOT / rel_path
+    if not path.exists():
+        print(f"  [warn] {label} file not found, skipping: {rel_path}")
+        return {}
+
+    return load_yaml(path)
+
+
+def render_page(env: Environment, template_name: str, output_rel: str, **context) -> None:
+    """Render one template into docs/."""
+    output_path = DOCS_DIR / output_rel
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    rendered = env.get_template(template_name).render(**context)
+    output_path.write_text(rendered, encoding="utf-8")
+    print(f"       rendered: {output_path.relative_to(ROOT)}")
+
+
 # ── Main build ─────────────────────────────────────────────────────────────
 
 def build() -> None:
@@ -168,7 +255,7 @@ def build() -> None:
         sys.exit(f"Error: {CONFIG_FILE} not found. Are you running from the repo root?")
 
     config = load_yaml(CONFIG_FILE)
-    print(f"\n[1/5] Loaded config:  {CONFIG_FILE.name}")
+    print(f"\n[1/6] Loaded config:  {CONFIG_FILE.name}")
 
     theme       = config.get("theme", "light")
     site_title  = config.get("site_title", "My Portfolio")
@@ -176,6 +263,9 @@ def build() -> None:
     student_rel = config.get("student_file", "content/example_student.yaml")
     project_rel = config.get("projects", [])
     writing_rel = config.get("writing_posts", config.get("blog_posts", []))
+    scholarship_rel = config.get("scholarship_file", "content/scholarship.yaml")
+    cv_rel = config.get("cv_file", "content/cv.yaml")
+    about_rel = config.get("about_file", "content/about.yaml")
 
     theme_path = STATIC_DIR / "css" / "themes" / f"{theme}.css"
     if not theme_path.exists():
@@ -189,8 +279,7 @@ def build() -> None:
     student = load_yaml(student_path)
     # Convert the about field from Markdown to HTML so students can use
     # standard Markdown syntax: blank lines for paragraphs, *italic*, **bold**, etc.
-    if student.get("about"):
-        student["about"] = markdown.markdown(student["about"])
+    markdown_field(student, "about")
     if student.get("featured_video_url"):
         student["featured_video_embed_url"] = youtube_embed_url(
             student["featured_video_url"],
@@ -199,7 +288,7 @@ def build() -> None:
             student.get("featured_video_captions_lang", "en"),
         )
     validate_student(student)
-    print(f"[2/5] Loaded student: {student_path.name}  ({student.get('name', '?')})")
+    print(f"[2/6] Loaded student: {student_path.name}  ({student.get('name', '?')})")
 
     # ── 3. Load project files ───────────────────────────────────────────
     projects = []
@@ -212,11 +301,12 @@ def build() -> None:
         print(f"       project: {p.name}")
 
     validate_projects(projects)
-    print(f"[3/5] Loaded {len(projects)} project(s).")
+    print(f"[3/6] Loaded {len(projects)} project(s).")
 
 
-     # ── 4. Load writing files ───────────────────────────────────────────
+    # ── 4. Load writing files ───────────────────────────────────────────
     writing_posts = []
+    used_post_slugs = set()
     for rel in writing_rel:
         p = ROOT / rel
         if not p.exists():
@@ -224,15 +314,33 @@ def build() -> None:
             continue
 
         post = load_yaml(p)
+        post["slug"] = unique_slug(post.get("slug") or slugify(p.stem), used_post_slugs)
+        post["source_path"] = rel
+        post["permalink"] = f"writing/{post['slug']}/"
 
         # convert markdown to HTML for content
-        if post.get("content"):
-            post["content"] = markdown.markdown(post["content"])
+        markdown_field(post, "content")
 
         writing_posts.append(post)
         print(f"       writing: {p.name}")
+    print(f"[4/6] Loaded {len(writing_posts)} writing post(s).")
 
-    # ── 5. Render HTML ──────────────────────────────────────────────────
+    # ── 5. Load page content ────────────────────────────────────────────
+    scholarship = load_optional_yaml(scholarship_rel, "Scholarship")
+    cv = load_optional_yaml(cv_rel, "CV")
+    about_page = load_optional_yaml(about_rel, "About")
+
+    for field in ["summary", "abstract", "future_directions"]:
+        markdown_field(scholarship, field)
+    for section in scholarship.get("sections", []):
+        markdown_field(section, "body")
+    for item in cv.get("timeline", []):
+        markdown_field(item, "description")
+    for section in about_page.get("sections", []):
+        markdown_field(section, "body")
+    print("[5/6] Loaded page content.")
+
+    # ── 6. Render HTML ──────────────────────────────────────────────────
     clean_docs_dir()
 
     env = Environment(
@@ -240,19 +348,76 @@ def build() -> None:
         autoescape=select_autoescape(["html"]),
     )
 
-    template = env.get_template("index.html")
-    rendered = template.render(
-        site_title=site_title,
-        theme=theme,
-        asset_version=asset_version,
-        student=student,
-        projects=projects,
-        writing_posts=writing_posts,
-    )
+    base_context = {
+        "site_title": site_title,
+        "theme": theme,
+        "asset_version": asset_version,
+        "student": student,
+        "projects": projects,
+        "writing_posts": writing_posts,
+        "scholarship": scholarship,
+        "cv": cv,
+        "about_page": about_page,
+    }
 
-    output_path = DOCS_DIR / "index.html"
-    output_path.write_text(rendered, encoding="utf-8")
-    print(f"[5/5] Rendered → {output_path.relative_to(ROOT)}")
+    print("\n      Rendering pages …")
+    render_page(
+        env,
+        "index.html",
+        "index.html",
+        **base_context,
+        current_page="home",
+        site_root="",
+        show_hero=True,
+    )
+    render_page(
+        env,
+        "scholarship.html",
+        "scholarship/index.html",
+        **base_context,
+        current_page="scholarship",
+        site_root="../",
+        show_hero=False,
+    )
+    render_page(
+        env,
+        "cv.html",
+        "cv/index.html",
+        **base_context,
+        current_page="cv",
+        site_root="../",
+        show_hero=False,
+    )
+    render_page(
+        env,
+        "writing.html",
+        "writing/index.html",
+        **base_context,
+        current_page="writing",
+        site_root="../",
+        show_hero=False,
+    )
+    render_page(
+        env,
+        "about.html",
+        "about/index.html",
+        **base_context,
+        current_page="about",
+        site_root="../",
+        show_hero=False,
+    )
+    for post in writing_posts:
+        render_page(
+            env,
+            "post.html",
+            f"writing/{post['slug']}/index.html",
+            **base_context,
+            post=post,
+            current_page="writing",
+            site_root="../../",
+            show_hero=False,
+        )
+    print("[6/6] Rendered site pages.")
 
     # ── 6. Copy static assets ───────────────────────────────────────────
     print("\n      Writing static assets …")

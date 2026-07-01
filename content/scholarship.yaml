@@ -1,0 +1,32 @@
+title: "Research, presentations, and public-facing scholarship"
+
+summary: |
+  My work sits at the intersection of medical education, healthcare systems, and data science. I am especially interested in how institutional incentives shape the path into medicine and how large datasets can make those patterns visible.
+
+featured_project:
+  title: "Rising Matriculation Age: The Cost of Delay"
+  status: "Featured Project"
+  paper_url: "https://ee346dc8-6ad7-42fc-94a5-4764ad408f5a.usrfiles.com/ugd/ee346d_d6eafc3399364a738b9aa1ebca6de4b2.pdf"
+  video_url: "https://www.youtube.com/watch?v=x3bERUBkRR8"
+  repo_url: "https://github.com/arkeshdas/med-admissions-gap-year-analysis"
+
+abstract: |
+  This project examines how the path to becoming a physician is changing, with a focus on the growing expectation of gap years before medical school. By analyzing national medical school admissions and survey data, I study how delayed matriculation affects physician workforce timing and the return on public investment in medical training.
+
+  The central argument is that individual admissions choices can scale into system-level consequences. A one-year delay may feel small for an applicant, but across a national cohort it changes when physicians enter practice and how many physician-years are available to patients over time.
+
+sections:
+  - title: "Medical Education Systems"
+    body: |
+      I am interested in the policies and incentives that shape who enters medicine, when they enter, and what barriers accumulate along the way. The gap-year project began from a question many pre-med students and educators recognize anecdotally: the path to medical school feels longer and more competitive, but the system-level cost is rarely measured directly.
+
+  - title: "Clinical Data Work"
+    body: |
+      Alongside medical education research, I am building experience with electronic medical record datasets and retrospective clinical analysis. These projects are helping me connect statistical methods, reproducible workflows, and patient-centered questions in a way I hope to continue during medical school.
+
+  - title: "Communication"
+    body: |
+      I care about making research understandable beyond the people who already work in a field. Presentations, visualizations, and plain-language writing are part of the work, not an afterthought.
+
+future_directions: |
+  I plan to keep developing this work in two directions: deeper analysis of medical education pipelines and more clinical research using patient-level datasets. Longer term, I want my scholarship to be technically rigorous, useful to clinicians and educators, and clear enough for broader audiences to engage with.

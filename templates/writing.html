@@ -1,5 +1,14 @@
-<section id="writing" class="section writing-section">
-  <h2>Writing</h2>
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section page-intro">
+  <p class="page-kicker">Writing</p>
+  <h1>Writing</h1>
+  <p class="page-summary">Essays, research notes, and longer-form writing collected in one place.</p>
+</section>
+
+<section class="section writing-section">
+  <h2>All Posts</h2>
 
   <div class="writing-list">
     {% for post in writing_posts %}
@@ -26,3 +35,4 @@
     {% endfor %}
   </div>
 </section>
+{% endblock %}

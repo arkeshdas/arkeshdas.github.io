@@ -6,18 +6,21 @@
   <title>{{ site_title }}</title>
 
   <!-- Built stylesheet: base layout plus the configured theme -->
-  <link rel="stylesheet" href="css/site.css?v={{ asset_version }}" />
+  <link rel="stylesheet" href="{{ site_root }}css/site.css?v={{ asset_version }}" />
 </head>
 <body>
 
   <header class="site-header">
     <nav class="site-nav">
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
-      <a href="#writing">Writing</a>
-      <a href="#contact">Contact</a>
+      <a href="{{ site_root or './' }}">Home</a>
+      <a href="{{ site_root }}scholarship/">Scholarship</a>
+      <a href="{{ site_root }}cv/">CV &amp; Experience</a>
+      <a href="{{ site_root }}writing/">Writing</a>
+      <a href="{{ site_root }}about/">About</a>
+      <a href="{{ site_root }}#contact">Contact</a>
     </nav>
 
+    {% if show_hero %}
     <div class="hero">
       {% if student.headshot %}
       <div class="hero-media">
@@ -63,6 +66,7 @@
         </div>
       </div>
     </div>
+    {% endif %}
   </header>
 
   <!-- ===== Main content (filled in by child templates) ===== -->

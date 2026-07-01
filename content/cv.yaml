@@ -1,0 +1,67 @@
+title: "CV & Experience"
+
+summary: "A reverse-chronological overview of research, leadership, clinical, and mentoring experiences."
+
+timeline:
+  - date: "2026"
+    category: "Education"
+    title: "Incoming Medical Student"
+    organization: "University of Toledo College of Medicine and Life Sciences"
+    description: |
+      Accepted through the MedStart program and preparing to begin medical school in July 2026.
+
+  - date: "2025-2026"
+    category: "Research"
+    title: "Medical Admissions Gap Year Analysis"
+    organization: "Independent research project"
+    description: |
+      Analyzed national admissions and matriculation trends to study how gap years affect physician workforce timing. Developed a physician-years framework to communicate the system-level impact of delayed matriculation.
+
+  - date: "2024-2026"
+    category: "Clinical"
+    title: "Neurosurgery Medical Assistant"
+    organization: "Clinical experience"
+    description: |
+      Supported patient-facing clinical workflows while developing a closer understanding of how care delivery, documentation, and clinical decision-making interact in practice.
+
+  - date: "2024-2025"
+    category: "Research"
+    title: "Cesario Lab"
+    organization: "Michigan State University"
+    description: |
+      Applied data science and statistical tools to psychology research questions, including work related to stereotypes, bias, and human behavior.
+
+  - date: "2024-2025"
+    category: "Leadership"
+    title: "Research Ambassador"
+    organization: "Michigan State University"
+    description: |
+      Helped support undergraduate research programming, reviewed student presentation materials, and engaged with presenters across a wide range of disciplines.
+
+  - date: "2023-2025"
+    category: "Mentorship"
+    title: "Vice President"
+    organization: "Honors Times Two"
+    description: |
+      Continued mentoring local elementary students and helped the program grow while focusing on education, mentorship, and sustainable service.
+
+  - date: "2023-2025"
+    category: "Leadership"
+    title: "PhiDE Leadership"
+    organization: "Phi Delta Epsilon"
+    description: |
+      Contributed to pre-medical community building, peer support, and leadership within a medical student-oriented organization.
+
+  - date: "2022-2024"
+    category: "Research"
+    title: "Hamberger Lab"
+    organization: "Michigan State University"
+    description: |
+      Gained hands-on research experience using molecular biology techniques that helped connect classroom concepts with real laboratory work.
+
+  - date: "2022-2026"
+    category: "Education"
+    title: "B.S. Biotechnology and Data Science"
+    organization: "Michigan State University"
+    description: |
+      Studied biotechnology, data science, statistics, programming, and scientific computing with an emphasis on applying computational tools to biological and healthcare questions.

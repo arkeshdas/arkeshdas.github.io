@@ -36,15 +36,22 @@ a:hover {
   color: #00113f;
 }
 
+.page-kicker {
+  background: #ffcc00;
+  color: #00113f;
+}
+
 .hero-headshot {
   box-shadow: 0 18px 42px rgba(0, 17, 63, 0.14);
 }
 
 .hero-current,
 .hero-tagline,
+.page-summary,
 .project-summary,
 .writing-summary,
 .writing-meta,
+.timeline-organization,
 .contact-list {
   color: rgba(0, 17, 63, 0.74);
 }
@@ -61,6 +68,11 @@ a:hover {
 }
 
 .about-card,
+.feature-card,
+.info-card,
+.timeline-card,
+.story-block,
+.post-page,
 .contact-form,
 .writing-card {
   background: rgba(211, 192, 173, 0.34);
@@ -87,6 +99,10 @@ a:hover {
 }
 
 .project-title,
+.feature-card h3,
+.info-card h3,
+.timeline-card h3,
+.story-block h3,
 .writing-title {
   color: #00113f;
 }
@@ -103,6 +119,7 @@ a:hover {
 }
 
 .detail-block h4,
+.timeline-date,
 .contact-label {
   color: #06477d;
 }

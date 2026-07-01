@@ -17,10 +17,14 @@ uv run python serve.py
 ```text
 portfolio_config.yaml      Site config, theme, project order, writing order
 content/arkesh.yaml        Profile, hero, contact, paper, featured video
+content/scholarship.yaml   Research and public scholarship page
+content/cv.yaml            Reverse-chronological CV / experience timeline
+content/about.yaml         Longer narrative about page
 content/projects/*.yaml    Project cards
-content/blog/*.yaml        Writing entries
+content/blog/*.yaml        Writing entries and self-hosted post bodies
 templates/base.html        Page shell, nav, hero, footer
-templates/index.html       Section order
+templates/index.html       Home page section order
+templates/*.html           Detail page and blog post templates
 templates/sections/        Individual page sections
 static/css/base.css        Layout, typography, responsiveness, print rules
 static/css/themes/*.css    Theme colors, surfaces, borders, shadows
@@ -28,7 +32,16 @@ static/img/                Source images referenced from YAML
 docs/                      Generated site for deployment
 ```
 
-The build renders HTML, copies referenced images into `docs/`, skips dotfiles, and writes one deploy stylesheet:
+The build renders HTML pages, copies referenced images into `docs/`, skips dotfiles, and writes one deploy stylesheet:
+
+```text
+docs/index.html
+docs/scholarship/index.html
+docs/cv/index.html
+docs/writing/index.html
+docs/writing/<slug>/index.html
+docs/about/index.html
+```
 
 ```text
 docs/css/site.css = static/css/base.css + selected theme
@@ -48,6 +61,10 @@ projects:
 
 writing_posts:
   - content/blog/my_post.yaml
+
+scholarship_file: content/scholarship.yaml
+cv_file: content/cv.yaml
+about_file: content/about.yaml
 
 theme: clinical
 site_title: "Your Name | Portfolio"
@@ -127,10 +144,20 @@ Writing entries live in `content/blog/` and use:
 title:
 date:
 short_summary:
+slug:
+content:
 post_url:
 ```
 
-Writing order is controlled by `portfolio_config.yaml`. The first writing item is styled as the featured item.
+Writing order is controlled by `portfolio_config.yaml`. The first writing item is styled as the featured item on the home page and writing archive.
+
+`content` is rendered as the full self-hosted post at:
+
+```text
+docs/writing/<slug>/index.html
+```
+
+If `slug` is omitted, the build uses the YAML filename. `post_url` is optional and should point to the original external version or related PDF when one exists.
 
 ## Themes
 

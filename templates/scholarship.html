@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section page-intro">
+  <p class="page-kicker">Scholarship</p>
+  <h1>{{ scholarship.title }}</h1>
+  {% if scholarship.summary %}
+  <div class="page-summary">{{ scholarship.summary | safe }}</div>
+  {% endif %}
+</section>
+
+<section class="section scholarship-feature">
+  <h2>Featured Project</h2>
+  <article class="feature-card">
+    <div class="feature-card-header">
+      <p class="writing-meta">{{ scholarship.featured_project.status }}</p>
+      <h3>{{ scholarship.featured_project.title }}</h3>
+    </div>
+
+    {% if scholarship.abstract %}
+    <div class="article-content">{{ scholarship.abstract | safe }}</div>
+    {% endif %}
+
+    <div class="feature-actions">
+      {% if scholarship.featured_project.paper_url %}
+      <a href="{{ scholarship.featured_project.paper_url }}" target="_blank" rel="noopener" class="btn btn-accent">Read Paper</a>
+      {% endif %}
+      {% if scholarship.featured_project.video_url %}
+      <a href="{{ scholarship.featured_project.video_url }}" target="_blank" rel="noopener" class="btn btn-secondary">Watch Talk</a>
+      {% endif %}
+      {% if scholarship.featured_project.repo_url %}
+      <a href="{{ scholarship.featured_project.repo_url }}" target="_blank" rel="noopener" class="btn btn-repo">View Repo</a>
+      {% endif %}
+    </div>
+  </article>
+</section>
+
+{% if scholarship.sections %}
+<section class="section">
+  <h2>Work in Context</h2>
+  <div class="info-grid">
+    {% for section in scholarship.sections %}
+    <article class="info-card">
+      <h3>{{ section.title }}</h3>
+      <div class="article-content">{{ section.body | safe }}</div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if scholarship.future_directions %}
+<section class="section">
+  <h2>Future Directions</h2>
+  <div class="about-card single-column">
+    <div class="article-content">{{ scholarship.future_directions | safe }}</div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

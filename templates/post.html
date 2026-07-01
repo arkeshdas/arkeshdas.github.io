@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="section post-page">
+  <div class="page-intro">
+    <p class="page-kicker">Writing</p>
+    {% if post.date %}
+    <p class="writing-meta">{{ post.date }}</p>
+    {% endif %}
+    <h1>{{ post.title }}</h1>
+    {% if post.short_summary %}
+    <p class="page-summary">{{ post.short_summary }}</p>
+    {% endif %}
+  </div>
+
+  {% if post.content %}
+  <div class="article-content post-content">{{ post.content | safe }}</div>
+  {% else %}
+  <div class="article-content post-content">
+    <p>This entry currently links to an external document.</p>
+  </div>
+  {% endif %}
+
+  <div class="feature-actions">
+    <a href="{{ site_root }}writing/" class="btn btn-secondary">Back to Writing</a>
+    {% if post.post_url %}
+    <a href="{{ post.post_url }}" target="_blank" rel="noopener" class="btn btn-primary">Open Original</a>
+    {% endif %}
+  </div>
+</article>
+{% endblock %}
