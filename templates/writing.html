@@ -12,7 +12,7 @@
 
   <div class="writing-list">
     {% for post in writing_posts %}
-    <article class="writing-card {% if loop.first %}writing-featured{% else %}writing-secondary{% endif %}">
+    <article class="writing-card {% if post.featured %}writing-featured{% else %}writing-secondary{% endif %}">
       <div class="writing-body">
         {% if post.date %}
         <p class="writing-meta">

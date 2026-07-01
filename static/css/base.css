@@ -158,8 +158,8 @@ img {
 
 .page-intro h1 {
   max-width: 860px;
-  font-size: clamp(2.15rem, 4.5vw, 3.35rem);
-  line-height: 1.04;
+  font-size: clamp(2.375rem, 5.25vw, 4.025rem);
+  line-height: 1.01;
   font-weight: 800;
   letter-spacing: 0;
 }
@@ -822,7 +822,7 @@ details[open] summary::before {
   }
 
   .page-intro h1 {
-    font-size: clamp(2.1rem, 12vw, 3rem);
+    font-size: clamp(2.2rem, 11vw, 3.25rem);
   }
 }
 

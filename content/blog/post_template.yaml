@@ -1,5 +1,6 @@
 title: "My First Blog Post"
 date: "Month DD, YYYY"
+featured: false
 has_original_post: false
 original_post_url: ""
 short_summary: >
