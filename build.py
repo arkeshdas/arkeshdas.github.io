@@ -340,6 +340,8 @@ def build() -> None:
         markdown_field(section, "body")
     for item in cv.get("timeline", []):
         markdown_field(item, "description")
+    for award in cv.get("awards", []):
+        markdown_field(award, "description")
     for section in about_page.get("sections", []):
         markdown_field(section, "body")
     print("[5/6] Loaded page content.")

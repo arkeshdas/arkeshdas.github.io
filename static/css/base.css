@@ -304,6 +304,12 @@ img {
   gap: 0.45rem;
 }
 
+.skill-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
 .tech-badge {
   font-size: 0.76rem;
   font-weight: 700;

@@ -29,4 +29,35 @@
     {% endfor %}
   </div>
 </section>
+
+{% if cv.awards %}
+<section class="section">
+  <h2>Honors &amp; Awards</h2>
+  <div class="info-grid">
+    {% for award in cv.awards %}
+    <article class="info-card">
+      <p class="writing-meta">{{ award.date }}</p>
+      <h3>{{ award.title }}</h3>
+      {% if award.issuer %}
+      <p class="timeline-organization">{{ award.issuer }}</p>
+      {% endif %}
+      {% if award.description %}
+      <div class="article-content">{{ award.description | safe }}</div>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if cv.skills %}
+<section class="section">
+  <h2>Skills</h2>
+  <div class="skill-cloud">
+    {% for skill in cv.skills %}
+    <span class="tech-badge">{{ skill }}</span>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
 {% endblock %}
