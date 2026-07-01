@@ -31,7 +31,9 @@
         {% endif %}
 
         <div class="writing-links">
-          <a href="{{ site_root }}{{ post.permalink }}" class="btn btn-secondary">Read Essay</a>
+          <a href="{{ site_root }}{{ post.permalink }}" class="btn btn-secondary">
+            {% if post.has_original_post and post.original_post_url %}Read More{% else %}Read Essay{% endif %}
+          </a>
           {% if post.has_original_post and post.original_post_url %}
           <a href="{{ post.original_post_url }}" target="_blank" rel="noopener" class="btn btn-primary">Original Post</a>
           {% endif %}
