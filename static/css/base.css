@@ -445,6 +445,15 @@ details[open] summary::before {
   font-weight: 750;
 }
 
+.writing-date-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.writing-date-link:hover {
+  text-decoration: underline;
+}
+
 .writing-title {
   grid-column: 2;
   font-size: 1.12rem;
@@ -471,6 +480,10 @@ details[open] summary::before {
 
 .writing-summary {
   max-width: 760px;
+}
+
+.writing-links .btn {
+  width: fit-content;
 }
 
 .feature-card,

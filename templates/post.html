@@ -5,7 +5,13 @@
   <div class="page-intro">
     <p class="page-kicker">Writing</p>
     {% if post.date %}
-    <p class="writing-meta">{{ post.date }}</p>
+    <p class="writing-meta">
+      {% if post.has_original_post and post.original_post_url %}
+      <a href="{{ post.original_post_url }}" target="_blank" rel="noopener" class="writing-date-link">{{ post.date }}</a>
+      {% else %}
+      {{ post.date }}
+      {% endif %}
+    </p>
     {% endif %}
     <h1>{{ post.title }}</h1>
     {% if post.short_summary %}
@@ -23,8 +29,8 @@
 
   <div class="feature-actions">
     <a href="{{ site_root }}writing/" class="btn btn-secondary">Back to Writing</a>
-    {% if post.post_url %}
-    <a href="{{ post.post_url }}" target="_blank" rel="noopener" class="btn btn-primary">Open Original</a>
+    {% if post.has_original_post and post.original_post_url %}
+    <a href="{{ post.original_post_url }}" target="_blank" rel="noopener" class="btn btn-primary">Original Post</a>
     {% endif %}
   </div>
 </article>

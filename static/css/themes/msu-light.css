@@ -166,7 +166,7 @@ a:hover {
   box-shadow: none;
 }
 
-.writing-links a {
+.writing-links a:not(.btn) {
   font-weight: 800;
 }
 

@@ -317,6 +317,10 @@ def build() -> None:
         post["slug"] = unique_slug(post.get("slug") or slugify(p.stem), used_post_slugs)
         post["source_path"] = rel
         post["permalink"] = f"writing/{post['slug']}/"
+        if "has_original_post" not in post:
+            post["has_original_post"] = bool(post.get("post_url") or post.get("original_post_url"))
+        if not post.get("original_post_url") and post.get("post_url"):
+            post["original_post_url"] = post["post_url"]
 
         # convert markdown to HTML for content
         markdown_field(post, "content")

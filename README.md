@@ -145,8 +145,9 @@ title:
 date:
 short_summary:
 slug:
+has_original_post:
+original_post_url:
 content:
-post_url:
 ```
 
 Writing order is controlled by `portfolio_config.yaml`. The first writing item is styled as the featured item on the home page and writing archive.
@@ -157,7 +158,7 @@ Writing order is controlled by `portfolio_config.yaml`. The first writing item i
 docs/writing/<slug>/index.html
 ```
 
-If `slug` is omitted, the build uses the YAML filename. `post_url` is optional and should point to the original external version or related PDF when one exists.
+If `slug` is omitted, the build uses the YAML filename. Set `has_original_post: true` and provide `original_post_url` when the post has an original external version or related PDF. Use `has_original_post: false` for writing that only lives on this site.
 
 ## Themes
 

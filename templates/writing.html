@@ -3,8 +3,8 @@
 {% block content %}
 <section class="section page-intro">
   <p class="page-kicker">Writing</p>
-  <h1>Writing</h1>
-  <p class="page-summary">Essays, research notes, and longer-form writing collected in one place.</p>
+  <h1>Essays and Thoughts</h1>
+  <p class="page-summary">All my longer-form writing content in one place.</p>
 </section>
 
 <section class="section writing-section">
@@ -15,7 +15,13 @@
     <article class="writing-card {% if loop.first %}writing-featured{% else %}writing-secondary{% endif %}">
       <div class="writing-body">
         {% if post.date %}
-        <p class="writing-meta">{{ post.date }}</p>
+        <p class="writing-meta">
+          {% if post.has_original_post and post.original_post_url %}
+          <a href="{{ post.original_post_url }}" target="_blank" rel="noopener" class="writing-date-link">{{ post.date }}</a>
+          {% else %}
+          {{ post.date }}
+          {% endif %}
+        </p>
         {% endif %}
 
         <h3 class="writing-title">{{ post.title }}</h3>
@@ -25,9 +31,9 @@
         {% endif %}
 
         <div class="writing-links">
-          <a href="{{ site_root }}{{ post.permalink }}">Read on site</a>
-          {% if post.post_url %}
-          <a href="{{ post.post_url }}" target="_blank" rel="noopener">Original link</a>
+          <a href="{{ site_root }}{{ post.permalink }}" class="btn btn-secondary">Read Essay</a>
+          {% if post.has_original_post and post.original_post_url %}
+          <a href="{{ post.original_post_url }}" target="_blank" rel="noopener" class="btn btn-primary">Original Post</a>
           {% endif %}
         </div>
       </div>
