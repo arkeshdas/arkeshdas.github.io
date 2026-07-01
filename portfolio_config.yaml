@@ -33,6 +33,7 @@ projects:
 # These will appear in the Writing section on the main page.
 # Order here controls the order on the website (top to bottom).
 writing_posts:
+  - content/blog/love-is-dead-in-medicine.yaml
   - content/blog/rising-matriculation-age.yaml
   - content/blog/finger.yaml
   - content/blog/ice-cream.yaml
@@ -50,4 +51,4 @@ theme: clinical
 site_title: "Arkesh Das | Portfolio"
 
 # Bump this when CSS changes so browsers do not reuse stale cached styles.
-asset_version: "2026-06-30-writing-button-labels"
+asset_version: "2026-06-30-love-is-dead"
