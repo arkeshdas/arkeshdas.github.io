@@ -6,7 +6,7 @@
   <title>Arkesh Das | Portfolio</title>
 
   <!-- Built stylesheet: base layout plus the configured theme -->
-  <link rel="stylesheet" href="../css/site.css?v=2026-06-30-cv-refresh" />
+  <link rel="stylesheet" href="../css/site.css?v=2026-06-30-cv-timeline-reveal" />
 </head>
 <body>
 
@@ -14,7 +14,7 @@
     <nav class="site-nav">
       <a href="../">Home</a>
       <a href="../scholarship/">Scholarship</a>
-      <a href="../cv/">CV &amp; Experience</a>
+      <a href="../cv/">CV</a>
       <a href="../writing/">Writing</a>
       <a href="../about/">About</a>
       <a href="../#contact">Contact</a>
@@ -27,8 +27,8 @@
   <main class="site-main">
     
 <section class="section page-intro">
-  <p class="page-kicker">CV &amp; Experience</p>
-  <h1>CV &amp; Experience</h1>
+  <p class="page-kicker">CV</p>
+  <h1>Experiences</h1>
   
   <p class="page-summary">A reverse-chronological overview of education, research, clinical work, leadership, service, and other experience.</p>
   
@@ -421,6 +421,27 @@
   </div>
 </section>
 
+<script>
+  (() => {
+    const items = document.querySelectorAll(".timeline-item");
+    if (!items.length) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      items.forEach((item) => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
+
+    items.forEach((item) => observer.observe(item));
+  })();
+</script>
 
   </main>
 
