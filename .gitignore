@@ -24,3 +24,4 @@ __pycache__/
 ## from unauthorized access.
 .env
 .env.*
+content/blog/love-is-dead-in-medicine.yaml
