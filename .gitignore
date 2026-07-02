@@ -25,3 +25,5 @@ __pycache__/
 .env
 .env.*
 content/blog/love-is-dead-in-medicine.yaml
+docs/writing/love-is-dead-in-medicine.yaml
+docs/writing/love-is-dead-in-medicine/index.html
