@@ -27,3 +27,6 @@ __pycache__/
 
 # Local writing drafts that should not be published until promoted.
 content/drafts/
+
+# Local planning notes.
+TODO.md

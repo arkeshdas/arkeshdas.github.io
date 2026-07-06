@@ -512,6 +512,8 @@ def build() -> None:
     print("\n      Writing static assets …")
     copy_referenced_assets(student, projects, writing_posts)
     write_combined_styles(theme)
+    (DOCS_DIR / ".nojekyll").write_text("", encoding="utf-8")
+    print("  wrote   .nojekyll")
 
     print("\n✓  Build complete.  Open docs/index.html or run: uv run python serve.py")
     print("=" * 55)
