@@ -58,7 +58,12 @@ a:hover {
   border-color: rgba(241, 243, 245, 0.22);
 }
 
-.featured-video-frame,
+.featured-video-frame {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(241, 243, 245, 0.14);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
 .about-card,
 .feature-card,
 .info-card,
@@ -199,4 +204,8 @@ a:hover {
   background: #171717;
   color: rgba(241, 243, 245, 0.7);
   border-top: 1px solid #333333;
+}
+
+.site-footer a {
+  color: #79b8ff;
 }

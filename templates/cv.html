@@ -62,13 +62,16 @@
 {% endif %}
 <script>
   (() => {
+    const timeline = document.querySelector(".timeline");
     const items = document.querySelectorAll(".timeline-item");
-    if (!items.length) return;
+    if (!timeline || !items.length) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
       items.forEach((item) => item.classList.add("is-visible"));
       return;
     }
+
+    timeline.classList.add("is-reveal-enabled");
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {

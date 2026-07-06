@@ -374,6 +374,13 @@ details[open] summary::before {
   margin-top: 0.35rem;
 }
 
+.article-content img {
+  width: min(100%, 760px);
+  height: auto;
+  margin: 1.35rem auto;
+  border-radius: var(--card-radius);
+}
+
 .project-links,
 .writing-links {
   display: flex;
@@ -551,12 +558,15 @@ details[open] summary::before {
   grid-template-columns: minmax(120px, 0.22fr) 1fr;
   gap: 1.25rem;
   align-items: start;
+}
+
+.timeline.is-reveal-enabled .timeline-item {
   opacity: 0;
   transform: translateY(1.1rem);
   transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
-.timeline-item.is-visible {
+.timeline.is-reveal-enabled .timeline-item.is-visible {
   opacity: 1;
   transform: translateY(0);
 }

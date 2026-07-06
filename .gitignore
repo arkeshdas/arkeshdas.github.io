@@ -24,5 +24,6 @@ __pycache__/
 ## from unauthorized access.
 .env
 .env.*
-content/blog/love-is-dead-in-medicine.yaml
-docs/writing/love-is-dead-in-medicine/
+
+# Local writing drafts that should not be published until promoted.
+content/drafts/

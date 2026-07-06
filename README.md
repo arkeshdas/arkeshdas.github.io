@@ -12,6 +12,14 @@ uv run python serve.py
 
 `serve.py` previews the generated `docs/` site locally.
 
+The same workflow is available through `make`:
+
+```bash
+make sync
+make build
+make serve
+```
+
 ## How It Works
 
 ```text
@@ -22,6 +30,7 @@ content/cv.yaml            Reverse-chronological CV / experience timeline
 content/about.yaml         Longer narrative about page
 content/projects/*.yaml    Project cards
 content/blog/*.yaml        Writing entries and self-hosted post bodies
+content/drafts/            Local-only drafts ignored by git
 templates/base.html        Page shell, nav, hero, footer
 templates/index.html       Home page section order
 templates/*.html           Detail page and blog post templates
@@ -68,10 +77,9 @@ about_file: content/about.yaml
 
 theme: clinical
 site_title: "Your Name | Portfolio"
-asset_version: "2026-06-03-clean-refactor"
 ```
 
-`asset_version` is appended to the CSS URL. Bump it when CSS changes so browsers do not reuse stale cached styles.
+The build appends an automatic CSS fingerprint to the stylesheet URL, so browsers do not reuse stale cached styles after CSS changes.
 
 ## Profile Fields
 
@@ -143,14 +151,17 @@ Writing entries live in `content/blog/` and use:
 ```yaml
 title:
 date:
+featured:
 short_summary:
 slug:
 has_original_post:
 original_post_url:
+image_path:
+images:
 content:
 ```
 
-Writing order is controlled by `portfolio_config.yaml`. The first writing item is styled as the featured item on the home page and writing archive.
+Writing order is controlled by `portfolio_config.yaml`. Set `featured: true` on the writing item that should receive the highlighted card treatment.
 
 `content` is rendered as the full self-hosted post at:
 
@@ -159,6 +170,16 @@ docs/writing/<slug>/index.html
 ```
 
 If `slug` is omitted, the build uses the YAML filename. Set `has_original_post: true` and provide `original_post_url` when the post has an original external version or related PDF. Use `has_original_post: false` for writing that only lives on this site.
+
+For local-only draft posts, put YAML files in `content/drafts/`. Drafts are ignored by git and are not published unless you move them into `content/blog/` and list them in `portfolio_config.yaml`.
+
+Blog images can be placed in `static/img/` and referenced inside Markdown:
+
+```markdown
+![Alt text](img/example.png)
+```
+
+The build copies local images referenced by Markdown image syntax, `image_path`, or `images`.
 
 ## Themes
 
@@ -202,6 +223,8 @@ All theme files cover the same site components, so changing `theme:` should pres
 - placeholder Formspree endpoints
 - video URLs that cannot be converted to embeds
 
+The build also validates required YAML fields, rejects content paths that point outside the repository, and computes the stylesheet cache version from the source CSS.
+
 ## Deployment
 
 This repo is set up for GitHub Pages from `/docs`.
@@ -209,7 +232,7 @@ This repo is set up for GitHub Pages from `/docs`.
 Typical workflow:
 
 ```bash
-uv run python build.py
+make build
 git add .
 git commit -m "update portfolio"
 git push origin main

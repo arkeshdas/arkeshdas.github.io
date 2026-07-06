@@ -165,10 +165,6 @@ a:hover {
   color: #00113f;
 }
 
-.writing-card {
-  border-color: rgba(0, 17, 63, 0.16);
-}
-
 .writing-featured {
   border-left: 4px solid #ffcc00;
 }
@@ -211,4 +207,8 @@ a:hover {
   background: #d3c0ad;
   color: rgba(0, 17, 63, 0.78);
   border-top: 1px solid rgba(0, 17, 63, 0.16);
+}
+
+.site-footer a {
+  color: #06477d;
 }

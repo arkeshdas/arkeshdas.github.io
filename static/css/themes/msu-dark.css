@@ -58,7 +58,12 @@ a:hover {
   border-color: rgba(123, 189, 0, 0.45);
 }
 
-.featured-video-frame,
+.featured-video-frame {
+  background: rgba(24, 69, 59, 0.78);
+  border-color: rgba(123, 189, 0, 0.24);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+}
+
 .about-card,
 .feature-card,
 .info-card,

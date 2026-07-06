@@ -33,12 +33,12 @@ projects:
 # These will appear in the Writing section on the main page.
 # Order here controls the order on the website (top to bottom).
 writing_posts:
-  - content/blog/rising-matriculation-age.yaml
-  - content/blog/dimensions-are-a-social-construct.yaml
-  - content/blog/karma.yaml
-  - content/blog/finger.yaml
   - content/blog/ice-cream.yaml
   - content/blog/how-alive-are-we.yaml
+  - content/blog/finger.yaml
+  - content/blog/karma.yaml
+  - content/blog/dimensions-are-a-social-construct.yaml
+  - content/blog/rising-matriculation-age.yaml
 
 
 # --- Theme ---
@@ -51,6 +51,3 @@ theme: clinical
 # --- Site metadata ---
 # Used in the HTML <title> tag and browser tab.
 site_title: "Arkesh Das | Portfolio"
-
-# Bump this when CSS changes so browsers do not reuse stale cached styles.
-asset_version: "2026-07-06-karma-post"

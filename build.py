@@ -15,6 +15,7 @@ After running this script, open docs/index.html in a browser or run
 to preview the site locally.
 """
 
+import hashlib
 import re
 import shutil
 import sys
@@ -44,7 +45,17 @@ CONFIG_FILE   = ROOT / "portfolio_config.yaml"
 def load_yaml(path: Path) -> dict:
     """Read a YAML file and return its contents as a Python dictionary."""
     with open(path, encoding="utf-8") as f:
-        return yaml.safe_load(f)
+        return yaml.safe_load(f) or {}
+
+
+def repo_path(rel_path: str, label: str) -> Path:
+    """Resolve a repo-relative path and reject absolute/outside paths."""
+    path = (ROOT / rel_path).resolve()
+    try:
+        path.relative_to(ROOT.resolve())
+    except ValueError:
+        sys.exit(f"Error: {label} path points outside the repo: {rel_path}")
+    return path
 
 
 def youtube_embed_url(url: str, start_seconds: int = 0, captions: bool = False, captions_lang: str = "en") -> str:
@@ -83,7 +94,7 @@ def clean_docs_dir() -> None:
 
 def should_copy_static_file(path: Path) -> bool:
     """Skip local metadata files that should not be published."""
-    return not any(part.startswith(".") for part in path.parts)
+    return not path.is_absolute() and ".." not in path.parts and not any(part.startswith(".") for part in path.parts)
 
 
 def copy_static_asset(asset_path: str) -> None:
@@ -93,6 +104,7 @@ def copy_static_asset(asset_path: str) -> None:
 
     relative = Path(asset_path)
     if not should_copy_static_file(relative):
+        print(f"  [warn] Skipping unsafe static asset path: {asset_path}")
         return
 
     src = STATIC_DIR / relative
@@ -105,12 +117,51 @@ def copy_static_asset(asset_path: str) -> None:
     print(f"  copied  static/{relative}")
 
 
-def copy_referenced_assets(student: dict, projects: list[dict]) -> None:
+def markdown_image_paths(text: str) -> list[str]:
+    """Return local static image paths referenced by Markdown image syntax."""
+    paths = []
+    for match in re.finditer(r"!\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)", text or ""):
+        path = match.group(1).strip()
+        if path.startswith(("http://", "https://", "data:", "#")):
+            continue
+        paths.append(path.removeprefix("static/"))
+    return paths
+
+
+def copy_post_assets(post: dict) -> None:
+    """Copy assets named by a writing post."""
+    copy_static_asset(post.get("image_path"))
+
+    for image in post.get("images", []):
+        if isinstance(image, dict):
+            copy_static_asset(image.get("path"))
+        elif isinstance(image, str):
+            copy_static_asset(image)
+
+    for image_path in markdown_image_paths(post.get("raw_content", "")):
+        copy_static_asset(image_path)
+
+
+def copy_referenced_assets(student: dict, projects: list[dict], writing_posts: list[dict]) -> None:
     """Copy only assets referenced by YAML content."""
     copy_static_asset(student.get("headshot"))
 
     for project in projects:
         copy_static_asset(project.get("image_path"))
+
+    for post in writing_posts:
+        copy_post_assets(post)
+
+
+def stylesheet_fingerprint(theme: str) -> str:
+    """Create a cache-busting version from the actual source CSS."""
+    digest = hashlib.sha256()
+    for path in [
+        STATIC_DIR / "css" / "base.css",
+        STATIC_DIR / "css" / "themes" / f"{theme}.css",
+    ]:
+        digest.update(path.read_bytes())
+    return digest.hexdigest()[:12]
 
 
 def write_combined_styles(theme: str) -> None:
@@ -138,12 +189,23 @@ def warn_if_missing_static_asset(asset_path: str, context: str) -> None:
     if not asset_path:
         return
 
+    if not should_copy_static_file(Path(asset_path)):
+        print(f"  [warn] Unsafe asset path for {context}: {asset_path}")
+        return
+
     p = STATIC_DIR / asset_path
     if not p.exists():
         print(f"  [warn] Missing asset for {context}: static/{asset_path}")
 
 
+def require_fields(item: dict, fields: list[str], context: str) -> None:
+    missing = [field for field in fields if item.get(field) in (None, "")]
+    if missing:
+        sys.exit(f"Error: {context} is missing required field(s): {', '.join(missing)}")
+
+
 def validate_student(student: dict) -> None:
+    require_fields(student, ["name", "role", "headline"], "student profile")
     warn_if_missing_static_asset(student.get("headshot"), "student headshot")
 
     endpoint = student.get("formspree_endpoint", "")
@@ -159,7 +221,26 @@ def validate_student(student: dict) -> None:
 def validate_projects(projects: list[dict]) -> None:
     for project in projects:
         title = project.get("title", "Untitled project")
+        require_fields(project, ["title", "short_summary"], f"project '{title}'")
         warn_if_missing_static_asset(project.get("image_path"), title)
+
+
+def validate_writing_post(post: dict) -> None:
+    title = post.get("title", "Untitled post")
+    require_fields(post, ["title", "date", "short_summary"], f"writing post '{title}'")
+
+    if post.get("has_original_post") and not post.get("original_post_url"):
+        sys.exit(f"Error: writing post '{title}' has_original_post is true but original_post_url is empty.")
+
+    if post.get("original_post_url") and not post.get("has_original_post"):
+        print(f"  [warn] Writing post '{title}' has original_post_url but has_original_post is false.")
+
+    warn_if_missing_static_asset(post.get("image_path"), f"writing post '{title}'")
+    for image in post.get("images", []):
+        image_path = image.get("path") if isinstance(image, dict) else image
+        warn_if_missing_static_asset(image_path, f"writing post '{title}'")
+    for image_path in markdown_image_paths(post.get("raw_content", "")):
+        warn_if_missing_static_asset(image_path, f"writing post '{title}'")
 
 
 def markdown_field(item: dict, field: str) -> None:
@@ -226,7 +307,7 @@ def load_optional_yaml(rel_path: str, label: str) -> dict:
     if not rel_path:
         return {}
 
-    path = ROOT / rel_path
+    path = repo_path(rel_path, label)
     if not path.exists():
         print(f"  [warn] {label} file not found, skipping: {rel_path}")
         return {}
@@ -259,7 +340,6 @@ def build() -> None:
 
     theme       = config.get("theme", "light")
     site_title  = config.get("site_title", "My Portfolio")
-    asset_version = config.get("asset_version", "1")
     student_rel = config.get("student_file", "content/example_student.yaml")
     project_rel = config.get("projects", [])
     writing_rel = config.get("writing_posts", config.get("blog_posts", []))
@@ -270,9 +350,10 @@ def build() -> None:
     theme_path = STATIC_DIR / "css" / "themes" / f"{theme}.css"
     if not theme_path.exists():
         sys.exit(f"Error: theme '{theme}' not found at static/css/themes/{theme}.css")
+    asset_version = stylesheet_fingerprint(theme)
 
     # ── 2. Load student profile ─────────────────────────────────────────
-    student_path = ROOT / student_rel
+    student_path = repo_path(student_rel, "student")
     if not student_path.exists():
         sys.exit(f"Error: student file '{student_rel}' not found.")
 
@@ -293,7 +374,7 @@ def build() -> None:
     # ── 3. Load project files ───────────────────────────────────────────
     projects = []
     for rel in project_rel:
-        p = ROOT / rel
+        p = repo_path(rel, "project")
         if not p.exists():
             print(f"  [warn] Project file not found, skipping: {rel}")
             continue
@@ -308,12 +389,13 @@ def build() -> None:
     writing_posts = []
     used_post_slugs = set()
     for rel in writing_rel:
-        p = ROOT / rel
+        p = repo_path(rel, "writing")
         if not p.exists():
             print(f"  [warn] Writing file not found, skipping: {rel}")
             continue
 
         post = load_yaml(p)
+        post["raw_content"] = post.get("content", "")
         post["slug"] = unique_slug(post.get("slug") or slugify(p.stem), used_post_slugs)
         post["source_path"] = rel
         post["permalink"] = f"writing/{post['slug']}/"
@@ -321,6 +403,7 @@ def build() -> None:
             post["has_original_post"] = bool(post.get("post_url") or post.get("original_post_url"))
         if not post.get("original_post_url") and post.get("post_url"):
             post["original_post_url"] = post["post_url"]
+        validate_writing_post(post)
 
         # convert markdown to HTML for content
         markdown_field(post, "content")
@@ -427,7 +510,7 @@ def build() -> None:
 
     # ── 6. Copy static assets ───────────────────────────────────────────
     print("\n      Writing static assets …")
-    copy_referenced_assets(student, projects)
+    copy_referenced_assets(student, projects, writing_posts)
     write_combined_styles(theme)
 
     print("\n✓  Build complete.  Open docs/index.html or run: uv run python serve.py")
