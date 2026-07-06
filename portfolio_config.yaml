@@ -35,6 +35,7 @@ projects:
 writing_posts:
   - content/blog/rising-matriculation-age.yaml
   - content/blog/dimensions-are-a-social-construct.yaml
+  - content/blog/karma.yaml
   - content/blog/finger.yaml
   - content/blog/ice-cream.yaml
   - content/blog/how-alive-are-we.yaml
@@ -52,4 +53,4 @@ theme: clinical
 site_title: "Arkesh Das | Portfolio"
 
 # Bump this when CSS changes so browsers do not reuse stale cached styles.
-asset_version: "2026-07-06-dimensions-post"
+asset_version: "2026-07-06-karma-post"
