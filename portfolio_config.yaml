@@ -34,6 +34,7 @@ projects:
 # Order here controls the order on the website (top to bottom).
 writing_posts:
   - content/blog/rising-matriculation-age.yaml
+  - content/blog/ggs-no-re.yaml
   - content/blog/dimensions-are-a-social-construct.yaml
   - content/blog/karma.yaml
   - content/blog/finger.yaml
