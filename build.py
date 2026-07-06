@@ -320,6 +320,7 @@ def render_page(env: Environment, template_name: str, output_rel: str, **context
     output_path = DOCS_DIR / output_rel
     output_path.parent.mkdir(parents=True, exist_ok=True)
     rendered = env.get_template(template_name).render(**context)
+    rendered = "\n".join(line.rstrip() for line in rendered.splitlines()) + "\n"
     output_path.write_text(rendered, encoding="utf-8")
     print(f"       rendered: {output_path.relative_to(ROOT)}")
 
