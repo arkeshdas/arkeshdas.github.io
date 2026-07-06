@@ -496,6 +496,7 @@ details[open] summary::before {
 
 .writing-summary {
   max-width: 760px;
+  white-space: pre-line;
 }
 
 .writing-links .btn {
