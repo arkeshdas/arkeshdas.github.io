@@ -33,12 +33,12 @@ projects:
 # These will appear in the Writing section on the main page.
 # Order here controls the order on the website (top to bottom).
 writing_posts:
-  - content/blog/ice-cream.yaml
-  - content/blog/how-alive-are-we.yaml
-  - content/blog/finger.yaml
-  - content/blog/karma.yaml
-  - content/blog/dimensions-are-a-social-construct.yaml
   - content/blog/rising-matriculation-age.yaml
+  - content/blog/dimensions-are-a-social-construct.yaml
+  - content/blog/karma.yaml
+  - content/blog/finger.yaml
+  - content/blog/how-alive-are-we.yaml
+  - content/blog/ice-cream.yaml
 
 
 # --- Theme ---
