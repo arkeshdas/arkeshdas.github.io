@@ -142,7 +142,16 @@ def copy_post_assets(post: dict) -> None:
         copy_static_asset(image_path)
 
 
-def copy_referenced_assets(student: dict, projects: list[dict], writing_posts: list[dict]) -> None:
+def copy_scholarship_assets(scholarship: dict) -> None:
+    """Copy assets named by scholarship page content."""
+    featured = scholarship.get("featured_project", {})
+    copy_static_asset(featured.get("paper_path"))
+
+    for project in scholarship.get("additional_projects", []):
+        copy_static_asset(project.get("poster_url"))
+
+
+def copy_referenced_assets(student: dict, projects: list[dict], writing_posts: list[dict], scholarship: dict) -> None:
     """Copy only assets referenced by YAML content."""
     copy_static_asset(student.get("headshot"))
 
@@ -151,6 +160,8 @@ def copy_referenced_assets(student: dict, projects: list[dict], writing_posts: l
 
     for post in writing_posts:
         copy_post_assets(post)
+
+    copy_scholarship_assets(scholarship)
 
 
 def stylesheet_fingerprint(theme: str) -> str:
@@ -420,6 +431,9 @@ def build() -> None:
 
     for field in ["summary", "abstract", "future_directions"]:
         markdown_field(scholarship, field)
+    for project in scholarship.get("additional_projects", []):
+        for field in ["summary", "role", "abstract", "funding"]:
+            markdown_field(project, field)
     for section in scholarship.get("sections", []):
         markdown_field(section, "body")
     for item in cv.get("timeline", []):
@@ -511,7 +525,7 @@ def build() -> None:
 
     # ── 6. Copy static assets ───────────────────────────────────────────
     print("\n      Writing static assets …")
-    copy_referenced_assets(student, projects, writing_posts)
+    copy_referenced_assets(student, projects, writing_posts, scholarship)
     write_combined_styles(theme)
     (DOCS_DIR / ".nojekyll").write_text("", encoding="utf-8")
     print("  wrote   .nojekyll")
