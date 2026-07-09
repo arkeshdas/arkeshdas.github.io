@@ -1,6 +1,7 @@
 title: "My First Blog Post"
 date: "Month DD, YYYY"
 featured: false
+show_on_home: true
 has_original_post: false
 original_post_url: ""
 image_path: ""
