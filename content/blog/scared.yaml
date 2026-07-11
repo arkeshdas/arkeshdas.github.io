@@ -6,6 +6,13 @@ has_original_post: false
 original_post_url: ""
 image_path: ""
 images: []
+media:
+  - path: "img/blog/letter.jpg"
+    alt: "Handwritten letter with Arkesh Das on the left and July 11, 2026 on the right."
+    caption: ""
+    size: large
+    align: center
+    placement: after_summary
 short_summary: >
   A letter to myself in 2 years.
 

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros/media.html" as media %}
 
 {% block content %}
 <article class="section post-page">
@@ -18,6 +19,8 @@
     <p class="page-summary">{{ post.short_summary }}</p>
     {% endif %}
   </div>
+
+  {{ media.render_media(post.media|default([]), "after_summary", site_root) }}
 
   {% if post.content %}
   <div class="article-content post-content">{{ post.content | safe }}</div>

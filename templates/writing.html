@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros/media.html" as media %}
 
 {% block content %}
 <section class="section page-intro">
@@ -29,6 +30,8 @@
         {% if post.short_summary %}
         <p class="writing-summary">{{ post.short_summary }}</p>
         {% endif %}
+
+        {{ media.render_media(post.media|default([]), "card", site_root, "writing-media") }}
 
         <div class="writing-links">
           <a href="{{ site_root }}{{ post.permalink }}" class="btn btn-secondary">

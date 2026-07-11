@@ -152,12 +152,14 @@ Writing entries live in `content/blog/` and use:
 title:
 date:
 featured:
+show_on_home:
 short_summary:
 slug:
 has_original_post:
 original_post_url:
 image_path:
 images:
+media:
 content:
 ```
 
@@ -179,7 +181,21 @@ Blog images can be placed in `static/img/` and referenced inside Markdown:
 ![Alt text](img/example.png)
 ```
 
-The build copies local images referenced by Markdown image syntax, `image_path`, or `images`.
+For richer placement, use `media`:
+
+```yaml
+media:
+  - path: img/blog/example.jpg
+    alt: "Descriptive alt text."
+    caption: "Optional caption."
+    size: medium
+    align: center
+    placement: after_summary
+```
+
+Supported sizes are `small`, `medium`, `large`, and `full`. Supported alignments are `left`, `center`, and `right`. Use `placement: after_summary` for post pages or `placement: card` for writing cards.
+
+The build copies local images referenced by Markdown image syntax, `image_path`, `images`, or `media`.
 
 ## Themes
 

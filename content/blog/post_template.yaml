@@ -6,6 +6,7 @@ has_original_post: false
 original_post_url: ""
 image_path: ""
 images: []
+media: []
 short_summary: >
   A short summary of the blog post goes here. This can describe what the post
   is about in 1 to 3 sentences.

@@ -138,6 +138,10 @@ def copy_post_assets(post: dict) -> None:
         elif isinstance(image, str):
             copy_static_asset(image)
 
+    for media in post.get("media", []):
+        if isinstance(media, dict):
+            copy_static_asset(media.get("path"))
+
     for image_path in markdown_image_paths(post.get("raw_content", "")):
         copy_static_asset(image_path)
 
@@ -250,6 +254,9 @@ def validate_writing_post(post: dict) -> None:
     for image in post.get("images", []):
         image_path = image.get("path") if isinstance(image, dict) else image
         warn_if_missing_static_asset(image_path, f"writing post '{title}'")
+    for media in post.get("media", []):
+        if isinstance(media, dict):
+            warn_if_missing_static_asset(media.get("path"), f"writing post '{title}'")
     for image_path in markdown_image_paths(post.get("raw_content", "")):
         warn_if_missing_static_asset(image_path, f"writing post '{title}'")
 
