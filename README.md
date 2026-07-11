@@ -1,6 +1,6 @@
 # Professional Portfolio
 
-A small static portfolio generator built with Python, YAML, Jinja2, and CSS. Content lives in YAML files, templates define page sections, and `build.py` generates the deployable site in `docs/` for GitHub Pages.
+A portfolio generator built with Python, YAML, Jinja2, and CSS. Content lives in YAML files, templates define page sections, and `build.py` generates the deployable site in `docs/` for GitHub Pages.
 
 ## Quick Start
 
@@ -163,7 +163,7 @@ media:
 content:
 ```
 
-Writing order is controlled by `portfolio_config.yaml`. Set `featured: true` on the writing item that should receive the highlighted card treatment.
+Writing order is controlled by `portfolio_config.yaml`. Set `featured: true` on the writing item that should receive the highlighted card treatment. Set `show_on_home: false` when a post should remain on the Writing page but stay off the homepage Writing section.
 
 `content` is rendered as the full self-hosted post at:
 
@@ -232,7 +232,7 @@ All theme files cover the same site components, so changing `theme:` should pres
 
 ## Build Hygiene
 
-`build.py` cleans and regenerates `docs/` on every build. It copies only referenced image assets and warns about:
+`build.py` cleans and regenerates `docs/` on every build. It copies only referenced static assets and warns about:
 
 - missing theme files
 - missing static assets referenced in YAML
@@ -248,14 +248,16 @@ This repo is set up for GitHub Pages from `/docs`.
 Typical workflow:
 
 ```bash
-make build
+make check
 git add .
 git commit -m "update portfolio"
 git push origin main
 ```
 
-Then configure GitHub Pages to deploy from:
+GitHub Actions builds the site, uploads `docs/` as a Pages artifact, and deploys it. Configure GitHub Pages to use:
 
 ```text
-main / docs
+Source: GitHub Actions
 ```
+
+`docs/` is still tracked for now, so the build workflow also checks that committed generated files match the current source.
