@@ -31,9 +31,8 @@ timeline:
     title: "Merchandiser"
     organization: "Green Circle Growers"
     description: |
-      Restocked plant displays, supported retail presentation, and built practical familiarity with plant identification and care.
-
-  - date: "Apr 2024-Apr 2025"
+      Restocked plant displays, supported retail presentation, and got good at identifying a bunch of plants.
+  - date: "Apr 2023-Apr 2025"
     category: "Scholarship"
     title: "Dean's Research Scholar"
     organization: "Michigan State University College of Natural Science"
@@ -119,7 +118,9 @@ timeline:
     title: "Vice President of Programming"
     organization: "Phi Delta Epsilon Medical Fraternity"
     description: |
-      Helped organize programming and community-building within a pre-medical fraternity at Michigan State University.
+      Helped organize programming and community-building within the MI Zeta chapter of the Phi Delta Epsilon Medical Fraternity at Michigan State University.
+
+      Restructured programming leadership and created a four-year programming plan to improve continuity and engagement across cohorts. Created shared resources for chapter members to support mentorship, professional development, and community service.
 
   - date: "May 2023-Mar 2024"
     category: "Work"
@@ -132,7 +133,7 @@ timeline:
 
   - date: "Jun 2022-Jun 2023"
     category: "Work"
-    title: "Line Cook and Part-Time Cashier"
+    title: "Line Cook, Dishwasher and Part-Time Cashier"
     organization: "Giuliano's Italian Kitchen"
     description: |
       Learned to make, proof, and stretch dough, work around the oven, use POS systems, and support front-end customer service.
@@ -187,7 +188,7 @@ awards:
   - title: "AP Scholar with Distinction"
     issuer: "College Board"
     date: "Jun 2023"
-    description: "Earned high scores across a broad set of Advanced Placement exams."
+    description: "Earned 11 5s and 3 4s across a broad set of Advanced Placement exams."
 
 skills:
   - "Python"
