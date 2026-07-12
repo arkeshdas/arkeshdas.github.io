@@ -25,6 +25,25 @@
         {% if item.description %}
         <div class="article-content">{{ item.description | safe }}</div>
         {% endif %}
+        {% if item.relevant_coursework %}
+        <details class="coursework-details">
+          <summary class="btn btn-secondary btn-compact coursework-summary">Relevant coursework <span aria-hidden="true">+</span></summary>
+          <ul class="coursework-list">
+            {% for course in item.relevant_coursework %}
+            <li>
+              {% if course.code %}
+              <strong>{{ course.code }}</strong>{% if course.title %}: {% endif %}
+              {% endif %}
+              {% if course.title %}
+              <em>{{ course.title }}</em>
+              {% else %}
+              <em>{{ course }}</em>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </details>
+        {% endif %}
       </div>
     </article>
     {% endfor %}

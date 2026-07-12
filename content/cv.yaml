@@ -27,6 +27,41 @@ timeline:
       Honors College student graduating with 180 credits and a 4.0 GPA. Activities included Phi Delta Epsilon Medical Fraternity, Honors Times Two, Club Swimming, and the Professorial Assistantship Program.
 
       Coursework emphasized data science, statistics, computational modeling, bioinformatics, biochemistry, molecular biology, plant genetics, and biotechnology.
+    relevant_coursework:
+      - code: "BMB 462"
+        title: "Advanced Biochemistry II"
+      - code: "BMB 471"
+        title: "Advanced Biochemistry Lab"
+      - code: "CSE 331"
+        title: "Algorithms and Data Structures"
+      - code: "STT 465"
+        title: "Bayesian Statistical Methods"
+      - code: "EPI 808"
+        title: "Biostatistics I"
+      - code: "CSS 451"
+        title: "Biotechnology Applications for Plant Breeding and Genetics"
+      - code: "CMSE 410"
+        title: "Bioinformatics and Computational Biology"
+      - code: "CMSE 402"
+        title: "Data Visualization Principles and Techniques"
+      - code: "CMSE 381H"
+        title: "Fundamental Data Science Methods"
+      - code: "CSS 350"
+        title: "Introduction to Plant Genetics"
+      - code: "CEM 383"
+        title: "Introductory Physical Chemistry"
+      - code: "CMSE 492"
+        title: "Modern Tools for the Data Science Professional"
+      - code: "CMSE 382"
+        title: "Optimization Methods in Data Science"
+      - code: "CEM 252H"
+        title: "Organic Chemistry II"
+      - code: "CEM 356"
+        title: "Organic Chemistry Lab II"
+      - code: "PSL 310"
+        title: "Physiology for Pre-Health Professionals"
+      - code: "PSY 235H"
+        title: "Social Psychology"
 
   - date: "August 2023-May 2026"
     category: "Leadership & Mentorship"
@@ -111,6 +146,9 @@ timeline:
     organization: "Oakland University"
     description: |
       Completed a data structures course focused on Java and fundamental data structures.
+    relevant_coursework:
+      - code: "CSI 2310"
+        title: "Data Structures"
 
   - date: "April 13, 2024"
     category: "Research"
@@ -159,6 +197,25 @@ timeline:
     organization: "Troy High School"
     description: |
       Graduated after participating in National Honor Society, varsity swimming, 4Tech Initiative, HOSA, TSA, and French Club.
+    relevant_coursework:
+      - code: "LTU MCS 2414"
+        title: "Multivariable Calculus"
+      - code: "LTU MCS 3863"
+        title: "Linear Algebra"
+      - title: "AP Human Geography (5/5)"
+      - title: "AP Calculus BC (5/5)"
+      - title: "AP Statistics (5/5)"
+      - title: "AP United States History (5/5)"
+      - title: "AP Physics 2 (4/5)"
+      - title: "AP Chemistry (5/5)"
+      - title: "AP English Language (5/5)"
+      - title: "AP Biology (5/5)"
+      - title: "AP Microeconomics (5/5)"
+      - title: "AP Macroeconomics (4/5)"
+      - title: "AP French Language (4/5)"
+      - title: "AP Computer Science A (5/5)"
+      - title: "AP Physics C: Mechanics (5/5)"
+      - title: "AP Physics C: Electricity and Magnetism (5/5)"
 
   - date: "April 2021-October 2022"
     category: "Service"
@@ -207,7 +264,7 @@ awards:
   - title: "AP Scholar with Distinction"
     issuer: "College Board"
     date: "Jun 2023"
-    description: "Earned 11 5s and 3 4s across a broad set of Advanced Placement exams."
+    description: "Recognized for strong performance across a broad set of Advanced Placement exams."
 
 skills:
   - "Python"

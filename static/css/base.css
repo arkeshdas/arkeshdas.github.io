@@ -685,8 +685,46 @@ details[open] summary::before {
   margin-top: 0.75rem;
 }
 
+.coursework-details {
+  margin-top: 0.95rem;
+}
+
+.coursework-details summary {
+  width: fit-content;
+  list-style: none;
+}
+
+.coursework-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.coursework-details summary span {
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.16s ease;
+}
+
+.coursework-details[open] summary span {
+  transform: rotate(45deg);
+}
+
+.coursework-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem 1rem;
+  margin-top: 0.85rem;
+  padding-left: 1.1rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.coursework-list strong {
+  font-weight: 800;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .timeline-filter-btn,
+  .coursework-details summary span,
   .timeline-item {
     opacity: 1;
     transform: none;
@@ -911,6 +949,10 @@ details[open] summary::before {
 
   .timeline-date {
     padding-top: 0;
+  }
+
+  .coursework-list {
+    grid-template-columns: 1fr;
   }
 }
 
