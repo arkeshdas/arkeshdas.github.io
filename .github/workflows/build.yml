@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: uv sync --locked
 
+      - name: Check source consistency
+        run: uv run python tools/check_consistency.py
+
       - name: Build site
         run: uv run python build.py --output dist
 

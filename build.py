@@ -1,5 +1,5 @@
 """
-build.py  —  Static site builder for the Data Science Portfolio Template.
+build.py  —  Static site builder for Arkesh Das's portfolio website.
 
 Usage:
     uv run python build.py
