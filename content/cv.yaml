@@ -3,37 +3,74 @@ title: "Experiences"
 summary: "Stuff I've done"
 
 timeline:
-  - date: "2026-2030"
+  - date: "July 2026-May 2030"
     category: "Education"
     title: "Doctor of Medicine"
     organization: "University of Toledo College of Medicine and Life Sciences"
     description: |
       Incoming M1 through the MedStart program. Participating in the M-Zero Data Science Pre-Matriculation Program before beginning medical school.
 
-  - date: "May-Aug 2025"
+  - date: "August 2024-May 2026"
+    category: "Leadership & Mentorship"
+    title: "Undergraduate Research Ambassador"
+    organization: "Michigan State University Department of Undergraduate Research"
+    description: |
+      Mentored undergraduate students on how to get involved in research through one-on-one peer advising, cold-email support, and opportunity matching based on student interests.
+
+      Presented at research panels and workshops focused on helping students secure and succeed in research positions. Created outreach content that won a most engaging social media post award and reached more than 20,000 impressions across platforms.
+
+  - date: "August 2023-May 2026"
+    category: "Education"
+    title: "B.S. Data Science; Biochemistry and Molecular Biology/Biotechnology"
+    organization: "Michigan State University"
+    description: |
+      Honors College student graduating with 180 credits and a 4.0 GPA. Activities included Phi Delta Epsilon Medical Fraternity, Honors Times Two, Club Swimming, and the Professorial Assistantship Program.
+
+      Coursework emphasized data science, statistics, computational modeling, bioinformatics, biochemistry, molecular biology, plant genetics, and biotechnology.
+
+  - date: "August 2023-May 2026"
+    category: "Leadership & Mentorship"
+    title: "Vice President and Mentor"
+    organization: "Honors Times Two"
+    description: |
+      Mentored gifted K-5 students in the greater East Lansing area on extracurricular STEM-based projects.
+
+      Supported lesson development, event planning, team collaboration, budgeting, troubleshooting, and student engagement, culminating in collaborative project presentations for families and peers.
+
+  - date: "May 2024-December 2025"
+    category: "Clinical"
+    title: "Patient Concierge"
+    organization: "University of Michigan Sparrow Hospital"
+    description: |
+      Provided companionship and emotional support to patients in cardiac step-down units, especially for patients with limited visitors.
+
+      Acted as a liaison between patients and nursing staff by addressing patient needs, answering questions, and supporting comfort during staffing shortages.
+
+  - date: "May-August 2025"
     category: "Clinical"
     title: "Medical Assistant"
     organization: "Jagannathan Neurosurgery"
     description: |
-      Supported daily clinic operations, including patient intake, rooming, vitals, procedure preparation, and patient flow for a high-volume neurosurgery practice.
+      Charted vitals, prepared patients for in-office procedures, coordinated follow-ups, referrals, and imaging, and communicated with outside offices to close loops.
 
-      Charted vitals, prepared patients for in-office procedures, coordinated follow-ups, referrals, and imaging, and communicated with outside offices to close loops. Served as medical records custodian, processed records requests under HIPAA, maintained audit logs, and worked extensively in the EMR.
+      Served as medical records custodian, processed records requests under HIPAA, maintained audit logs, and worked extensively in the EMR.
 
-  - date: "Jun-Aug 2025"
-    category: "Mentorship"
+  - date: "June-August 2025"
+    category: "Leadership & Mentorship"
     title: "Day Camp Counselor"
     organization: "City of Troy"
     description: |
       Worked with children in a summer day camp setting, supporting daily activities, supervision, and outdoor programming.
 
-  - date: "Apr-Jun 2025"
+  - date: "April-June 2025"
     category: "Work"
     title: "Merchandiser"
     organization: "Green Circle Growers"
     description: |
       Restocked plant displays, supported retail presentation, and got good at identifying a bunch of plants.
-  - date: "Apr 2023-Apr 2025"
-    category: "Scholarship"
+
+  - date: "April 2023-April 2025"
+    category: "Research"
     title: "Dean's Research Scholar"
     organization: "Michigan State University College of Natural Science"
     description: |
@@ -41,8 +78,42 @@ timeline:
 
       Trained to communicate research experiences to general audiences, including independent psychology research in the Cesario Lab and collaborative plant biotechnology work in the Hamberger Lab.
 
-  - date: "Apr 13, 2024"
-    category: "Poster"
+  - date: "December 2023-April 2025"
+    category: "Research"
+    title: "Independent Researcher"
+    organization: "Cesario Lab, Michigan State University"
+    description: |
+      Conducted independent research on Bayesian conditional probabilities and their role in modeling stereotypes, focusing on how a trait's diagnostic ratio relates to its categorization as a stereotype, counterstereotype, or non-stereotype for a social group.
+
+      Completed proposal approval, preliminary data collection, and analysis using R and Python.
+
+  - date: "August 2023-May 2025"
+    category: "Research"
+    title: "Undergraduate Research Assistant"
+    organization: "Hamberger Lab, Michigan State University"
+    description: |
+      Characterized regulatory elements that target gene expression to the epidermis or cuticle of sorghum using transient expression.
+
+      Supported work intended to target terpene production to the epidermis or thick hydrophobic cuticle of sorghum, improving ease of extraction and purification. Gained experience with DNA/RNA extraction and purification, PCR, genetic marker analysis, experimental trials, and data analysis.
+
+  - date: "January 2024-January 2025"
+    category: "Leadership & Mentorship"
+    title: "Vice President of Programming"
+    organization: "Phi Delta Epsilon Medical Fraternity"
+    description: |
+      Helped organize programming and community-building within the MI Zeta chapter of the Phi Delta Epsilon Medical Fraternity at Michigan State University.
+
+      Restructured programming leadership and created a four-year programming plan to improve continuity and engagement across cohorts. Created shared resources for chapter members to support mentorship, professional development, and community service.
+
+  - date: "July-August 2024"
+    category: "Education"
+    title: "Guest Student, Computer Science"
+    organization: "Oakland University"
+    description: |
+      Completed a data structures course focused on Java and fundamental data structures.
+
+  - date: "April 13, 2024"
+    category: "Research"
     title: "Characterizing Promoters for Terpene Production in Sorghum"
     organization: "Hamberger Lab, Michigan State University"
     description: |
@@ -52,77 +123,7 @@ timeline:
 
       [View poster](../pdf/sorghum-poster.pdf)
 
-  - date: "Aug 2024-May 2026"
-    category: "Leadership"
-    title: "Undergraduate Research Ambassador"
-    organization: "Michigan State University Department of Undergraduate Research"
-    description: |
-      Mentored undergraduate students on how to get involved in research through one-on-one peer advising, cold-email support, and opportunity matching based on student interests.
-
-      Presented at research panels and workshops focused on helping students secure and succeed in research positions. Created outreach content that won a most engaging social media post award and reached more than 20,000 impressions across platforms.
-
-  - date: "Dec 2023-Apr 2025"
-    category: "Research"
-    title: "Independent Researcher"
-    organization: "Cesario Lab, Michigan State University"
-    description: |
-      Conducted independent research on Bayesian conditional probabilities and their role in modeling stereotypes, focusing on how a trait's diagnostic ratio relates to its categorization as a stereotype, counterstereotype, or non-stereotype for a social group.
-
-      Completed proposal approval, preliminary data collection, and analysis using R and Python.
-
-  - date: "Aug 2023-May 2025"
-    category: "Research"
-    title: "Undergraduate Research Assistant"
-    organization: "Hamberger Lab, Michigan State University"
-    description: |
-      Characterized regulatory elements that target gene expression to the epidermis or cuticle of sorghum using transient expression.
-
-      Supported work intended to target terpene production to the epidermis or thick hydrophobic cuticle of sorghum, improving ease of extraction and purification. Gained experience with DNA/RNA extraction and purification, PCR, genetic marker analysis, experimental trials, and data analysis.
-
-  - date: "May 2024-2025"
-    category: "Service"
-    title: "Patient Concierge"
-    organization: "University of Michigan Sparrow Hospital"
-    description: |
-      Provided companionship and emotional support to patients in cardiac step-down units, especially for patients with limited visitors.
-
-      Acted as a liaison between patients and nursing staff by addressing patient needs, answering questions, and supporting comfort during staffing shortages.
-
-  - date: "Aug 2023-May 2026"
-    category: "Education"
-    title: "B.S. Data Science; Biochemistry and Molecular Biology/Biotechnology"
-    organization: "Michigan State University"
-    description: |
-      Honors College student graduating with 180 credits and a 4.0 GPA. Activities included Phi Delta Epsilon Medical Fraternity, Honors Times Two, Club Swimming, and the Professorial Assistantship Program.
-
-      Coursework emphasized data science, statistics, computational modeling, bioinformatics, biochemistry, molecular biology, plant genetics, and biotechnology.
-
-  - date: "Jul-Aug 2024"
-    category: "Education"
-    title: "Guest Student, Computer Science"
-    organization: "Oakland University"
-    description: |
-      Completed a data structures course focused on Java and fundamental data structures.
-
-  - date: "Aug 2023-2026"
-    category: "Mentorship"
-    title: "Vice President and Mentor"
-    organization: "Honors Times Two"
-    description: |
-      Mentored gifted K-5 students in the greater East Lansing area on extracurricular STEM-based projects.
-
-      Supported lesson development, event planning, team collaboration, budgeting, troubleshooting, and student engagement, culminating in collaborative project presentations for families and peers.
-
-  - date: "2024-2025"
-    category: "Leadership"
-    title: "Vice President of Programming"
-    organization: "Phi Delta Epsilon Medical Fraternity"
-    description: |
-      Helped organize programming and community-building within the MI Zeta chapter of the Phi Delta Epsilon Medical Fraternity at Michigan State University.
-
-      Restructured programming leadership and created a four-year programming plan to improve continuity and engagement across cohorts. Created shared resources for chapter members to support mentorship, professional development, and community service.
-
-  - date: "May 2023-Mar 2024"
+  - date: "May 2023-March 2024"
     category: "Work"
     title: "Line Cook"
     organization: "Buddy's Pizza"
@@ -131,33 +132,51 @@ timeline:
 
       Trained in health and food safety practices, knife skills, temperature procedures, and sanitation standards.
 
-  - date: "Jun 2022-Jun 2023"
+  - date: "June 2022-June 2023"
     category: "Work"
     title: "Line Cook, Dishwasher and Part-Time Cashier"
     organization: "Giuliano's Italian Kitchen"
     description: |
       Learned to make, proof, and stretch dough, work around the oven, use POS systems, and support front-end customer service.
 
-  - date: "Aug 2021-Jun 2023"
+  - date: "August 2021-June 2023"
     category: "Service"
     title: "English Mentor"
     organization: "ENGin"
     description: |
       Worked one-on-one with Ukrainian students to provide conversational English practice and planned weekly lessons around cultural topics.
 
-  - date: "Mar 2022-May 2023"
+  - date: "March 2022-May 2023"
     category: "Service"
     title: "Literacy Tutor"
     organization: "Center for Success: Detroit"
     description: |
       Guided elementary school students in metro Detroit through tailored reading activities.
 
-  - date: "2019-2023"
+  - date: "August 2019-May 2023"
     category: "Education"
     title: "High School Diploma"
     organization: "Troy High School"
     description: |
       Graduated after participating in National Honor Society, varsity swimming, 4Tech Initiative, HOSA, TSA, and French Club.
+
+  - date: "April 2021-October 2022"
+    category: "Service"
+    title: "Garden Volunteer Manager"
+    organization: "Troy Historic Village"
+    description: |
+      Created bed schematics to track crops planted over the course of the season.
+
+      Presented information to visitors about historical gardening techniques and plants.
+
+  - date: "May-August 2022"
+    category: "Clinical"
+    title: "Guiding Star"
+    organization: "Ascension St. John Macomb Hospital"
+    description: |
+      Greeted and transported wheelchair-bound and elderly patients between hospital wards.
+
+      Restocked medical supplies such as masks and delivered documents between wards.
 
 awards:
   - title: "Board of Trustees Award"

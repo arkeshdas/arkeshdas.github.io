@@ -605,11 +605,48 @@ details[open] summary::before {
   gap: 1rem;
 }
 
+.timeline-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0 0 1.35rem;
+}
+
+.timeline-filter-btn {
+  cursor: pointer;
+  font: inherit;
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.timeline-filter-btn:hover {
+  transform: translateY(-1px);
+}
+
+.timeline-filter-btn[aria-pressed="false"] {
+  opacity: 0.42;
+}
+
+.timeline-filter-btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
 .timeline-item {
   display: grid;
   grid-template-columns: minmax(120px, 0.22fr) 1fr;
   gap: 1.25rem;
   align-items: start;
+}
+
+.timeline-item[hidden] {
+  display: none;
+}
+
+.timeline-item.is-filtered-out {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(1rem);
+  transition: opacity 0.24s ease, transform 0.24s ease;
 }
 
 .timeline.is-reveal-enabled .timeline-item {
@@ -621,6 +658,12 @@ details[open] summary::before {
 .timeline.is-reveal-enabled .timeline-item.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.timeline.is-reveal-enabled .timeline-item.is-filtered-out {
+  opacity: 0;
+  transform: translateX(1rem);
+  transition: opacity 0.24s ease, transform 0.24s ease;
 }
 
 .timeline-date {
@@ -643,10 +686,15 @@ details[open] summary::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .timeline-filter-btn,
   .timeline-item {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .timeline-filter-btn:hover {
+    transform: none;
   }
 }
 
