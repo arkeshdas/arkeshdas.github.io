@@ -27,7 +27,7 @@ jobs:
         run: uv sync --locked
 
       - name: Build site
-        run: uv run python build.py
+        run: uv run python build.py --output dist
 
-      - name: Check generated docs are committed
-        run: git diff --exit-code docs
+      - name: Check build output exists
+        run: test -f dist/index.html

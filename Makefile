@@ -10,10 +10,11 @@ serve:
 	uv run python serve.py
 
 clean:
-	rm -rf docs
+	rm -rf dist docs
 
 consistency:
 	uv run python tools/check_consistency.py
 
 check: consistency build
+	test -f dist/index.html
 	git status --short

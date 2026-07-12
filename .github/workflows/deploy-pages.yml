@@ -38,18 +38,18 @@ jobs:
         run: uv run python tools/check_consistency.py
 
       - name: Build site
-        run: uv run python build.py
+        run: uv run python build.py --output dist
 
       - name: Show build output
         run: |
-          test -f docs/index.html
-          find docs -maxdepth 3 -type f | sort
-          du -sh docs
+          test -f dist/index.html
+          find dist -maxdepth 3 -type f | sort
+          du -sh dist
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: dist
 
   deploy:
     needs: build

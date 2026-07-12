@@ -8,6 +8,10 @@
 __pycache__/
 *.py[cod]
 
+# Generated site output
+dist/
+docs/
+
 # macOS metadata
 .DS_Store
 

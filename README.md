@@ -1,6 +1,6 @@
 # Professional Portfolio
 
-A portfolio generator built with Python, YAML, Jinja2, and CSS. Content lives in YAML files, templates define page sections, and `build.py` generates the deployable site in `docs/` for GitHub Pages.
+A portfolio generator built with Python, YAML, Jinja2, and CSS. Content lives in YAML files, templates define page sections, and `build.py` generates the deployable site in `dist/` for local preview and GitHub Pages.
 
 ## Quick Start
 
@@ -10,7 +10,7 @@ uv run python build.py
 uv run python serve.py
 ```
 
-`serve.py` previews the generated `docs/` site locally.
+`serve.py` previews the generated `dist/` site locally.
 
 The same workflow is available through `make`:
 
@@ -38,25 +38,25 @@ templates/sections/        Individual page sections
 static/css/base.css        Layout, typography, responsiveness, print rules
 static/css/themes/*.css    Theme colors, surfaces, borders, shadows
 static/img/                Source images referenced from YAML
-docs/                      Generated site for deployment
+dist/                      Generated site output, ignored by git
 ```
 
-The build renders HTML pages, copies referenced images into `docs/`, skips dotfiles, and writes one deploy stylesheet:
+The build renders HTML pages, copies referenced images into `dist/`, skips dotfiles, and writes one deploy stylesheet:
 
 ```text
-docs/index.html
-docs/scholarship/index.html
-docs/cv/index.html
-docs/writing/index.html
-docs/writing/<slug>/index.html
-docs/about/index.html
+dist/index.html
+dist/scholarship/index.html
+dist/cv/index.html
+dist/writing/index.html
+dist/writing/<slug>/index.html
+dist/about/index.html
 ```
 
 ```text
-docs/css/site.css = static/css/base.css + selected theme
+dist/css/site.css = static/css/base.css + selected theme
 ```
 
-Do not edit files in `docs/` directly. Edit source files, then rebuild.
+Do not edit generated files in `dist/` directly. Edit source files, then rebuild.
 
 ## Main Config
 
@@ -168,7 +168,7 @@ Writing order is controlled by `portfolio_config.yaml`. Set `featured: true` on 
 `content` is rendered as the full self-hosted post at:
 
 ```text
-docs/writing/<slug>/index.html
+dist/writing/<slug>/index.html
 ```
 
 If `slug` is omitted, the build uses the YAML filename. Set `has_original_post: true` and provide `original_post_url` when the post has an original external version or related PDF. Use `has_original_post: false` for writing that only lives on this site.
@@ -232,18 +232,22 @@ All theme files cover the same site components, so changing `theme:` should pres
 
 ## Build Hygiene
 
-`build.py` cleans and regenerates `docs/` on every build. It copies only referenced static assets and warns about:
+`build.py` cleans and regenerates `dist/` on every build. It copies only referenced static assets and warns about:
 
 - missing theme files
 - missing static assets referenced in YAML
 - placeholder Formspree endpoints
 - video URLs that cannot be converted to embeds
 
-The build also validates required YAML fields, rejects content paths that point outside the repository, and computes the stylesheet cache version from the source CSS.
+The build also validates required YAML fields, rejects content paths that point outside the repository, and computes the stylesheet cache version from the source CSS. To build into another repo-relative directory, run:
+
+```bash
+uv run python build.py --output path/to/output
+```
 
 ## Deployment
 
-This repo is set up for GitHub Pages from `/docs`.
+This repo is set up for GitHub Pages through GitHub Actions. Generated output is not tracked in git.
 
 Typical workflow:
 
@@ -254,10 +258,10 @@ git commit -m "update portfolio"
 git push origin main
 ```
 
-GitHub Actions builds the site, uploads `docs/` as a Pages artifact, and deploys it. Configure GitHub Pages to use:
+GitHub Actions builds the site, uploads `dist/` as a Pages artifact, and deploys it. Configure GitHub Pages to use:
 
 ```text
 Source: GitHub Actions
 ```
 
-`docs/` is still tracked for now, so the build workflow also checks that committed generated files match the current source.
+Because `dist/` is ignored, source YAML, templates, CSS, and static assets are the source of truth. Run `make check` before committing to verify the generated site still builds.
