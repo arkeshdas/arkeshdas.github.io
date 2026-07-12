@@ -265,3 +265,13 @@ Source: GitHub Actions
 ```
 
 Because `dist/` is ignored, source YAML, templates, CSS, and static assets are the source of truth. Run `make check` before committing to verify the generated site still builds.
+
+## Attribution
+
+This site began from Devin Silvia's [Professional Portfolio Template](https://github.com/devinsilvia/professional_portfolio_template) and has since been substantially modified for a multi-page personal portfolio, writing system, CV timeline, and broader media support.
+
+The original template was released under the MIT License. The license notice is preserved in `LICENSE`.
+
+## Note About AI Assistance
+
+The original template noted that it was drafted and built with the help of AI, specifically Claude. This portfolio has also been developed and revised with AI assistance, including ChatGPT/Codex. Generated code and content changes have been reviewed, edited, and tested before use.
