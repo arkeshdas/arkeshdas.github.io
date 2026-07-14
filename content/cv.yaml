@@ -72,15 +72,6 @@ timeline:
 
       Supported lesson development, event planning, team collaboration, budgeting, troubleshooting, and student engagement, culminating in collaborative project presentations for families and peers.
 
-  - date: "May 2024-December 2025"
-    category: "Clinical"
-    title: "Patient Concierge"
-    organization: "University of Michigan Sparrow Hospital"
-    description: |
-      Provided companionship and emotional support to patients in cardiac step-down units, especially for patients with limited visitors.
-
-      Acted as a liaison between patients and nursing staff by addressing patient needs, answering questions, and supporting comfort during staffing shortages.
-
   - date: "May-August 2025"
     category: "Clinical"
     title: "Medical Assistant"
@@ -103,6 +94,15 @@ timeline:
     organization: "Green Circle Growers"
     description: |
       Restocked plant displays, supported retail presentation, and got good at identifying a bunch of plants.
+
+  - date: "May 2024-May 2025"
+    category: "Clinical"
+    title: "Patient Concierge"
+    organization: "University of Michigan Sparrow Hospital"
+    description: |
+      Provided companionship and emotional support to patients in cardiac step-down units, especially for patients with limited visitors.
+
+      Acted as a liaison between patients and nursing staff by addressing patient needs, answering questions, and supporting comfort during staffing shortages.
 
   - date: "April 2023-April 2025"
     category: "Research"
