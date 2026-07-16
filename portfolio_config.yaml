@@ -44,7 +44,7 @@ writing_posts:
 
 
 # --- Theme ---
-# Built-in options: "light", "dark", "msu-light", "msu-dark"
+# Built-in options: "clinical", "clinical-dark", "light", "dark", "msu-light", "msu-dark"
 # You can also add your own CSS file under static/css/themes/ and
 # use its name here (without the .css extension).
 theme: clinical

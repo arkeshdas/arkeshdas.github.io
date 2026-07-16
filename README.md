@@ -257,6 +257,7 @@ theme: clinical
 Available themes:
 
 - `clinical`
+- `clinical-dark`
 - `light`
 - `dark`
 - `msu-light`
