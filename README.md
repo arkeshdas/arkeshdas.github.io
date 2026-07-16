@@ -254,6 +254,19 @@ The active theme is set in `portfolio_config.yaml`:
 theme: clinical
 ```
 
+The light/dark toggle is also configured there. `light_theme` should usually match `theme`, so the site has the same default appearance when JavaScript is disabled.
+
+```yaml
+theme_toggle:
+  enabled: true
+  light_theme: clinical
+  dark_theme: clinical-dark
+  light_label: Light
+  dark_label: Dark
+```
+
+To change the toggle pairing, update only the `light_theme` and `dark_theme` values.
+
 Available themes:
 
 - `clinical`
@@ -274,7 +287,7 @@ The build process does the following:
 3. Converts Markdown fields to HTML.
 4. Renders Jinja templates into `dist/`.
 5. Copies only referenced static assets.
-6. Combines `static/css/base.css` with the selected theme into `dist/css/site.css`.
+6. Combines `static/css/base.css`, the selected theme, and any configured toggle theme into `dist/css/site.css`.
 7. Writes `.nojekyll` for GitHub Pages.
 
 The consistency checker currently verifies:

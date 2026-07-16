@@ -28,6 +28,21 @@ a:hover {
   color: #7bbd00;
 }
 
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(232, 240, 238, 0.22);
+  color: #e8f0ee;
+}
+
+.theme-toggle:hover {
+  background: rgba(123, 189, 0, 0.14);
+  border-color: rgba(123, 189, 0, 0.42);
+}
+
+.theme-toggle-dot {
+  background: #e8f0ee;
+}
+
 .hero-role {
   background: #7bbd00;
   color: #0d2b25;

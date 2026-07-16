@@ -49,6 +49,16 @@ writing_posts:
 # use its name here (without the .css extension).
 theme: clinical
 
+# --- Theme toggle ---
+# The light theme should match `theme` above so the no-JavaScript fallback
+# and default JavaScript state look the same.
+theme_toggle:
+  enabled: true
+  light_theme: clinical
+  dark_theme: clinical-dark
+  light_label: Light
+  dark_label: Dark
+
 
 # --- Site metadata ---
 # Used in the HTML <title> tag and browser tab.

@@ -5,6 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ site_title }}</title>
 
+  {% if theme_toggle.enabled %}
+  <script>
+    (() => {
+      const storageKey = "arkeshdas-theme-mode";
+      const lightTheme = "{{ theme_toggle.light_theme|default(theme) }}";
+      const darkTheme = "{{ theme_toggle.dark_theme }}";
+      const savedMode = (() => {
+        try {
+          return localStorage.getItem(storageKey);
+        } catch {
+          return null;
+        }
+      })();
+      const mode = savedMode === "dark" ? "dark" : "light";
+      const activeTheme = mode === "dark" ? darkTheme : lightTheme;
+      if (activeTheme && activeTheme !== "{{ theme }}") {
+        document.documentElement.dataset.siteTheme = activeTheme;
+      }
+      document.documentElement.dataset.themeMode = mode;
+    })();
+  </script>
+  {% endif %}
+
   <!-- Built stylesheet: base layout plus the configured theme -->
   <link rel="stylesheet" href="{{ site_root }}css/site.css?v={{ asset_version }}" />
 </head>
@@ -18,6 +41,21 @@
       <a href="{{ site_root }}writing/">Writing</a>
       <a href="{{ site_root }}about/">About</a>
       <a href="{{ site_root }}#contact">Contact</a>
+      {% if theme_toggle.enabled %}
+      <button
+        type="button"
+        class="theme-toggle"
+        data-theme-toggle
+        data-light-theme="{{ theme_toggle.light_theme|default(theme) }}"
+        data-dark-theme="{{ theme_toggle.dark_theme }}"
+        data-light-label="{{ theme_toggle.light_label|default('Light') }}"
+        data-dark-label="{{ theme_toggle.dark_label|default('Dark') }}"
+        aria-pressed="false"
+      >
+        <span class="theme-toggle-dot" aria-hidden="true"></span>
+        <span class="theme-toggle-label">{{ theme_toggle.light_label|default('Light') }}</span>
+      </button>
+      {% endif %}
     </nav>
 
     {% if show_hero %}
@@ -79,5 +117,57 @@
     <p>&copy; 2026 <a href="https://github.com/arkeshdas/arkeshdas.github.io" target="_blank" rel="noopener">Arkesh Das</a>.</p>
   </footer>
 
+  {% if theme_toggle.enabled %}
+  <script>
+    (() => {
+      const storageKey = "arkeshdas-theme-mode";
+      const toggle = document.querySelector("[data-theme-toggle]");
+      if (!toggle) return;
+
+      const lightTheme = toggle.dataset.lightTheme;
+      const darkTheme = toggle.dataset.darkTheme;
+      const lightLabel = toggle.dataset.lightLabel || "Light";
+      const darkLabel = toggle.dataset.darkLabel || "Dark";
+      const label = toggle.querySelector(".theme-toggle-label");
+
+      const getSavedMode = () => {
+        try {
+          return localStorage.getItem(storageKey);
+        } catch {
+          return null;
+        }
+      };
+
+      const saveMode = (mode) => {
+        try {
+          localStorage.setItem(storageKey, mode);
+        } catch {
+          // The toggle still works for the current page if storage is blocked.
+        }
+      };
+
+      const applyMode = (mode) => {
+        const isDark = mode === "dark";
+        const activeTheme = isDark ? darkTheme : lightTheme;
+        if (activeTheme && activeTheme !== "{{ theme }}") {
+          document.documentElement.dataset.siteTheme = activeTheme;
+        } else {
+          delete document.documentElement.dataset.siteTheme;
+        }
+        document.documentElement.dataset.themeMode = mode;
+        toggle.setAttribute("aria-pressed", String(isDark));
+        if (label) label.textContent = isDark ? darkLabel : lightLabel;
+      };
+
+      applyMode(getSavedMode() === "dark" ? "dark" : "light");
+
+      toggle.addEventListener("click", () => {
+        const nextMode = document.documentElement.dataset.themeMode === "dark" ? "light" : "dark";
+        saveMode(nextMode);
+        applyMode(nextMode);
+      });
+    })();
+  </script>
+  {% endif %}
 </body>
 </html>
