@@ -30,7 +30,7 @@
             {% if post.has_original_post and post.original_post_url %}Read More{% else %}Read Essay{% endif %}
           </a>
           {% if post.has_original_post and post.original_post_url %}
-          <a href="{{ post.original_post_url }}" target="_blank" rel="noopener" class="btn btn-primary">Original Post</a>
+          <a href="{{ post.original_post_url }}" target="_blank" rel="noopener" class="btn btn-primary">{{ post.original_post_label|default('Original Post', true) }}</a>
           {% endif %}
         </div>
       </div>

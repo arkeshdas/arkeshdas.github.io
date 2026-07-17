@@ -5,6 +5,7 @@ show_on_home: true
 slug: "my-first-blog-post"
 has_original_post: false
 original_post_url: ""
+original_post_label: ""
 image_path: ""
 images: []
 media: []

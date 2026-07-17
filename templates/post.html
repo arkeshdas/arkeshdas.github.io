@@ -33,7 +33,7 @@
   <div class="feature-actions">
     <a href="{{ site_root }}writing/" class="btn btn-secondary">Back to Writing</a>
     {% if post.has_original_post and post.original_post_url %}
-    <a href="{{ post.original_post_url }}" target="_blank" rel="noopener" class="btn btn-primary">Original Post</a>
+    <a href="{{ post.original_post_url }}" target="_blank" rel="noopener" class="btn btn-primary">{{ post.original_post_label|default('Original Post', true) }}</a>
     {% endif %}
   </div>
 </article>
