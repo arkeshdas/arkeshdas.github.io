@@ -16,7 +16,7 @@ The website has five main pages:
 - **Writing**: self-hosted essays plus archival links to older posts
 - **About**: a more personal narrative page
 
-The goal of this codebase is to both generate my website and to act as a reproducable template to make a website without manually editing generated HTML.
+The goal of this codebase is to both generate my website and to act as a reproducable template to make a website without manually editing generated HTML. You can also use Google Search Console to generate a HTML tag to make the portfolio searchable on Google. 
 
 ## Repository Structure
 
