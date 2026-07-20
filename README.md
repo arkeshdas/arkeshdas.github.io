@@ -161,9 +161,20 @@ writing_posts:
 
 theme: clinical
 site_title: "Arkesh Das | Portfolio"
+google_site_verification: ""
 ```
 
 The order of `projects` controls the homepage project order. The order of `writing_posts` controls the Writing page and homepage writing preview order.
+
+### Search verification
+
+Google Search Console verification can be added through `portfolio_config.yaml`:
+
+```yaml
+google_site_verification: "your-verification-token"
+```
+
+Paste only the `content` value from Google's meta tag. The build renders it into the shared `<head>` template, so it survives rebuilds and appears on every generated page.
 
 ### Writing posts
 

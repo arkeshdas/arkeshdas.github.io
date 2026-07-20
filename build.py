@@ -424,6 +424,7 @@ def build(output_dir: str = "dist") -> None:
     theme       = config.get("theme", "light")
     theme_toggle = config.get("theme_toggle", {})
     site_title  = config.get("site_title", "My Portfolio")
+    google_site_verification = config.get("google_site_verification", "")
     student_rel = config.get("student_file", "content/example_student.yaml")
     project_rel = config.get("projects", [])
     writing_rel = config.get("writing_posts", config.get("blog_posts", []))
@@ -529,6 +530,7 @@ def build(output_dir: str = "dist") -> None:
         "theme": theme,
         "asset_version": asset_version,
         "theme_toggle": theme_toggle,
+        "google_site_verification": google_site_verification,
         "student": student,
         "projects": projects,
         "writing_posts": writing_posts,

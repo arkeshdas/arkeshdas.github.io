@@ -63,3 +63,7 @@ theme_toggle:
 # --- Site metadata ---
 # Used in the HTML <title> tag and browser tab.
 site_title: "Arkesh Das | Portfolio"
+
+# Optional Google Search Console ownership verification.
+# Paste only the content value from the verification meta tag.
+google_site_verification: "J_GFC5Iq9J6VxDzg_zzMcwZEaZEcNb10MkXVM576P6Q"
