@@ -27,7 +27,7 @@
 
         <h3 class="writing-title">{{ post.title }}</h3>
 
-        {% if post.short_summary %}
+        {% if post.short_summary|trim %}
         <p class="writing-summary">{{ post.short_summary }}</p>
         {% endif %}
 

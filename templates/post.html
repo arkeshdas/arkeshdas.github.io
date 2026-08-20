@@ -15,7 +15,7 @@
     </p>
     {% endif %}
     <h1>{{ post.title }}</h1>
-    {% if post.short_summary %}
+    {% if post.short_summary|trim %}
     <p class="page-summary">{{ post.short_summary }}</p>
     {% endif %}
   </div>
