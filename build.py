@@ -166,7 +166,14 @@ def copy_scholarship_assets(scholarship: dict) -> None:
 
 def copy_referenced_assets(student: dict, projects: list[dict], writing_posts: list[dict], scholarship: dict) -> None:
     """Copy only assets referenced by YAML content."""
-    copy_static_asset(student.get("headshot"))
+    student_assets = [student.get("headshot")]
+    for headshot in student.get("headshots", []):
+        if isinstance(headshot, dict):
+            student_assets.append(headshot.get("path"))
+        else:
+            student_assets.append(headshot)
+    for asset_path in dict.fromkeys(asset for asset in student_assets if asset):
+        copy_static_asset(asset_path)
 
     for project in projects:
         copy_static_asset(project.get("image_path"))
@@ -283,6 +290,9 @@ def require_fields(item: dict, fields: list[str], context: str) -> None:
 def validate_student(student: dict) -> None:
     require_fields(student, ["name", "role", "headline"], "student profile")
     warn_if_missing_static_asset(student.get("headshot"), "student headshot")
+    for headshot in student.get("headshots", []):
+        image_path = headshot.get("path") if isinstance(headshot, dict) else headshot
+        warn_if_missing_static_asset(image_path, "student headshot carousel")
 
     endpoint = student.get("formspree_endpoint", "")
     if endpoint and "YOUR_FORM_ID" in endpoint:

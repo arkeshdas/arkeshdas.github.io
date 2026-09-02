@@ -63,9 +63,47 @@
 
     {% if show_hero %}
     <div class="hero">
-      {% if student.headshot %}
+      {% set headshots = student.headshots|default([]) %}
+      {% if student.headshot or headshots %}
       <div class="hero-media">
+        {% if headshots|length > 0 %}
+        <div class="headshot-carousel" data-headshot-carousel>
+          <div class="headshot-frame">
+            {% for image in headshots %}
+            <img
+              src="{{ image.path }}"
+              alt="{{ image.alt|default('Headshot of ' ~ student.name) }}"
+              class="hero-headshot headshot-slide{% if loop.first %} is-active{% endif %}"
+              data-headshot-slide
+              {% if not loop.first %}aria-hidden="true"{% endif %}
+            >
+            {% endfor %}
+            {% if headshots|length > 1 %}
+            <button type="button" class="headshot-arrow headshot-arrow-prev" data-headshot-prev aria-label="Previous headshot">
+              <span aria-hidden="true">&lsaquo;</span>
+            </button>
+            <button type="button" class="headshot-arrow headshot-arrow-next" data-headshot-next aria-label="Next headshot">
+              <span aria-hidden="true">&rsaquo;</span>
+            </button>
+            {% endif %}
+          </div>
+          {% if headshots|length > 1 %}
+          <div class="headshot-dots" aria-label="Headshot carousel">
+            {% for image in headshots %}
+            <button
+              type="button"
+              class="headshot-dot{% if loop.first %} is-active{% endif %}"
+              data-headshot-dot
+              aria-label="Show headshot {{ loop.index }}"
+              aria-current="{% if loop.first %}true{% else %}false{% endif %}"
+            ></button>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        {% else %}
         <img src="{{ student.headshot }}" alt="Headshot of {{ student.name }}" class="hero-headshot">
+        {% endif %}
       </div>
       {% endif %}
 
@@ -119,6 +157,40 @@
   <footer class="site-footer">
     <p>&copy; 2026 <a href="https://github.com/arkeshdas/arkeshdas.github.io" target="_blank" rel="noopener">Arkesh Das</a>.</p>
   </footer>
+
+  {% if show_hero %}
+  <script>
+    (() => {
+      document.querySelectorAll("[data-headshot-carousel]").forEach((carousel) => {
+        const slides = Array.from(carousel.querySelectorAll("[data-headshot-slide]"));
+        const dots = Array.from(carousel.querySelectorAll("[data-headshot-dot]"));
+        const previous = carousel.querySelector("[data-headshot-prev]");
+        const next = carousel.querySelector("[data-headshot-next]");
+        if (slides.length < 2) return;
+
+        let activeIndex = Math.max(0, slides.findIndex((slide) => slide.classList.contains("is-active")));
+
+        const showSlide = (index) => {
+          activeIndex = (index + slides.length) % slides.length;
+          slides.forEach((slide, slideIndex) => {
+            const isActive = slideIndex === activeIndex;
+            slide.classList.toggle("is-active", isActive);
+            slide.setAttribute("aria-hidden", String(!isActive));
+          });
+          dots.forEach((dot, dotIndex) => {
+            const isActive = dotIndex === activeIndex;
+            dot.classList.toggle("is-active", isActive);
+            dot.setAttribute("aria-current", String(isActive));
+          });
+        };
+
+        previous?.addEventListener("click", () => showSlide(activeIndex - 1));
+        next?.addEventListener("click", () => showSlide(activeIndex + 1));
+        dots.forEach((dot, dotIndex) => dot.addEventListener("click", () => showSlide(dotIndex)));
+      });
+    })();
+  </script>
+  {% endif %}
 
   {% if theme_toggle.enabled %}
   <script>

@@ -23,7 +23,12 @@ featured_video_captions_lang: en
 
 formspree_endpoint: https://formspree.io/f/mykokyaj
 
-headshot: img/headshot-ut-2026.jpg
+headshot: img/headshots/headshot-ut-2026.jpg
+headshots:
+  - path: img/headshots/headshot-ut-2026.jpg
+    alt: Headshot of Arkesh Das in a white coat.
+  - path: img/headshots/headshot-web.jpg
+    alt: Headshot of Arkesh Das.
 
 about: |
   I graduated from Michigan State University with a bachelor's degree in Data Science and a bachelor's degree in Biotechnology. I will begin medical school at the University of Toledo College of Medicine and Life Sciences in 2026 through the MedStart program.

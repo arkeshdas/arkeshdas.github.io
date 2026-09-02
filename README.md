@@ -166,6 +166,21 @@ google_site_verification: ""
 
 The order of `projects` controls the homepage project order. The order of `writing_posts` controls the Writing page and homepage writing preview order.
 
+### Headshots
+
+The homepage headshot is controlled by `content/arkesh.yaml`. `headshot` is the default/fallback image, and `headshots` powers the homepage carousel:
+
+```yaml
+headshot: img/headshots/headshot-ut-2026.jpg
+headshots:
+  - path: img/headshots/headshot-ut-2026.jpg
+    alt: Headshot of Arkesh Das in a white coat.
+  - path: img/headshots/headshot-web.jpg
+    alt: Headshot of Arkesh Das.
+```
+
+Add new carousel images to `static/img/headshots/`, then add them to the `headshots` list in display order.
+
 ### Search verification
 
 Google Search Console verification can be added through `portfolio_config.yaml`:
