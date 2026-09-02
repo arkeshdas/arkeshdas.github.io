@@ -162,6 +162,7 @@
   <script>
     (() => {
       document.querySelectorAll("[data-headshot-carousel]").forEach((carousel) => {
+        const autoAdvanceMs = 4000;
         const slides = Array.from(carousel.querySelectorAll("[data-headshot-slide]"));
         const dots = Array.from(carousel.querySelectorAll("[data-headshot-dot]"));
         const previous = carousel.querySelector("[data-headshot-prev]");
@@ -169,6 +170,7 @@
         if (slides.length < 2) return;
 
         let activeIndex = Math.max(0, slides.findIndex((slide) => slide.classList.contains("is-active")));
+        let intervalId;
 
         const showSlide = (index) => {
           activeIndex = (index + slides.length) % slides.length;
@@ -184,9 +186,29 @@
           });
         };
 
-        previous?.addEventListener("click", () => showSlide(activeIndex - 1));
-        next?.addEventListener("click", () => showSlide(activeIndex + 1));
-        dots.forEach((dot, dotIndex) => dot.addEventListener("click", () => showSlide(dotIndex)));
+        const stopAutoAdvance = () => {
+          clearInterval(intervalId);
+        };
+
+        const startAutoAdvance = () => {
+          stopAutoAdvance();
+          intervalId = setInterval(() => showSlide(activeIndex + 1), autoAdvanceMs);
+        };
+
+        const manuallyShowSlide = (index) => {
+          showSlide(index);
+          startAutoAdvance();
+        };
+
+        previous?.addEventListener("click", () => manuallyShowSlide(activeIndex - 1));
+        next?.addEventListener("click", () => manuallyShowSlide(activeIndex + 1));
+        dots.forEach((dot, dotIndex) => dot.addEventListener("click", () => manuallyShowSlide(dotIndex)));
+        carousel.addEventListener("mouseenter", stopAutoAdvance);
+        carousel.addEventListener("mouseleave", startAutoAdvance);
+        carousel.addEventListener("focusin", stopAutoAdvance);
+        carousel.addEventListener("focusout", startAutoAdvance);
+
+        startAutoAdvance();
       });
     })();
   </script>
